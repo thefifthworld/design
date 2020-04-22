@@ -1,0 +1,117 @@
+// Fontin
+
+@font-face {
+  font-family: 'Fontin';
+  font-style: normal;
+  font-weight: normal;
+  src: url($fonts + 'regular.eot');
+  src: url($fonts + 'regular.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'regular.woff') format('woff'),
+  url($fonts + 'regular.ttf') format('truetype'),
+  url($fonts + 'regular.svg#fontinregular') format('svg');
+}
+
+@font-face {
+  font-family: 'Fontin';
+  font-style: italic;
+  font-weight: normal;
+  src: url($fonts + 'italic.eot');
+  src: url($fonts + 'italic.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'italic.woff') format('woff'),
+  url($fonts + 'italic.ttf') format('truetype'),
+  url($fonts + 'italic.svg#fontinitalic') format('svg');
+}
+
+@font-face {
+  font-family: 'Fontin';
+  font-style: normal;
+  font-weight: bold;
+  src: url($fonts + 'bold.eot');
+  src: url($fonts + 'bold.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'bold.woff') format('woff'),
+  url($fonts + 'bold.ttf') format('truetype'),
+  url($fonts + 'bold.svg#fontinbold') format('svg');
+}
+
+@font-face {
+  font-family: 'Fontin';
+  font-style: italic;
+  font-weight: bold;
+  src: url($fonts + 'bold-italic.eot');
+  src: url($fonts + 'bold-italic.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'bold-italic.woff') format('woff'),
+  url($fonts + 'bold-italic.ttf') format('truetype'),
+  url($fonts + 'bold-italic.svg#fontinbold') format('svg');
+}
+
+// Fontin Sans
+
+@font-face {
+  font-family: 'Fontin Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: url($fonts + 'sans.eot');
+  src: url($fonts + 'sans.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'sans.woff') format('woff'),
+  url($fonts + 'sans.ttf') format('truetype'),
+  url($fonts + 'sans.svg#fontin_sans_rgregular') format('svg');
+}
+
+@font-face {
+  font-family: 'Fontin Sans';
+  font-style: italic;
+  font-weight: normal;
+  src: url($fonts + 'sans-italic.eot');
+  src: url($fonts + 'sans-italic.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'sans-italic.woff') format('woff'),
+  url($fonts + 'sans-italic.ttf') format('truetype'),
+  url($fonts + 'sans-italic.svg#fontin_sans_rgitalic') format('svg');
+}
+
+@font-face {
+  font-family: 'Fontin Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: url($fonts + 'sans-bold.eot');
+  src: url($fonts + 'sans-bold.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'sans-bold.woff') format('woff'),
+  url($fonts + 'sans-bold.ttf') format('truetype'),
+  url($fonts + 'sans-bold.svg#fontin_sans_rgbold') format('svg');
+}
+
+@font-face {
+  font-family: 'Fontin Sans';
+  font-style: italic;
+  font-weight: bold;
+  src: url($fonts + 'sans-bold-italic.eot');
+  src: url($fonts + 'sans-bold-italic.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'sans-bold-italic.woff') format('woff'),
+  url($fonts + 'sans-bold-italic.ttf') format('truetype'),
+  url($fonts + 'sans-bold-italic.svg#fontin_sans_rgbold_italic') format('svg');
+}
+
+// Fontin Small Caps
+
+@font-face {
+  font-family: 'Fontin Small Caps';
+  font-style: normal;
+  font-weight: normal;
+  src: url($fonts + 'smallcaps.eot');
+  src: url($fonts + 'smallcaps.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'smallcaps.woff') format('woff'),
+  url($fonts + 'smallcaps.ttf') format('truetype'),
+  url($fonts + 'smallcaps.svg#fontin_smallcapssmallcaps') format('svg');
+}
+
+// Fontin Sans Small Caps
+
+@font-face {
+  font-family: 'Fontin Sans Small Caps';
+  font-style: normal;
+  font-weight: normal;
+  src: url($fonts + 'sans-smallcaps.eot');
+  src: url($fonts + 'sans-smallcaps.eot?#iefix') format('embedded-opentype'),
+  url($fonts + 'sans-smallcaps.woff') format('woff'),
+  url($fonts + 'sans-smallcaps.ttf') format('truetype'),
+  url($fonts + 'sans-smallcaps.svg#fontin_sans_scsmall_caps') format('svg');
+}

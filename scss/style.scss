@@ -1,2 +1,25 @@
 // Normalize CSS
 @import 'node_modules/normalize-scss/sass/normalize';
+
+// MODULES
+// Modules are full of things that don't show up in the CSS we produce, but
+// are used by the things that get us there, like variables and mixins.
+
+@import 'modules/variables';
+
+// FONTS
+// It's not a module, as it's part of the CSS, but it's also not bracketed
+// within the scope params like most partials.
+
+@import 'partials/fonts';
+
+:root {
+  box-sizing: border-box;
+}
+
+// PARTIALS
+// Partials are things that make up part of the CSS we produce.
+
+.thefifthworld {
+  @import 'partials/typography';
+}
