@@ -24,6 +24,7 @@
   ],
   "main": "index.js",
   "devDependencies": {
+    "autoprefixer": "^9.7.6",
     "browser-sync": "^2.26.7"
   }
 }
