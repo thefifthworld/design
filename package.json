@@ -26,6 +26,7 @@
   "devDependencies": {
     "autoprefixer": "^9.7.6",
     "browser-sync": "^2.26.7",
-    "chokidar-cli": "^2.1.0"
+    "chokidar-cli": "^2.1.0",
+    "node-sass-chokidar": "^1.4.0"
   }
 }
