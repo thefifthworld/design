@@ -28,6 +28,7 @@
     "browser-sync": "^2.26.7",
     "chokidar-cli": "^2.1.0",
     "node-sass-chokidar": "^1.4.0",
-    "normalize-scss": "^7.0.1"
+    "normalize-scss": "^7.0.1",
+    "npm-run-all": "^4.1.5"
   }
 }
