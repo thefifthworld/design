@@ -1,0 +1,17 @@
+%text {
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0;
+  padding: 1em;
+
+  @media (min-width: 40em) {
+    padding-left: calc(50% - 20em);
+    padding-right: calc(50% - 20em);
+  }
+
+  @media (min-width: 83em) {
+    font-size: 1.2vw;
+    padding-left: 25vw;
+    padding-right: 25vw;
+  }
+}
