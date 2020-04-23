@@ -6,6 +6,7 @@
 // are used by the things that get us there, like variables and mixins.
 
 @import 'modules/variables';
+@import 'modules/placeholders';
 
 // FONTS
 // It's not a module, as it's part of the CSS, but it's also not bracketed
@@ -21,5 +22,9 @@
 // Partials are things that make up part of the CSS we produce.
 
 .thefifthworld {
+  margin: 0;
+  padding: 0;
+
   @import 'partials/typography';
+  @import 'layouts/main';
 }
