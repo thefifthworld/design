@@ -27,15 +27,20 @@
     "dev:css:compile": "node-sass-chokidar --source-map true ./scss --output ./css",
     "dev:sass:build": "npm-run-all -p dev:css:compile css:postcss",
     "dev:sass:watch": "chokidar 'scss/*.scss' 'scss/**/*.scss' --command 'npm run dev:sass:build'",
-    "dev:css": "npm-run-all -p dev:sass:*",
+    "dev:css": "npm-run-all -p dev:sass:* dev:js:bundle",
+    "dev:js:bundle": "webpack --config webpack.dev.config.js",
     "dev:tokens": "chokidar 'tokens.json' --command 'npm run tokens'",
     "dev:serve": "browser-sync start --server --files 'css/*.css' 'js/bundle.js' '*.html'",
     "dev:watch": "npm-run-all -p dev:serve dev:tokens dev:css",
     "dev": "npm-run-all tokens dev:css:compile dev:watch",
+    "tokens": "node load-variables.js",
     "css:compile": "node-sass-chokidar scss/style.scss --output css/ --output-style compressed --omit-source-map-url",
     "css:postcss": "postcss css/*.css --use autoprefixer --dir css",
-    "tokens": "node load-variables.js",
-    "prod": "npm-run-all tokens css:compile"
+    "js:lint": "standard 'js/src/*.js' 'js/src/**/*.js'",
+    "js:bundle": "webpack --config webpack.prod.config.js",
+    "js:build": "npm-run-all js:lint js:bundle",
+    "prod": "npm-run-all tokens css:compile js:bundle",
+    "test": "standard 'js/src/*.js' 'js/src/**/*.js' && jest"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -59,5 +64,16 @@
     "standard": "^14.3.3",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "usage",
+          "corejs": "3.6.4"
+        }
+      ]
+    ]
   }
 }
