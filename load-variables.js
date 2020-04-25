@@ -18,6 +18,18 @@ lines.push('// other potential endpoints as well. If you want to change one of')
 lines.push('// these values, update tokens.json, not this file directly.')
 lines.push('')
 
+section('Colors', tokens.colors.palette, key => {
+  lines.push('')
+  lines.push(`$${key}: ${tokens.colors.palette[key]};`)
+  lines.push(`$${key}16: rgba($${key}, 1/6);`)
+  lines.push(`$${key}13: rgba($${key}, 1/3);`)
+  lines.push(`$${key}23: rgba($${key}, 2/3);`)
+})
+
+section('Non-palette colors', tokens.colors.special, key => {
+  lines.push(`$${key}: ${tokens.colors.special[key]};`)
+})
+
 let base = undefined
 section('Resource locations', tokens.resources, dir => {
   if (base) {
