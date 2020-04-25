@@ -26,5 +26,8 @@
   padding: 0;
 
   @import 'partials/typography';
+
   @import 'layouts/main';
+
+  @import 'components/panel-link';
 }
