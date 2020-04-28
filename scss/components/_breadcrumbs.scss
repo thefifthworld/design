@@ -1,0 +1,14 @@
+.breadcrumbs {
+  @extend %unformatted-list;
+  @extend %findable;
+  font-family: 'Fontin Sans Small Caps';
+
+  li {
+    display: inline;
+  }
+
+  li + li:before {
+    content: '>';
+    margin: 0 1em;
+  }
+}
