@@ -62,3 +62,18 @@
   height: 0.1em;
   margin: 2.618em 0;
 }
+
+%findable {
+  opacity: 0.382;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+%unformatted-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
