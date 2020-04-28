@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>The Fifth World Design System</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="https://s3.amazonaws.com/thefifthworld/website/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://s3.amazonaws.com/thefifthworld/website/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://s3.amazonaws.com/thefifthworld/website/favicon-16x16.png" />
+    <link rel="manifest" href="https://s3.amazonaws.com/thefifthworld/website/manifest.json" />
+    <link rel="mask-icon" href="https://s3.amazonaws.com/thefifthworld/website/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" media="all" href="/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A design system for the Fifth World." />
+  </head>
+  <body class="thefifthworld">
+    <main>
+      <ul class="breadcrumbs">
+        <li>
+          <a href="index.html">The Fifth World Design System</a>
+        </li>
+        <li class="current">Foundations</li>
+      </ul>
+      <h1>Foundations</h1>
+      <section id="progressive">
+        <h2>Progressive enhancement</h2>
+        <p><a href="https://alistapart.com/article/understandingprogressiveenhancement/">Progressive enhancement</a> means starting with the most basic unit possible &mdash; in our case, plain HTML &mdash; and treating everything else as something that might optionally enhance the experience for those who can get it. This way, everything always works, period.</p>
+        <ul>
+          <li>We start with the cleanest, most semantic HTML that we can write. Semantic HTML makes it easier for other parties to use our markup. Critically, screen readers and other accessibility tools count among those &ldquo;other parties,&rdquo; so semantic HTML makes the single biggest difference possible to make our sites accessible.</li>
+          <li>If you can load CSS, then you can see a styled page. Very few people should encounter problems with CSS, but if it happens, the page remains usable, even if unstyled.</li>
+          <li>Some people will have wider screens. If you do, our CSS can <a href="https://alistapart.com/article/responsive-web-design/">respond</a> to take advantage of that space with a better layout. As one part of this, the typography itself responds to the size of the window, using a technique called <em>responsive typography</em>.</li>
+          <li>Most people will successfully download and execute JavaScript, allowing for client-side enhancements, like drag-and-drop file uploads. JavaScript can fail for a long list of reasons. When this happens, you still get a functional page, because our client-side JavaScript only enhances an existing experience.</li>
+        </ul>
+      </section>
+      <section id="colors">
+        <h2>Colors</h2>
+        <div class="palettes">
+          <div class="palette red">
+            <h3>Red</h3>
+            <table>
+              <tbody>
+              <tr>
+                <th>Sass</th>
+                <td>$red</td>
+              </tr>
+              <tr>
+                <th>Hex</th>
+                <td>#b92e52</td>
+              </tr>
+              <tr>
+                <th>RGB</th>
+                <td>185, 46, 82</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="palette blue">
+            <h3>Blue</h3>
+            <table>
+              <tbody>
+              <tr>
+                <th>Sass</th>
+                <td>$blue</td>
+              </tr>
+              <tr>
+                <th>Hex</th>
+                <td>#4195c0</td>
+              </tr>
+              <tr>
+                <th>RGB</th>
+                <td>65, 149, 192</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="palette green">
+            <h3>Green</h3>
+            <table>
+              <tbody>
+              <tr>
+                <th>Sass</th>
+                <td>$green</td>
+              </tr>
+              <tr>
+                <th>Hex</th>
+                <td>#2eb950</td>
+              </tr>
+              <tr>
+                <th>RGB</th>
+                <td>46, 185, 80</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="palette yellow">
+            <h3>Yellow</h3>
+            <table>
+              <tbody>
+              <tr>
+                <th>Sass</th>
+                <td>$yellow</td>
+              </tr>
+              <tr>
+                <th>Hex</th>
+                <td>#c0c041</td>
+              </tr>
+              <tr>
+                <th>RGB</th>
+                <td>192, 192, 65</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p>Each of these colors also come in 1/6, 1/3, and 2/3 opacity variations (e.g., <code>$red13</code> gives you <code>$red</code> with 1/3 opacity).</p>
+      </section>
+      <section id="typography">
+        <h2>Typography</h2>
+        <p>The Fifth World uses <a href="https://www.exljbris.com/">exljbris Font Foundry&rsquo;s</a> <a href="https://www.exljbris.com/fontin.html">Fontin</a> and <a href="https://www.exljbris.com/fontinsans.html">Fontin Sans</a> families. We picked free typefaces to reduce the barriers to entry to begin developing your own Fifth World projects. The tall x-height helps make the type readable, and its humanist balance of curves and straight lines speaks to something authentically human without compromising its sense of the future &mdash; and so helps embody the spirit of neotribalism.</p>
+        <hr />
+        <p class="h1like">Primary heading</p>
+        <p class="h2like">Secondary heading</p>
+        <p class="h3like">Tertiary heading</p>
+        <p class="h4like">Quaternary heading</p>
+        <p class="h5like">Quinary heading</p>
+        <hr />
+      </section>
+    </main>
+  <script src="js/bundle.js"></script>
+  </body>
+</html>
