@@ -48,7 +48,7 @@ const initJumpToNav = () => {
   const initialized = wrapper ? wrapper.querySelector('select.jump-to-nav') !== null : false
   if (wrapper && !initialized) {
     const { uncategorized, categories } = getOptions()
-    const select = create('select', [ 'jump-to-nav' ])
+    const select = create('select', ['jump-to-nav'])
 
     // Add uncategorized options.
     uncategorized.forEach(option => {

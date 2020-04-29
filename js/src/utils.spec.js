@@ -22,7 +22,7 @@ describe('create', () => {
   })
 
   it('creates a node with the given classes', () => {
-    const actual = create(undefined, [ 'test1', 'test2' ])
+    const actual = create(undefined, ['test1', 'test2'])
     expect(actual.outerHTML).toEqual('<div class="test1 test2"></div>')
   })
 
@@ -37,7 +37,7 @@ describe('create', () => {
   })
 
   it('does it all at once', () => {
-    const actual = create('p', [ 'test1', 'test2' ], { id: 'test' }, 'Test')
+    const actual = create('p', ['test1', 'test2'], { id: 'test' }, 'Test')
     expect(actual.outerHTML).toEqual('<p class="test1 test2" id="test">Test</p>')
   })
 })
