@@ -60,6 +60,109 @@
           </ul>
         </section>
       </section>
+
+      <!-- Basic table -->
+      <section id="table" data-category="Tables" class="component">
+        <h2>Basic table</h2>
+        <div class="preview">
+          <table>
+            <tcaption>Table 1. A limerick</tcaption>
+            <thead>
+              <tr>
+                <th class="num">#</th>
+                <th>Line</th>
+                <th class="short">Syllables</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="num">1</td>
+                <td>There was an Old Man with a beard,</td>
+                <td class="short">Eight</td>
+              </tr>
+              <tr>
+                <td class="num">2</td>
+                <td>Who said, &lsquo;It is just as I feared!</td>
+                <td class="short">Eight</td>
+              </tr>
+              <tr>
+                <td class="num">3</td>
+                <td>Two Owls and a Hen,</td>
+                <td class="short">Five</td>
+              </tr>
+              <tr>
+                <td class="num">4</td>
+                <td>Four Larks and a Wren,</td>
+                <td class="short">Five</td>
+              </tr>
+              <tr>
+                <td class="num">5</td>
+                <td>Have all built their nests in my beard!&rsquo;</td>
+                <td class="short">Eight</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td class="num">5</td>
+                <td />
+                <td class="short">Thirty-four</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;table&gt;
+  &lt;tcaption&gt;Table 1. A limerick&lt;/tcaption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th class="num"&gt;#&lt;/th&gt;
+      &lt;th&gt;Line&lt;/th&gt;
+      &lt;th class="short"&gt;Syllables&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class="num"&gt;1&lt;/td&gt;
+      &lt;td&gt;There was an Old Man with a beard,&lt;/td&gt;
+      &lt;td class="short"&gt;Eight&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class="num"&gt;2&lt;/td&gt;
+      &lt;td&gt;Who said, &amp;lsquo;It is just as I feared!&lt;/td&gt;
+      &lt;td class="short"&gt;Eight&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class="num"&gt;3&lt;/td&gt;
+      &lt;td&gt;Two Owls and a Hen,&lt;/td&gt;
+      &lt;td class="short"&gt;Five&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class="num"&gt;4&lt;/td&gt;
+      &lt;td&gt;Four Larks and a Wren,&lt;/td&gt;
+      &lt;td class="short"&gt;Five&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class="num"&gt;5&lt;/td&gt;
+      &lt;td&gt;Have all built their nests in my beard!&amp;rsquo;&lt;/td&gt;
+      &lt;td class="short"&gt;Eight&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td class="num"&gt;5&lt;/td&gt;
+      &lt;td /&gt;
+      &lt;td class="short"&gt;Thirty-four&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use to present <em>tabular data</em>. That means a collection of items, where each item generally has some value for a given set of keys (columns).</li>
+          </ul>
+        </section>
+      </section>
     </main>
     <script src="js/bundle.js"></script>
     <script src="js/prism.js"></script>
