@@ -7,6 +7,7 @@
   .red h3 { background: $red; }
   .blue h3 { background: $blue; }
   .green h3 { background: $green; }
+  .brown h3 { background: $brown; }
   .yellow h3 { background: $yellow; }
 
   h3 {
@@ -41,7 +42,7 @@
     @media (min-width: 45em) {
       & {
         display: grid;
-        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-columns: 33% 33% 33%;
         grid-gap: 1em;
       }
 
