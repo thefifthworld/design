@@ -29,7 +29,7 @@
       <!-- Link -->
       <section id="link" data-category="HTML Tags" class="component">
         <h2>Link</h2>
-        <div class="preview small-text">
+        <div class="preview">
           <a href="#link">Link</a>
         </div>
         <details class="markup">
@@ -62,8 +62,8 @@
       </section>
 
       <!-- Basic table -->
-      <section id="table" data-category="Tables" class="component">
-        <h2>Basic table</h2>
+      <section id="table" data-category="HTML Tags" class="component">
+        <h2>Table</h2>
         <div class="preview">
           <table>
             <tcaption>Table 1. A limerick</tcaption>
@@ -163,6 +163,34 @@
           </ul>
         </section>
       </section>
+
+      <!-- Breadcrumbs -->
+      <section id="breadcrumbs" data-category="Navigation" class="component">
+        <h2>Breadcrumbs</h2>
+        <div class="preview">
+          <ul class="breadcrumbs">
+            <li><a href="index.html">The Fifth World Design System</a></li>
+            <li><a href="components.html">Components</a></li>
+            <li class="current">Breadcrumbs</li>
+          </ul>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;ul class="breadcrumbs"&gt;
+  &lt;li&gt;&lt;a href="index.html"&gt;The Fifth World Design System&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="components.html"&gt;Components&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="current"&gt;Breadcrumbs&lt;/li&gt;
+&lt;/ul&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Breadcrumbs help users orient themselves within the hierarchical structure of pages (hierarchy works out a lot better for organizing information than it does for organizing people).</li>
+            <li>Use at the top of each page.</li>
+            <li>Only use once on any given page.</li>
+          </ul>
+        </section>
+      </section>
+
     </main>
     <script src="js/bundle.js"></script>
     <script src="js/prism.js"></script>
