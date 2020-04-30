@@ -1,0 +1,17 @@
+section.component {
+  &:before {
+    @extend %hr;
+    content: '';
+  }
+
+  .preview {
+    margin: 2.618em 0;
+
+    &:before {
+      @extend %h3;
+      color: $black13;
+      content: 'Preview';
+      display: block;
+    }
+  }
+}
