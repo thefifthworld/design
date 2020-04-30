@@ -1,0 +1,19 @@
+details.markup {
+  @extend %findable;
+  background: $brown16;
+  border: 1px solid $brown13;
+  margin: 1em -1.618em;
+
+  summary {
+    color: $brown;
+    cursor: pointer;
+    font-family: 'Fontin Sans Small Caps';
+    padding: 0.618em 1.618em;
+  }
+
+  code {
+    border-top: 1px solid $brown13;
+    display: block;
+    padding: 1em 1.618em;
+  }
+}
