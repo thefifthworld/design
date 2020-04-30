@@ -28,3 +28,7 @@ th {
 tr:nth-child(even) td {
   background: rgba($brown, 1/15);;
 }
+
+tfoot {
+  border-top: 0.1em solid $brown;
+}
