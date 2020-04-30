@@ -1,0 +1,9 @@
+a {
+  color: $blue;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+
+  &:visited { color: $black; }
+  &:hover { color: $yellow; }
+  &:active { color: $red; }
+}
