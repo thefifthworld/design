@@ -29,9 +29,13 @@
 
   @import 'layouts/main';
 
-  @import 'components/breadcrumbs';
-  @import 'components/hr';
-  @import 'components/table';
-  @import 'components/palette';
-  @import 'components/panel-link';
+  @import 'components/html/hr';
+  @import 'components/html/link';
+  @import 'components/html/table';
+
+  @import 'components/navigation/breadcrumbs';
+  @import 'components/navigationpanel-link';
+
+  @import 'components/meta/details-markup';
+  @import 'components/meta/palette';
 }
