@@ -1,0 +1,5 @@
+button,
+a.button,
+input[type="button"] {
+  @extend %button;
+}
