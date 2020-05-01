@@ -1,3 +1,7 @@
 input {
   @extend %form-field;
 }
+
+input[type="search"] {
+  width: calc(100% + 3.236em);
+}
