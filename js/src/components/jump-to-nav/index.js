@@ -48,7 +48,8 @@ const initJumpToNav = () => {
   const initialized = wrapper ? wrapper.querySelector('select.jump-to-nav') !== null : false
   if (wrapper && !initialized) {
     const { uncategorized, categories } = getOptions()
-    const select = create('select', ['jump-to-nav'])
+    const select = create('select', ['jump-to-nav'], { id: 'jump-to-nav' })
+    const label = create('label', null, { for: 'jump-to-nav' }, 'Jump to')
 
     // Add uncategorized options.
     uncategorized.forEach(option => {
@@ -67,6 +68,7 @@ const initJumpToNav = () => {
     })
 
     select.addEventListener('click', onClick)
+    wrapper.appendChild(label)
     wrapper.appendChild(select)
   }
 }
