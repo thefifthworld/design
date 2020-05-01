@@ -1,0 +1,16 @@
+select {
+  @extend %form-field;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+optgroup {
+  font-family: 'Fontin Sans Small Caps';
+  font-weight: normal;
+}
+
+option {
+  font-weight: normal;
+}
