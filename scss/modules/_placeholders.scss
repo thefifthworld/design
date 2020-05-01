@@ -74,20 +74,21 @@
 
 %form-field {
   appearance: none;
-  background: rgba($brown, 1/12);
-  border: 1px solid $brown13;
-  color: $brown;
+  border: 0.1em solid $brown13;
   display: block;
   font-family: 'Fontin';
   font-size: 1em;
-  padding: 0.618em 1.618em;
+  padding: 0.618em 1.518em;
   margin: 1em -1.618em;
   width: 100%;
 
+  &::placeholder {
+    color: $brown23;
+  }
+
   &:hover,
   &:focus {
-    background-color: rgba($brown, 1/16);
-    border: 1px solid $blue;
+    border: 0.1em solid $blue;
     outline: none;
   }
 }
