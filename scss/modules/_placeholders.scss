@@ -93,6 +93,58 @@
   }
 }
 
+%button {
+  appearance: none;
+  background: $red;
+  border: 0.1em solid $red;
+  border-radius: 0.618em;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Fontin Sans';
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0 0.618em 0 0;
+  padding: 0.618em 1.618em;
+  text-decoration: none;
+  transition: 0.1s ease-in-out;
+  width: auto;
+
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:focus {
+    background: lighten($red, 5%);
+    border: 0.1em solid lighten($red, 5%);
+    color: $white;
+  }
+
+  &:active {
+    background: darken($red, 5%);
+    border: 0.1em solid darken($red, 5%);
+    color: $white23;
+  }
+
+  &.secondary {
+    background: $white;
+    color: $red;
+  }
+
+  &[disabled] {
+    background: $black16;
+    border: 0.1em solid transparent;
+    color: $black13;
+    cursor: not-allowed;
+
+    &.secondary {
+      background: $white;
+      border: 0.1em solid $black16;
+    }
+  }
+}
+
 %unformatted-list {
   list-style-type: none;
   margin: 0;
