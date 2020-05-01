@@ -164,6 +164,37 @@
         </section>
       </section>
 
+      <!-- Label -->
+      <section id="label" data-category="Form elements" class="component">
+        <h2>Label</h2>
+        <div class="preview">
+          <label for="label1">Input #1</label>
+          <input type="text" id="label1" />
+          <label for="label2">
+            Input #2
+            <p class="note">This label has a note.</p>
+          </label>
+          <input type="text" id="label2" />
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;label for="label1"&gt;Label&lt;/label&gt;
+&lt;input type="text" id="label1" /&gt;
+
+&lt;label for="label2"&gt;
+  Label
+  &lt;p class="note"&gt;This label has a note.&lt;/p&gt;
+&lt;/label&gt;
+&lt;input type="text" id="label2" /&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use labels for any <a href="#input">input</a>, <a href="#select">select</a>, or <a href="#textarea">textarea</a> field. Each such field should have a unique <code>id</code> attribute. Its label refers to it by using the <code>for</code> attribute.</li>
+            <li>If a label requires further explanation, use a note, as shown here.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Select -->
       <section id="select" data-category="Form elements" class="component">
         <h2>Select</h2>
