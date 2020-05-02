@@ -21,7 +21,7 @@ th, td {
 }
 
 th {
-  border-bottom: 0.1em solid $brown;
+  border-bottom: 0.2em solid $red;
   color: $brown;
 }
 
@@ -30,5 +30,5 @@ tr:nth-child(even) td {
 }
 
 tfoot {
-  border-top: 0.1em solid $brown;
+  border-top: 0.1em dotted $blue;
 }
