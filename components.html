@@ -44,6 +44,46 @@
         </section>
       </section>
 
+      <!-- Button -->
+      <section id="button" data-category="HTML Tags" class="component">
+        <h2>Button</h2>
+        <div class="preview">
+          <p style="text-align: center;">
+            <button>Regular</button>
+            <a href="#button" class="button">Regular</a>
+            <input type="button" value="Regular" />
+          </p>
+          <p style="text-align: center;">
+            <button class="secondary">Secondary</button>
+            <a href="#button" class="button secondary">Secondary</a>
+            <input type="button" class="secondary" value="Secondary" />
+          </p>
+          <p style="text-align: center;">
+            <button disabled>Disabled</button>
+            <button disabled class="secondary">Disabled</button>
+          </p>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;button&gt;Regular&lt;/button&gt;
+&lt;a href="#button" class="button"&gt;Regular&lt;/a&gt;
+&lt;input type="button" value="Regular" /&gt;
+
+&lt;button class="secondary"&gt;Secondary&lt;/button&gt;
+&lt;a href="#button" class="button secondary"&gt;Secondary&lt;/a&gt;
+&lt;input type="button" class="secondary" value="Secondary" /&gt;
+
+&lt;button disabled&gt;Disabled&lt;/button&gt;
+&lt;button disabled class="secondary"&gt;Disabled&lt;/button&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use <a href="#link">links</a> to <em>go somewhere</em>. Use buttons to <em>do something</em>.</li>
+            <li>Use a <a href="button-list">button list</a> to present a selection of buttons, but never place two regular buttons too close to one another. Decide which commits the <em>primary</em> action we expect a user to need, and make all of the other buttons secondary.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Horizontal rule -->
       <section id="hr" data-category="HTML Tags" class="component">
         <h2>Horizontal rule</h2>
@@ -308,6 +348,31 @@
             <li>Breadcrumbs help users orient themselves within the hierarchical structure of pages (hierarchy works out a lot better for organizing information than it does for organizing people).</li>
             <li>Use at the top of each page.</li>
             <li>Only use once on any given page.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Button list -->
+      <section id="button-list" data-category="Navigation" class="component">
+        <h2>Button list</h2>
+        <div class="preview">
+          <p class="buttons">
+            <button>Primary Action</button>
+            <button class="secondary">Secondary Action #1</button>
+            <button class="secondary">Secondary Action #2</button>
+          </p>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;p class="buttons"&gt;
+  &lt;button&gt;Primary Action&lt;/button&gt;
+  &lt;button class="secondary"&gt;Secondary Action #1&lt;/button&gt;
+  &lt;button class="secondary"&gt;Secondary Action #2&lt;/button&gt;
+&lt;/p&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this pattern when a page or section focuses primarily on driving a user to a specific link, and that link has both a title and some sort of description to go along with it. This pattern makes the entire block of text interactive.</li>
           </ul>
         </section>
       </section>

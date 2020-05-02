@@ -1,0 +1,13 @@
+button,
+a.button,
+input[type="button"] {
+  @extend %button;
+}
+
+.buttons {
+  button,
+  a.button,
+  input[type="button"] {
+    margin: 0 0.618em 0.618em 0;
+  }
+}
