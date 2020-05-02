@@ -75,6 +75,7 @@
 %form-field {
   appearance: none;
   border: 0.1em solid $brown13;
+  border-radius: $border-radius-tall;
   display: block;
   font-family: 'Fontin';
   font-size: 1em;
@@ -97,7 +98,7 @@
   appearance: none;
   background: $red;
   border: 0.1em solid $red;
-  border-radius: 0.618em;
+  border-radius: $border-radius-long 0;
   color: $white;
   cursor: pointer;
   display: inline-block;
