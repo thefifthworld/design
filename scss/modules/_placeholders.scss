@@ -97,7 +97,7 @@
   appearance: none;
   background: $red;
   border: 0.1em solid $red;
-  border-radius: 0.618em;
+  border-radius: $border-radius-long 0;
   color: $white;
   cursor: pointer;
   display: inline-block;
