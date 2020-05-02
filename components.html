@@ -257,8 +257,7 @@
         </details>
         <section class="notes">
           <ul>
-            <li>Use the most specific input type for the type of data the field collects.</li>
-            <li>If no other type applies, use <code>text</code>.</li>
+            <li>Use the most specific input type for the type of data the field collects. Sometimes this will make no difference (for example, on most desktop browsers, all of these fields may appear the same), but some devices take advantage of this information (for example, phones will often change to a more useful keyboard layout for each of the types used here). If no other type applies, use <code>text</code>.</li>
           </ul>
         </section>
       </section>
@@ -321,6 +320,69 @@
         <section class="notes">
           <ul>
             <li>Use select when you want a user to choose one option from a list. If she can select multiple options, use a <a href="#checkbox-list">checkbox list</a>.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Checkbox -->
+      <section id="checkbox" data-category="Form elements" class="component">
+        <h2>Checkbox</h2>
+        <div class="preview">
+          <input type="checkbox" id="checkbox-example" />
+          <label for="checkbox-example">I agree that the Fifth World is great.</label>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;input type="checkbox" id="checkbox-example" /&gt;
+&lt;label for="checkbox-example"&gt;This is a checkbox.&lt;/label&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use a single checkbox for binary values, like allowing a user to give consent (for signing up for an email list, for example). <strong>Consent only counts when someone gives it freely</strong>, so make sure that users always opt <em>in</em>, rather than having to opt <em>out</em>. Having a consent box checked by default does not count as granting consent. If a user could grant &ldquo;consent&rdquo; without knowing it, then you can&rsquo;t actually call what they&rsquo;ve granted &ldquo;consent.&rdquo;</li>
+            <li>To allow a user to select zero or more options from a list, use a <a href="#checkbox-list">checkbox list</a>.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Checkbox list -->
+      <section id="checkbox-list" data-category="Form elements" class="component">
+        <h2>Checkbox list</h2>
+        <div class="preview">
+          <ul class="checkboxes">
+            <li>
+              <input type="checkbox" id="checkbox-list1" name="checkbox-list" />
+              <label for="checkbox-list1">Option #1</label>
+            </li>
+            <li>
+              <input type="checkbox" id="checkbox-list2" name="checkbox-list" />
+              <label for="checkbox-list2">Option #2</label>
+            </li>
+            <li>
+              <input type="checkbox" id="checkbox-list3" name="checkbox-list" />
+              <label for="checkbox-list3">Option #3</label>
+            </li>
+          </ul>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;ul class="checkboxes"&gt;
+  &lt;li&gt;
+    &lt;input type="checkbox" id="checkbox-list1" name="checkbox-list" /&gt;
+    &lt;label for="checkbox-list1"&gt;Option #1&lt;/label&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;input type="checkbox" id="checkbox-list2" name="checkbox-list" /&gt;
+    &lt;label for="checkbox-list2"&gt;Option #2&lt;/label&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;input type="checkbox" id="checkbox-list3" name="checkbox-list" /&gt;
+    &lt;label for="checkbox-list3"&gt;Option #3&lt;/label&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use a checkbox list when a user should select zero or more options from a list. If she should just select one option, use a <a href="#select">select</a> instead.</li>
           </ul>
         </section>
       </section>
