@@ -18,6 +18,15 @@ lines.push('// other potential endpoints as well. If you want to change one of')
 lines.push('// these values, update tokens.json, not this file directly.')
 lines.push('')
 
+const cornerRatio = Math.round((1 / tokens.corner) * 1000) / 1000
+const long = `1em/${cornerRatio}em`
+const tall = `${cornerRatio}em/1em`
+lines.push('// Border radii')
+lines.push(`$border-radius: ${long} ${tall} ${long} ${tall};`)
+lines.push(`$border-radius-long: ${long};`)
+lines.push(`$border-radius-tall: ${tall};`)
+lines.push('')
+
 section('Colors', tokens.colors.palette, key => {
   lines.push('')
   lines.push(`$${key}: ${tokens.colors.palette[key].hex};`)
