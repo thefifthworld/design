@@ -3,6 +3,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"] + label {
+  display: block;
   font-family: 'Fontin';
   font-weight: normal;
   padding-left: calc(8.3333% + 1em);
@@ -43,4 +44,8 @@ input[type="checkbox"]:checked + label {
     transform: rotate(-45deg);
     width: 0.6em;
   }
+}
+
+ul.checkboxes {
+  @extend %unformatted-list;
 }
