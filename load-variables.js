@@ -19,12 +19,9 @@ lines.push('// these values, update tokens.json, not this file directly.')
 lines.push('')
 
 const cornerRatio = Math.round((1 / tokens.corner) * 1000) / 1000
-const long = `1em/${cornerRatio}em`
-const tall = `${cornerRatio}em/1em`
 lines.push('// Border radii')
-lines.push(`$border-radius: ${long} ${tall} ${long} ${tall};`)
-lines.push(`$border-radius-long: ${long};`)
-lines.push(`$border-radius-tall: ${tall};`)
+lines.push(`$border-radius-long: 1em unquote("/") ${cornerRatio}em;`)
+lines.push(`$border-radius-tall: ${cornerRatio}em unquote("/") 1em;`)
 lines.push('')
 
 section('Colors', tokens.colors.palette, key => {
