@@ -56,11 +56,11 @@
 }
 
 %hr {
-  background: $yellow;
-  border: 0;
+  background: url(/img/divider.png) no-repeat center;
+  background-size: contain;
   display: block;
-  height: 0.1em;
-  margin: 2.618em 0;
+  height: 25px;
+  width: 100%;
 }
 
 %findable {
