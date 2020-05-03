@@ -2,10 +2,11 @@
 <html lang="en">
   <head>
     <title>The Fifth World Design System: Components</title>
-    <link rel="icon" href="/img/icons/home.svg" />
-    <link rel=”mask-icon” href=”/img/icons/home.svg” color=”#000000" />
+    <link rel="icon" href="/img/icons/favicon.svg" />
+    <link rel=”mask-icon” href=”/img/icons/favicon.svg” color=”#000000" />
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
     <link rel="stylesheet" media="all" href="/css/style.css" />
+    <link rel="stylesheet" media="all" href="/css/prism.css" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -201,6 +202,31 @@
         </section>
       </section>
 
+      <!-- Aside -->
+      <section id="aside" data-category="HTML Tags" class="component">
+        <h2>Aside</h2>
+        <div class="preview">
+          <aside>
+            <h3>Missing Games</h3>
+            <p>Roleplaying games require significant blocks of time. Even a short game can take as long as watching a movie. Hopefully you find it time well-spent with friends, but that doesn&rsquo;t make it any less significant an investment.</p>
+            <p>To play a Fifth World saga you don&rsquo;t need a group of friends who can commit to perfect attendance. In every game we focus on some members of the family (the characters of the people present), while other members of the family fade into the background. If you can&rsquo;t make it to game night, your character simply joins them as one of the family members that tonight&rsquo;s story doesn&rsquo;t focus on. When you return next time, you can pick right up again without a problem.</p>
+          </aside>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&ltaside&gt;
+  &lth3&gt;Missing Games&lt/h3&gt;
+  &ltp&gt;Roleplaying games require significant blocks&hellip;&lt/p&gt;
+  &ltp&gt;To play a Fifth World saga you don&amp;rsquo;t&hellip;&lt/p&gt;
+&lt/aside&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use an aside for content that relates only indirectly or tangentially to the main content of the page. Sidebars represent perfect examples of asides.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Label -->
       <section id="label" data-category="Form elements" class="component">
         <h2>Label</h2>
@@ -380,6 +406,33 @@
         <section class="notes">
           <ul>
             <li>Use a checkbox list when a user should select zero or more options from a list. If she should just select one option, use a <a href="#select">select</a> instead.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Input & button -->
+      <section id="input-button" data-category="Form elements" class="component">
+        <h2>Input &amp; button</h2>
+        <div class="preview">
+          <label for="input-button-example">Search</label>
+          <div class="input-button">
+            <input type="text" placeholder="Enter search terms" id="input-button-example" />
+            <button>Search</button>
+          </div>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;label for="input-button-example"&gt;Search&lt;/label&gt;
+&lt;div class="input-button"&gt;
+  &lt;input type="text" placeholder="Enter search terms" id="input-button-example" /&gt;
+  &lt;button&gt;Search&lt;/button&gt;
+&lt;/div&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this pattern for forms that consist of a single <a href="#input">input field</a> and a button to submit it (e.g., a search form, as shown here, or a form to sign up for a newsletter).</li>
+            <li>You can use any type for the <a href="#input">input field</a>, not just <code>text</code>. As with any other input field, use the most specific type that applies.</li>
+            <li>You might not need a label for the input in some cases, if context makes it clear what the form does. For example, if this follows a paragraph of text explaining that it will allow you to sign up for an email list, you don&rsquo;t need to also use a label.</li>
           </ul>
         </section>
       </section>

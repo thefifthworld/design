@@ -1,0 +1,13 @@
+.input-button {
+  display: flex;
+  margin: 1em 0;
+
+  input {
+    margin: 0 0 0 -1.618em;
+  }
+
+  button,
+  input[type="submit"] {
+    margin: 0 0 0 0.618em;
+  }
+}
