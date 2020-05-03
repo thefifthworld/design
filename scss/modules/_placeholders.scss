@@ -148,6 +148,22 @@
   }
 }
 
+%aside {
+  background: $brown16;
+  border-radius: $border-radius-long;
+  margin: 1.618em -1.618em;
+  padding: 1.618em;
+
+  h1, h2, h3, h4, h5 {
+    margin-top: 0;
+  }
+
+  @media (min-width: 50em) {
+    margin: 1.618em -2.618em;
+    padding: 2.618em;
+  }
+}
+
 %unformatted-list {
   list-style-type: none;
   margin: 1em 0;
