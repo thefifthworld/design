@@ -27,13 +27,16 @@
 
   @import 'partials/typography';
 
-  @import 'layouts/main';
-
   @import 'components/html/aside';
   @import 'components/html/hr';
   @import 'components/html/link';
   @import 'components/html/button';
   @import 'components/html/table';
+
+  @import 'layouts/main';
+  @import 'layouts/header';
+  @import 'layouts/footer';
+  @import 'layouts/standard';
 
   @import 'components/form/label';
   @import 'components/form/input';
