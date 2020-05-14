@@ -1,0 +1,104 @@
+&.stack {
+  background-image: none;
+}
+
+header.home {
+  background: url(/img/bottom.png) repeat-x bottom center, url(/img/hero.jpg) no-repeat top center;
+  background-size: auto, cover;
+  color: #fff;
+  overflow: auto;
+
+  h1 {
+    margin: 1em 0;
+  }
+
+  h1.logo img {
+    max-width: none;
+    width: 60vw;
+  }
+
+  .cta {
+    margin: 1em 0 2.618em 0;
+    text-align: center;
+
+    button,
+    input[type="button"],
+    .button {
+      box-shadow: 0 0 0.618em 0 rgba(0, 0, 0, 0.618);
+    }
+  }
+
+  nav.personal a {
+    color: #fff;
+  }
+}
+
+section.stack {
+  @extend %text;
+  text-align: center;
+
+  h1, h2, h3, h4, h5 {
+    hyphens: none;
+  }
+
+  h1:before {
+    content: attr(data-intro);
+    display: block;
+    font-size: 61.8%;
+    opacity: 0.3333;
+  }
+
+  .cta {
+    margin: 2.618em 0;
+  }
+
+  &.highlight {
+    background: url(/img/top.png) repeat-x top center,
+      url(/img/bottom.png) repeat-x bottom center;
+    background-color: #000;
+    color: #fff;
+
+    h1 {
+      margin: 0.618em 0;
+
+      &:before {
+        content: attr(data-intro);
+        display: block;
+        font-size: 61.8%;
+        opacity: 0.6666;
+      }
+    }
+
+    & > div {
+      background: rgba(0, 0, 0, 0.6666);
+      margin: 1.618em -1.618em;
+      padding: 1.618em;
+    }
+
+    blockquote {
+      font-style: italic;
+    }
+
+    a {
+      color: #fff;
+
+      &:hover {
+        color: $white23;
+      }
+    }
+
+    &.wormwood {
+      background: url(/img/top.png) repeat-x top center,
+        url(/img/bottom.png) repeat-x bottom center,
+        url(https://s3.amazonaws.com/thefifthworld/website/images/wormwood/1400.jpg) no-repeat center;
+      background-size: auto, auto, cover;
+    }
+
+    &.rpg {
+      background: url(/img/top.png) repeat-x top center,
+        url(/img/bottom.png) repeat-x bottom center,
+        url(https://s3.amazonaws.com/thefifthworld/website/images/forest.jpg) no-repeat center;
+      background-size: auto, auto, cover;
+    }
+  }
+}

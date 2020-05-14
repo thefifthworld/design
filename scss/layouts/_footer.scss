@@ -87,10 +87,10 @@ footer {
   .credits {
     @extend %text;
     background: $brown;
-    box-shadow: 0 0 0.618em 0 rgba(0, 0, 0, 0.618);
     color: $white;
-    margin-top: 0.618em;
+    margin-top: calc(0.618em + 30px);
     padding-bottom: 11.1em;
+    position: relative;
 
     a {
       color: $white;
@@ -111,6 +111,17 @@ footer {
 
     @media (min-width: 45em) {
       padding-bottom: 2.618em;
+    }
+
+    &:before {
+      background: url(/img/footer.png) repeat-x bottom center;
+      content: '';
+      display: block;
+      height: 30px;
+      left: 0;
+      position: absolute;
+      top: -30px;
+      right: 0;
     }
   }
 }
