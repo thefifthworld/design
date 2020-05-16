@@ -1,6 +1,6 @@
 /* global describe, it, expect, jest */
 
-import { ready, create, remove } from './utils'
+import { ready, create, remove, removeSelector } from './utils'
 
 describe('ready', () => {
   it('runs if the document is ready', () => {
@@ -47,5 +47,26 @@ describe('remove', () => {
     document.body.innerHTML = '<main><div id="test">Test</div><p>Hello world!</p></main>'
     remove(document.getElementById('test'))
     expect(document.body.innerHTML).toEqual('<main><p>Hello world!</p></main>')
+  })
+})
+
+describe('removeSelector', () => {
+  it('removes an element', () => {
+    document.body.innerHTML = '<main><div id="test">Test</div><p>Hello world!</p></main>'
+    removeSelector('#test')
+    expect(document.body.innerHTML).toEqual('<main><p>Hello world!</p></main>')
+  })
+
+  it('removes multiple elements', () => {
+    document.body.innerHTML = '<main><div class="test">Test</div><div class="test">Test</div><p>Hello world!</p></main>'
+    removeSelector('.test')
+    expect(document.body.innerHTML).toEqual('<main><p>Hello world!</p></main>')
+  })
+
+  it('removes only those elements that descend from the given node', () => {
+    document.body.innerHTML = '<main><div class="parent"><div class="test">Test</div></div><div class="test">Test</div><p>Hello world!</p></main>'
+    const el = document.querySelector('.parent')
+    removeSelector('.test', el)
+    expect(document.body.innerHTML).toEqual('<main><div class="parent"></div><div class="test">Test</div><p>Hello world!</p></main>')
   })
 })

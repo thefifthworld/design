@@ -40,8 +40,22 @@ const remove = el => {
   el.parentElement.removeChild(el)
 }
 
+/**
+ * Remove all elements from the DOM that match the given selector.
+ * @param selector {string} - The selector string for the elements to remove
+ *   from the DOM.
+ * @param el {Node=} - (Optional.) A parent element. If provided, only those
+ *   elements which descend from this node will be removed.
+ */
+
+const removeSelector = (selector, el = document) => {
+  const els = Array.from(el.querySelectorAll(selector))
+  if (els) { els.forEach(el => { remove(el) }) }
+}
+
 export {
   ready,
   create,
-  remove
+  remove,
+  removeSelector
 }
