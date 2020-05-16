@@ -31,7 +31,17 @@ const create = (tag = 'div', classes, attrs, text) => {
   return el
 }
 
+/**
+ * Removes an element from the DOM.
+ * @param el {Element} - The element to remove from the DOM.
+ */
+
+const remove = el => {
+  el.parentElement.removeChild(el)
+}
+
 export {
   ready,
-  create
+  create,
+  remove
 }

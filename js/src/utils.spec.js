@@ -1,6 +1,6 @@
 /* global describe, it, expect, jest */
 
-import { ready, create } from './utils'
+import { ready, create, remove } from './utils'
 
 describe('ready', () => {
   it('runs if the document is ready', () => {
@@ -39,5 +39,13 @@ describe('create', () => {
   it('does it all at once', () => {
     const actual = create('p', ['test1', 'test2'], { id: 'test' }, 'Test')
     expect(actual.outerHTML).toEqual('<p class="test1 test2" id="test">Test</p>')
+  })
+})
+
+describe('remove', () => {
+  it('removes an element', () => {
+    document.body.innerHTML = '<main><div id="test">Test</div><p>Hello world!</p></main>'
+    remove(document.getElementById('test'))
+    expect(document.body.innerHTML).toEqual('<main><p>Hello world!</p></main>')
   })
 })
