@@ -72,10 +72,28 @@ const addClass = (el, ...classes) => {
   })
 }
 
+/**
+ * Removes one or more classes from an element.
+ * @param el {Element} - The element to remove the classes from.
+ * @param classes {string} - The classes to remove from the element.
+ */
+
+const removeClass = (el, ...classes) => {
+  classes.forEach(className => {
+    if (el.classList) {
+      el.classList.remove(className)
+    } else {
+      const curr = el.className.split(' ')
+      el.className = curr.filter(cls => cls !== className).join(' ')
+    }
+  })
+}
+
 export {
   ready,
   create,
   remove,
   removeSelector,
-  addClass
+  addClass,
+  removeClass
 }
