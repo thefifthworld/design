@@ -93,11 +93,7 @@ footer {
     position: relative;
 
     a {
-      color: $white;
-
-      &:hover {
-        color: $white23;
-      }
+      @extend %white-link;
     }
 
     .copyleft {

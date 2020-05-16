@@ -16,6 +16,14 @@
   }
 }
 
+%white-link {
+  color: $white;
+
+  &:hover {
+    color: $white23;
+  }
+}
+
 %h1 {
   font-family: 'Fontin Sans Small Caps';
   font-size: 2.618em;
