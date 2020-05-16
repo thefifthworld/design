@@ -57,12 +57,20 @@
     }
   }
 
+  &.initialized {
+    background: none;
+  }
+
   @media (min-width: 45em) {
     padding-top: 6.854em;
 
     .no-js ul {
       float: left;
       width: 50%;
+    }
+
+    &.initialized {
+      padding-top: 0;
     }
   }
 }
