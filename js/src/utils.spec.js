@@ -1,6 +1,12 @@
 /* global describe, it, expect, jest */
 
-import { ready, create, remove, removeSelector } from './utils'
+import {
+  ready,
+  create,
+  remove,
+  removeSelector,
+  addClass
+} from './utils'
 
 describe('ready', () => {
   it('runs if the document is ready', () => {
@@ -68,5 +74,25 @@ describe('removeSelector', () => {
     const el = document.querySelector('.parent')
     removeSelector('.test', el)
     expect(document.body.innerHTML).toEqual('<main><div class="parent"></div><div class="test">Test</div><p>Hello world!</p></main>')
+  })
+})
+
+describe('addClass', () => {
+  it('adds a class', () => {
+    const el = create()
+    addClass(el, 'test')
+    expect(el.outerHTML).toEqual('<div class="test"></div>')
+  })
+
+  it('adds multiple classes', () => {
+    const el = create()
+    addClass(el, 'test1', 'test2')
+    expect(el.outerHTML).toEqual('<div class="test1 test2"></div>')
+  })
+
+  it('doesn\'t duplicate classes', () => {
+    const el = create('div', [ 'test1' ])
+    addClass(el, 'test1', 'test2')
+    expect(el.outerHTML).toEqual('<div class="test1 test2"></div>')
   })
 })
