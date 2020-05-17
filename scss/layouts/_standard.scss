@@ -1,0 +1,11 @@
+& {
+  background: url(/img/headers/forest.jpg) no-repeat top center;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}

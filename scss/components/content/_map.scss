@@ -1,0 +1,83 @@
+&.map {
+  header {
+    @extend %text;
+    padding-top: 0;
+    z-index: 90;
+  }
+
+  @media (min-width: 45em) {
+    background: transparent;
+
+    header {
+      position: absolute;
+      right: 0;
+
+      nav.personal {
+        float: right;
+        padding: 0;
+      }
+
+      h1.logo {
+        float: left;
+        width: 50%;
+
+        a {
+          padding-top: 0.1em;
+        }
+      }
+    }
+  }
+}
+
+.leaflet-wrapper {
+  background: #4195c0;
+  color: $white;
+  overflow: auto;
+
+  .no-js {
+    text-align: center;
+
+    ul {
+      @extend %unformatted-list;
+      margin: 2.618em 0;
+    }
+
+    ul.continents:before,
+    ul.oceans:before {
+      color: $white13;
+      display: block;
+      font-family: 'Fontin Sans Small Caps';
+      margin-bottom: 0.618em;
+    }
+
+    ul.continents:before { content: 'Continents'; }
+    ul.oceans:before { content: 'Oceans'; }
+
+    a {
+      @extend %white-link;
+    }
+  }
+
+  &.initialized {
+    background: inherit;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  @media (min-width: 45em) {
+    padding-top: 6.854em;
+
+    .no-js ul {
+      float: left;
+      width: 50%;
+    }
+
+    &.initialized {
+      padding-top: 0;
+    }
+  }
+}
+
+.leaflet-container .leaflet-control-attribution {
+  margin-bottom: 30px;
+}
