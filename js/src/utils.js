@@ -102,6 +102,19 @@ const removeClass = (el, ...classes) => {
   })
 }
 
+/**
+ * Wraps a geolocation request in a Promise.
+ * @param opts {Object} - Options to pass to the geolocation request.
+ * @returns {Promise<unknown>} - A Promise that resolves with the result of a
+ *   geolocation request.
+ */
+
+const requestLocation = opts => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject, opts)
+  })
+}
+
 export {
   ready,
   create,
@@ -109,5 +122,6 @@ export {
   removeSelector,
   hasClass,
   addClass,
-  removeClass
+  removeClass,
+  requestLocation
 }
