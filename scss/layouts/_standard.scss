@@ -6,6 +6,10 @@
   min-height: 100vh;
 }
 
+&.mountains {
+  background-image: url(/img/headers/mountains.jpg);
+}
+
 main {
   flex: 1;
 }
