@@ -2,6 +2,7 @@
   header {
     @extend %text;
     padding-top: 0;
+    z-index: 90;
   }
 
   @media (min-width: 45em) {
@@ -58,7 +59,9 @@
   }
 
   &.initialized {
-    background: none;
+    background: inherit;
+    overflow: hidden;
+    z-index: 10;
   }
 
   @media (min-width: 45em) {
@@ -73,4 +76,8 @@
       padding-top: 0;
     }
   }
+}
+
+.leaflet-container .leaflet-control-attribution {
+  margin-bottom: 30px;
 }
