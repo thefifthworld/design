@@ -54,6 +54,19 @@ const removeSelector = (selector, el = document) => {
 }
 
 /**
+ * Tests if an element has a partciular class.
+ * @param el {Element} - The element to test.
+ * @param className {string} - The class to test for.
+ * @returns {boolean} - `true` if `el` has the class `className`, or `false`
+ *   if it does not.
+ */
+
+const hasClass = (el, className) => {
+  const classes = el.classList ? Array.from(el.classList) : el.className.split(' ')
+  return classes.includes(className)
+}
+
+/**
  * Add one or more classes to an element.
  * @param el {Element} - The element to add the classes to.
  * @param classes {string} - The classes to add to the element.
@@ -94,6 +107,7 @@ export {
   create,
   remove,
   removeSelector,
+  hasClass,
   addClass,
   removeClass
 }

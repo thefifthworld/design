@@ -5,6 +5,7 @@ import {
   create,
   remove,
   removeSelector,
+  hasClass,
   addClass,
   removeClass
 } from './utils'
@@ -75,6 +76,18 @@ describe('removeSelector', () => {
     const el = document.querySelector('.parent')
     removeSelector('.test', el)
     expect(document.body.innerHTML).toEqual('<main><div class="parent"></div><div class="test">Test</div><p>Hello world!</p></main>')
+  })
+})
+
+describe('hasClass', () => {
+  it('returns true if the element has the class', () => {
+    const el = create('div', [ 'test' ])
+    expect(hasClass(el, 'test')).toEqual(true)
+  })
+
+  it('returns false if the element does not have the class', () => {
+    const el = create('div', [ 'somethingelse' ])
+    expect(hasClass(el, 'test')).toEqual(false)
   })
 })
 
