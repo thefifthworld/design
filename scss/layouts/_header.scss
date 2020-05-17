@@ -1,0 +1,43 @@
+nav.personal {
+  @extend %text;
+  padding-top: 0;
+
+  ul {
+    @extend %unformatted-list;
+    margin: 0;
+    text-align: center;
+  }
+
+  li {
+    font-family: 'Fontin Sans Small Caps';
+    display: inline-block;
+    margin: 0;
+  }
+
+  a {
+    color: $black;
+    display: inline-block;
+    padding: 1.618em 1.618em 0.618em 1.618em;
+    text-decoration: none;
+
+    &:hover {
+      background: $red;
+      box-shadow: 0 0 0.618em 0 rgba(0, 0, 0, 0.618);
+      color: $white;
+    }
+  }
+}
+
+h1.logo {
+  margin: 0;
+
+  a {
+    display: block;
+    padding: 0.618em;
+    text-align: center;
+  }
+
+  img {
+    max-width: 90%;
+  }
+}

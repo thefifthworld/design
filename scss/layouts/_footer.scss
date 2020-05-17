@@ -1,0 +1,123 @@
+@mixin icon ($icon) {
+  & a:before {
+    background: url(/img/icons/black/#{$icon}.svg) no-repeat center;
+    background-size: contain;
+  }
+
+  &.current a,
+  & a:hover {
+    background: $blue;
+    box-shadow: 0 0 0.618em 0 rgba(0, 0, 0, 0.618);
+    color: $white;
+  }
+
+  &.current a {
+    background: $red;
+  }
+
+  &.current a:before,
+  & a:hover:before {
+    background: url(/img/icons/white/#{$icon}.svg) no-repeat center;
+    background-size: contain;
+  }
+}
+
+nav.site {
+  background: $white;
+  bottom: 0;
+  box-shadow: 0 0 0.618em 0 rgba(0, 0, 0, 0.618);
+  left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  z-index: 100;
+
+  ul {
+    @extend %unformatted-list;
+    display: flex;
+    margin: 0;
+  }
+
+  li {
+    flex: auto;
+    margin: 0;
+
+    a:before {
+      content: '';
+      display: block;
+      height: 4em;
+      margin: 0 auto 0.618em auto;
+      width: 4em;
+    }
+
+    &.explore { @include icon(map); }
+    &.hear { @include icon(stories); }
+    &.see { @include icon(art); }
+    &.play { @include icon(games); }
+  }
+
+  a {
+    color: $black;
+    display: block;
+    font-family: 'Fontin Sans Small Caps';
+    font-weight: normal;
+    padding: 1em 0;
+    text-decoration: none;
+  }
+
+  @media (min-width: 45em) {
+    box-shadow: none;
+    padding-left: calc(50% - 20em);
+    padding-right: calc(50% - 20em);
+    position: relative;
+
+    li a {
+      border-radius: $border-radius-tall-triple 0;
+    }
+  }
+
+  @media (min-width: 83em) {
+    padding-left: 25vw;
+    padding-right: 25vw;
+  }
+}
+
+footer {
+  @extend %text;
+  background: $brown;
+  color: $white;
+  margin-top: calc(0.618em + 30px);
+  padding-bottom: 11.1em;
+  position: relative;
+
+  a {
+    @extend %white-link;
+  }
+
+  .copyleft {
+    font-size: 0.618em;
+
+    .icons img {
+      height: 1em;
+      width: 1em;
+    }
+  }
+
+  @media (min-width: 45em) {
+    padding-bottom: 2.618em;
+  }
+
+  &:before {
+    background: url(/img/footer.png) repeat-x bottom center;
+    content: '';
+    display: block;
+    height: 30px;
+    left: 0;
+    position: absolute;
+    top: -30px;
+    right: 0;
+    z-index: 80;
+  }
+}
