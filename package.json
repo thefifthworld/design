@@ -1,9 +1,9 @@
 {
-  "name": "thefifthworld-design",
+  "name": "@thefifthworld/design",
   "description": "The Fifth World Design System",
   "version": "1.0.0",
   "license": "CC-BY-SA-4.0",
-  "homepage": "https://api.thefifthworld.com",
+  "homepage": "https://design.thefifthworld.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/thefifthworld/design.git"
@@ -24,6 +24,7 @@
   ],
   "main": "index.js",
   "scripts": {
+    "start": "npm-run-all tokens dev:css:compile dev:watch",
     "dev:css:compile": "node-sass-chokidar --source-map true ./scss --output ./css",
     "dev:sass:build": "npm-run-all -p dev:css:compile css:postcss",
     "dev:sass:watch": "chokidar 'scss/*.scss' 'scss/**/*.scss' --command 'npm run dev:sass:build'",
@@ -32,7 +33,6 @@
     "dev:tokens": "chokidar 'tokens.json' --command 'npm run tokens'",
     "dev:serve": "browser-sync start --server --files 'css/*.css' 'js/bundle.js' '*.html' '**/*.html'",
     "dev:watch": "npm-run-all -p dev:serve dev:tokens dev:css",
-    "dev": "npm-run-all tokens dev:css:compile dev:watch",
     "tokens": "node load-variables.js",
     "css:compile": "node-sass-chokidar scss/style.scss --output css/ --output-style compressed --omit-source-map-url",
     "css:postcss": "postcss css/*.css --use autoprefixer --dir css",
