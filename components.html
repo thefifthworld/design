@@ -7,6 +7,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
     <link rel="stylesheet" media="all" href="/css/style.css" />
     <link rel="stylesheet" media="all" href="/css/prism.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -509,6 +510,20 @@
           <ul>
             <li>Use this pattern when a page or section focuses primarily on driving a user to a specific link, and that link has both a title and some sort of description to go along with it. This pattern makes the entire block of text interactive.</li>
           </ul>
+        </section>
+      </section>
+
+      <!-- Place map -->
+      <section id="place-map" data-category="Content" class="component">
+        <h2>Place map</h2>
+        <div class="preview">
+          <div class="leaflet-wrapper place" data-coords="40.441822,-80.012788"></div>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;div class="leaflet-wrapper place" data-coords="40.441822,-80.012788"&gt;&lt;/div&gt;</code>
+        </details>
+        <section class="notes">
         </section>
       </section>
 

@@ -62,6 +62,33 @@
     background: inherit;
     overflow: hidden;
     z-index: 10;
+
+    &.place {
+      @extend %breakout;
+      height: 40em;
+
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        height: 30px;
+        left: 0;
+        position: absolute;
+        right: 0;
+      }
+
+      &:before {
+        background: url(/img/top.png) repeat-x top center;
+        top: 0;
+        z-index: 401;
+      }
+
+      &:after {
+        background: url(/img/bottom.png) repeat-x bottom center;
+        bottom: 0;
+        z-index: 402;
+      }
+    }
   }
 
   @media (min-width: 45em) {
