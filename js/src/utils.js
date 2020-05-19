@@ -12,6 +12,25 @@ const ready = fn => {
 }
 
 /**
+ * Returns an array of those elements within the `.thefifthworld` scope that
+ * match the given selector.
+ * @param selector {string} - The selector to find.
+ * @param all {boolean=} - Optional. If `true`, returns all of the elements
+ *   that match the given selector. If not, only returns the first one
+ *   (Default: `true`).
+ * @returns {Element[]} - An array of matching elements.
+ */
+
+const select = (selector, all = true) => {
+  const s = `.thefifthworld ${selector}`
+  if (all) {
+    return Array.from(document.querySelectorAll(s))
+  } else {
+    return [ document.querySelector(s) ].filter(e => e !== null)
+  }
+}
+
+/**
  * Create a Node.
  * @param tag {string=} - The name of the tag to use (e.g., `div`, `section`,
  *   `aside`, `p`, etc.) (Default: `div`).
@@ -117,6 +136,7 @@ const requestLocation = opts => {
 
 export {
   ready,
+  select,
   create,
   remove,
   removeSelector,
