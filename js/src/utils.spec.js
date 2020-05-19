@@ -110,12 +110,12 @@ describe('removeSelector', () => {
 
 describe('hasClass', () => {
   it('returns true if the element has the class', () => {
-    const el = create('div', [ 'test' ])
+    const el = create('div', ['test'])
     expect(hasClass(el, 'test')).toEqual(true)
   })
 
   it('returns false if the element does not have the class', () => {
-    const el = create('div', [ 'somethingelse' ])
+    const el = create('div', ['somethingelse'])
     expect(hasClass(el, 'test')).toEqual(false)
   })
 })
@@ -134,7 +134,7 @@ describe('addClass', () => {
   })
 
   it('doesn\'t duplicate classes', () => {
-    const el = create('div', [ 'test1' ])
+    const el = create('div', ['test1'])
     addClass(el, 'test1', 'test2')
     expect(el.outerHTML).toEqual('<div class="test1 test2"></div>')
   })
@@ -142,13 +142,13 @@ describe('addClass', () => {
 
 describe('removeClass', () => {
   it('removes a class', () => {
-    const el = create('div', [ 'test' ])
+    const el = create('div', ['test'])
     removeClass(el, 'test')
     expect(el.outerHTML).toEqual('<div class=""></div>')
   })
 
   it('removes multiple classes', () => {
-    const el = create('div', [ 'test1', 'test2', 'test3' ])
+    const el = create('div', ['test1', 'test2', 'test3'])
     removeClass(el, 'test1', 'test2')
     expect(el.outerHTML).toEqual('<div class="test3"></div>')
   })

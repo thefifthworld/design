@@ -26,7 +26,7 @@ const select = (selector, all = true) => {
   if (all) {
     return Array.from(document.querySelectorAll(s))
   } else {
-    return [ document.querySelector(s) ].filter(e => e !== null)
+    return [document.querySelector(s)].filter(e => e !== null)
   }
 }
 
