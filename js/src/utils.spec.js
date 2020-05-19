@@ -6,6 +6,7 @@ import {
   create,
   remove,
   removeSelector,
+  next,
   hasClass,
   addClass,
   removeClass
@@ -105,6 +106,20 @@ describe('removeSelector', () => {
     const el = document.querySelector('.parent')
     removeSelector('.test', el)
     expect(document.body.innerHTML).toEqual('<main><div class="parent"></div><div class="test">Test</div><p>Hello world!</p></main>')
+  })
+})
+
+describe('next', () => {
+  it('returns the next element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el1')
+    expect(next(el).getAttribute('id')).toEqual('el2')
+  })
+
+  it('returns null if there is no next element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el2')
+    expect(next(el)).toEqual(null)
   })
 })
 

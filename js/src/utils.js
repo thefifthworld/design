@@ -73,6 +73,22 @@ const removeSelector = (selector, el = document) => {
 }
 
 /**
+ * Return the next element sibling of the element provided.
+ * @param el {Element} - The element to begin with.
+ * @returns {Element|null} - The next element sibling of the element given, or
+ *   `null` if no such element could be found.
+ */
+
+const next = el => {
+  function nextElementSibling (el) {
+    do { el = el.nextSibling; } while ( el && el.nodeType !== 1 )
+    return el
+  }
+
+  return el.nextElementSibling || nextElementSibling(el)
+}
+
+/**
  * Tests if an element has a partciular class.
  * @param el {Element} - The element to test.
  * @param className {string} - The class to test for.
@@ -140,6 +156,7 @@ export {
   create,
   remove,
   removeSelector,
+  next,
   hasClass,
   addClass,
   removeClass,
