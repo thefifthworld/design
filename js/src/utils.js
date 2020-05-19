@@ -12,6 +12,25 @@ const ready = fn => {
 }
 
 /**
+ * Returns an array of those elements within the `.thefifthworld` scope that
+ * match the given selector.
+ * @param selector {string} - The selector to find.
+ * @param all {boolean=} - Optional. If `true`, returns all of the elements
+ *   that match the given selector. If not, only returns the first one
+ *   (Default: `true`).
+ * @returns {Element[]} - An array of matching elements.
+ */
+
+const select = (selector, all = true) => {
+  const s = `.thefifthworld ${selector}`
+  if (all) {
+    return Array.from(document.querySelectorAll(s))
+  } else {
+    return [document.querySelector(s)].filter(e => e !== null)
+  }
+}
+
+/**
  * Create a Node.
  * @param tag {string=} - The name of the tag to use (e.g., `div`, `section`,
  *   `aside`, `p`, etc.) (Default: `div`).
@@ -51,6 +70,22 @@ const remove = el => {
 const removeSelector = (selector, el = document) => {
   const els = Array.from(el.querySelectorAll(selector))
   if (els) { els.forEach(el => { remove(el) }) }
+}
+
+/**
+ * Return the next element sibling of the element provided.
+ * @param el {Element} - The element to begin with.
+ * @returns {Element|null} - The next element sibling of the element given, or
+ *   `null` if no such element could be found.
+ */
+
+const next = el => {
+  function nextElementSibling (el) {
+    do { el = el.nextSibling; } while ( el && el.nodeType !== 1 )
+    return el
+  }
+
+  return el.nextElementSibling || nextElementSibling(el)
 }
 
 /**
@@ -117,9 +152,11 @@ const requestLocation = opts => {
 
 export {
   ready,
+  select,
   create,
   remove,
   removeSelector,
+  next,
   hasClass,
   addClass,
   removeClass,

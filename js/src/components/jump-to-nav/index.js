@@ -1,4 +1,4 @@
-import { create } from '../../utils'
+import { select, create } from '../../utils'
 
 /**
  * Finds the sections on the page that one could jump to, and assembles an
@@ -44,7 +44,8 @@ const onClick = event => {
  */
 
 const initJumpToNav = () => {
-  const wrapper = document.querySelector('.jump-to-nav')
+  const wrappers = select('.jump-to-nav')
+  const wrapper = wrappers && wrappers.length > 0 ? wrappers[0] : null
   const initialized = wrapper ? wrapper.querySelector('select.jump-to-nav') !== null : false
   if (wrapper && !initialized) {
     const { uncategorized, categories } = getOptions()

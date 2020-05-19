@@ -2,7 +2,7 @@
 
 import initMap from './index'
 
-describe('initJumpToNav', () => {
+describe('initMap', () => {
   it('does nothing if it has no entry point', () => {
     document.body.innerHTML = '<p>Hello world!</p>'
     initMap()
