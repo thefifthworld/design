@@ -1,19 +1,19 @@
 import leaflet from 'leaflet'
-import { removeSelector, addClass, hasClass, requestLocation } from '../../utils'
+import { select, removeSelector, addClass, hasClass, requestLocation } from '../../utils'
 
 const initMap = async () => {
   removeSelector('.leaflet-wrapper .no-js')
-  const wrappers = Array.from(document.querySelectorAll('.leaflet-wrapper'))
-  const worldWrapper = document.querySelector('.leaflet-wrapper.world')
-  const promptLocation = Boolean(worldWrapper)
+  const wrappers = select('.leaflet-wrapper')
+  const worldWrappers = select('.leaflet-wrapper.world')
+  const promptLocation = worldWrappers.length === 1
 
-  let center = [ 0, 0 ]
+  let center = [0, 0]
   if (promptLocation) {
     try {
       const pos = await requestLocation()
-      center = [ pos.coords.latitude, pos.coords.longitude ]
+      center = [pos.coords.latitude, pos.coords.longitude]
     } catch {
-      center = [ 0, 0 ]
+      center = [0, 0]
     }
   }
 
@@ -28,7 +28,7 @@ const initMap = async () => {
         const attr = wrapper.dataset.coords ? wrapper.dataset.coords.split(',') : null
         if (attr && Array.isArray(attr) && attr.length > 1) {
           const nums = attr.map(c => parseFloat(c)).filter(c => !isNaN(c))
-          if (nums.length > 1) center = [ nums[0], nums[1] ]
+          if (nums.length > 1) center = [nums[0], nums[1]]
         }
       }
 
