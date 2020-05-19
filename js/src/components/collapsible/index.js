@@ -1,4 +1,41 @@
-import { select, create, addClass, removeClass, hasClass } from '../../utils'
+import { select, create, next, addClass, removeClass, hasClass } from '../../utils'
+
+/**
+ * Collapse a togglable content wrapper.
+ * @param wrapper {Element} - The togglable content wrapper to collapse.
+ */
+
+const collapse = wrapper => {
+  const h = wrapper.scrollHeight
+  const transition = wrapper.style.transition
+  wrapper.style.transition = ''
+
+  requestAnimationFrame(() => {
+    wrapper.style.height = `${h}px`
+    wrapper.style.transition = transition
+
+    requestAnimationFrame(() => {
+      wrapper.style.height = '0px'
+    })
+  })
+}
+
+/**
+ * Expand a togglable content wrapper.
+ * @param wrapper {Element} - The togglable content wrapper to expand.
+ */
+
+const expand = wrapper => {
+  const h = wrapper.scrollHeight
+  wrapper.style.height= `${h}px`
+
+  const onTransitionEnd = () => {
+    wrapper.removeEventListener('transitionend', onTransitionEnd)
+    wrapper.style.height = null
+  }
+
+  wrapper.addEventListener('transitionend', onTransitionEnd)
+}
 
 /**
  * Event handler for clicking on the toggle handle.
@@ -7,8 +44,15 @@ import { select, create, addClass, removeClass, hasClass } from '../../utils'
 
 const handleToggle = event => {
   const heading = event.target
-  const fn = hasClass(heading, 'open') ? removeClass : addClass
-  fn(heading, 'open')
+  const n = next(heading)
+  const wrapper = n && hasClass(n, 'togglable') ? n : null
+  if (heading && wrapper && hasClass(heading, 'open')) {
+    removeClass(heading, 'open')
+    collapse(wrapper)
+  } else if (heading && wrapper && !hasClass(heading, 'open')) {
+    addClass(heading, 'open')
+    expand(wrapper)
+  }
 }
 
 /**
@@ -32,6 +76,7 @@ const initCollapsibles = () => {
       collapsible.appendChild(toggle)
       collapsible.appendChild(wrapper)
       toggle.addEventListener('click', handleToggle)
+      wrapper.style.height = '0px'
     }
   })
 }

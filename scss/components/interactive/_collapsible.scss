@@ -1,0 +1,36 @@
+.collapsible {
+  overflow: auto;
+  padding: 0;
+
+  .toggle {
+    cursor: pointer;
+    margin-bottom: 0;
+    padding: 1.618em 2.618em;
+    position: relative;
+
+    &:before {
+      color: $red;
+      content: '>';
+      float: left;
+      margin-left: -1em;
+      transition: all 0.25s ease-in-out;
+    }
+
+    &.open:before {
+      transform: rotate(90deg);
+    }
+  }
+
+  .togglable {
+    height: auto;
+    overflow: hidden;
+    margin: -2.618em 2.618em 2.618em 2.618em;
+    transition: height 0.25s ease-out;
+
+    &:before {
+      content: '';
+      display: block;
+      margin-bottom: 1.618em;
+    }
+  }
+}
