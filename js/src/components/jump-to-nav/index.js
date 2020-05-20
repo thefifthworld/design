@@ -68,7 +68,7 @@ const initJumpToNav = () => {
       select.appendChild(optgroup)
     })
 
-    select.addEventListener('click', onClick)
+    select.addEventListener('change', onClick)
     wrapper.appendChild(label)
     wrapper.appendChild(select)
   }
