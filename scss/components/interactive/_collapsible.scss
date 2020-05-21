@@ -24,7 +24,8 @@
   .togglable {
     height: auto;
     overflow: hidden;
-    margin: -2.618em 2.618em 2.618em 2.618em;
+    margin: -2.618em 0 2.618em 0;
+    padding: 0 2.618em;
     transition: height 0.25s ease-out;
 
     &:before {
