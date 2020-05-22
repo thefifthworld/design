@@ -1,4 +1,9 @@
-import { select, create, addClass } from '../../utils'
+import { select, create, closest, addClass } from '../../utils'
+
+const submit = event => {
+  event.preventDefault()
+  console.log('what up')
+}
 
 const initFileUploads = () => {
   const inputs = select('form[action] input[type="file"]:not(.initialized)')
@@ -16,6 +21,10 @@ const initFileUploads = () => {
     const strong = create('strong', null, null, 'Choose a file')
     label.insertBefore(strong, label.firstChild)
     input.insertAdjacentElement('afterend', label)
+
+    // Set up form handling
+    const form = closest(input, 'form[action]')
+    if (form) form.addEventListener('submit', submit)
   })
 }
 
