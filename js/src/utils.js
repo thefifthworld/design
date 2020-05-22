@@ -31,6 +31,25 @@ const select = (selector, all = true) => {
 }
 
 /**
+ * Finds the nearest ancestor of the given element that matches the given
+ * selector.
+ * @param el {Element} - The element to search from.
+ * @param selector {string} - The selector to search for.
+ * @returns {Element|null} = Returns the nearest ancestor of `el` that matches
+ *   `selector` if one exists. If it does not exist, returns `null`.
+ */
+
+const closest = (el, selector) => {
+  if (el.matches && el.matches(selector)) {
+    return el
+  } else if (el.parentNode) {
+    return closest(el.parentNode, selector)
+  } else {
+    return null
+  }
+}
+
+/**
  * Create a Node.
  * @param tag {string=} - The name of the tag to use (e.g., `div`, `section`,
  *   `aside`, `p`, etc.) (Default: `div`).
@@ -153,6 +172,7 @@ const requestLocation = opts => {
 export {
   ready,
   select,
+  closest,
   create,
   remove,
   removeSelector,

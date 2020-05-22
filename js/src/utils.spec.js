@@ -3,6 +3,7 @@
 import {
   ready,
   select,
+  closest,
   create,
   remove,
   removeSelector,
@@ -45,6 +46,26 @@ describe('select', () => {
     const actual = select('.test', false)
     expect(actual).toHaveLength(1)
     expect(actual[0].innerHTML).toEqual('Test #1')
+  })
+})
+
+describe('closest', () => {
+  it('returns the element itself if it matches', () => {
+    document.body.innerHTML = '<main class="thefifthworld"><div class="outer"><div class="inner" id="start">Hello world</div></div></main>'
+    const actual = closest(document.getElementById('start'), '.inner')
+    expect(actual.innerHTML).toEqual('Hello world')
+  })
+
+  it('returns the closest element that matches', () => {
+    document.body.innerHTML = '<main class="thefifthworld"><div class="outer"><div class="inner" id="start">Hello world</div></div></main>'
+    const actual = closest(document.getElementById('start'), '.thefifthworld')
+    expect(actual.tagName.toLowerCase()).toEqual('main')
+  })
+
+  it('returns null if nothing matches', () => {
+    document.body.innerHTML = '<main class="thefifthworld"><div class="outer" data-tag="outer"><div class="inner" id="start">Hello world</div></div></main>'
+    const actual = closest(document.getElementById('start'), '.nope')
+    expect(actual).toEqual(null)
   })
 })
 
