@@ -1,7 +1,7 @@
 import { select, create, addClass } from '../../utils'
 
 const initFileUploads = () => {
-  const inputs = select('input[type="file"]:not(.initialized)')
+  const inputs = select('form[action] input[type="file"]:not(.initialized)')
   inputs.forEach((input, index) => {
     const id = input.getAttribute('id') || `file-upload-${index + 1}`
     input.setAttribute('id', id)
