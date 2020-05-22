@@ -83,6 +83,77 @@
         </section>
       </section>
 
+      <!-- Lists -->
+      <section id="lists" data-category="HTML Tags" class="component">
+        <h2>Lists</h2>
+        <div class="preview">
+          <ul>
+            <li>Here we have an <em>unordered</em> list.</li>
+            <li>Unordered lists present related items, but not in any particular order.</li>
+            <li>
+              <p>List items can include paragraph tags.</p>
+              <p>They can even include multiple paragraph tags.</p>
+            </li>
+            <li>
+              <p>List items can also include other lists.</p>
+              <ul>
+                <li>An unordered list item</li>
+                <li>Another unordered list item</li>
+                <li>One more unordered list item</li>
+              </ul>
+            </li>
+            <li>With this list item, we&rsquo;ll ramble on for a little bit so that we have lots of text and so can see how the list item handles longer text when it will need to wrap that text, thusly.</li>
+          </ul>
+
+          <ol>
+            <li>Here we have an <em>ordered</em> list.</li>
+            <li>Unordered lists present items in a specified order.</li>
+            <li>
+              <p>List items can use paragraph tags and other lists.</p>
+              <ol>
+                <li>First ordered list item</li>
+                <li>Second ordered list item</li>
+                <li>
+                  <p>Third ordered list item</p>
+                  <ol>
+                    <li>
+                      <p>We can go three layers deep with distinct ordering systems.</p>
+                      <ol>
+                        <li>Four, actually.</li>
+                      </ol>
+                    </li>
+                  </ol>
+                </li>
+              </ol>
+            </li>
+            <li>With this list item, we&rsquo;ll ramble on for a little bit so that we have lots of text and so can see how the list item handles longer text when it will need to wrap that text, thusly.</li>
+          </ol>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;!-- Unordered list --&gt;
+&lt;ul&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Ordered list --&gt;
+&lt;ol&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+&lt;/ol&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use lists when you need to present a list of items.</li>
+            <li>Use an ordered list when the order of the items has meaning.</li>
+            <li>Use an unordered list when the order of the items does not have any meaning.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Horizontal rule -->
       <section id="hr" data-category="HTML Tags" class="component">
         <h2>Horizontal rule</h2>
@@ -96,6 +167,48 @@
         <section class="notes">
           <ul>
             <li>Use to create a <em>thematic break</em> between paragraphs (e.g., shifting to a new scene in a story or to a new topic within a section).</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Image -->
+      <section id="img" data-category="HTML Tags" class="component">
+        <h2>Image</h2>
+        <div class="preview">
+          <img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" />
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;img src="/img/forest.png" alt="The Suburban Forest, by Nick Pedersen" /&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li><em>Every image must have an <code>alt</code> tag!</em> The <code>alt</code> attribute should meaningfully describe the image shown.</li>
+            <li>If you have a hard time coming up with appropriate content for this, that might offer you a hint that you shouldn&rsquo;t use the image. Images that we have a hard time describing usually offer decoration and little else. That means they&rsquo;ll require extra overheard for users without offering anything substantive in return. As we once heard from Edward Tufte, &ldquo;however nice your interface is, it would be better if there were less of it.&rdquo; We find a beauty in simplicity and usability. Have confidence in your design&rsquo;s ability to stand up without such decoration.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Figure -->
+      <section id="figure" data-category="HTML Tags" class="component">
+        <h2>Figure</h2>
+        <div class="preview">
+          <figure>
+            <img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" />
+            <figcaption class="numbered">&ldquo;The Suburban Forest&rdquo; by <a href="https://nick-pedersen.com/">Nick Pedersen</a></figcaption>
+          </figure>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;figure&gt;
+  &lt;img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" /&gt;
+  &lt;figcaption class="numbered"&gt;&amp;ldquo;The Suburban Forest&amp;rdquo; by &lt;a href="https://nick-pedersen.com/"&gt;Nick Pedersen&lt;/a&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use a figure to present an image or other such embedded media along with a caption.</li>
+            <li>If you add the <code>numbered</code> class to the <code>&lt;figcaption&gt;</code> tag (as in the example above) then a JavaScript enhancement will add <strong>Figure X</strong> to each such caption, numbering all such figures in the order they appear on the page.</li>
           </ul>
         </section>
       </section>
@@ -199,6 +312,30 @@
         <section class="notes">
           <ul>
             <li>Use to present <em>tabular data</em>. That means a collection of items, where each item generally has some value for a given set of keys (columns).</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Blockquote -->
+      <section id="blockquote" data-category="HTML Tags" class="component">
+        <h2>Blockquote</h2>
+        <div class="preview">
+          <blockquote>
+            <p>The singular magic of a place is evident from what happens there, from what befalls oneself or others when in its vicinity. The songs proper to a specific site will share a common style, a rhythm that matches the pulse of the place, attuned to the way things happen there – to the sharpness of the shadows or the rippling speech of water bubbling up from the ground. In traditional Ireland, a country person might journey to one distant spring in order to cure her insomnia, to another for strengthening her ailing eyesight, and to yet another to receive insight and protection from thieves. For each spring has its own powers, its own blessings, and its own curses. Different gods dwell in different places, and different demons. Each place has its own dynamism, its own patterns of movement, and these patterns engage the senses and relate them in particular ways, instilling particular moods and modes of awareness, so that unlettered, oral people will rightly say that each place has its own mind, its own personality, its own intelligence.</p>
+            <cite>David Abram, <em>The Spell of the Sensuous: Perception and Language in a More-Than-Human World</em> (p. 182)</cite>
+          </blockquote>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;blockquote&gt;
+  &lt;p&gt;The singular magic of a place&hellip;&lt;/p&gt;
+  &lt;cite&gt;David Abram&hellip;&lt;/cite&gt;
+&lt;/blockquote&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use the <code>&lt;blockquote&gt;</code> tag to wrap a long quotation (one or several paragraphs).</li>
+            <li>If you don&rsquo;t mention the source of the quote in the text, use the <code>&lt;cite&gt;</code> tag, as in the example provided here.</li>
           </ul>
         </section>
       </section>
