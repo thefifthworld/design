@@ -1,0 +1,24 @@
+ul, ol {
+  margin: 2em 0;
+  padding: 0;
+
+  ul, ol {
+    margin: 1em 0 0 2em;
+  }
+
+  li {
+    margin-bottom: 1em;
+  }
+}
+
+ol ol {
+  list-style-type: lower-latin;
+}
+
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
+ol ol ol ol {
+  list-style-type: upper-roman;
+}
