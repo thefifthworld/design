@@ -1,0 +1,27 @@
+blockquote {
+  margin: 0;
+  padding: 0 1.618em;
+  position: relative;
+
+  cite {
+    display: block;
+    font-style: normal;
+    padding: 1em 0 1em 33%;
+
+    &:before {
+      content: '\2014';
+      display: inline-block;
+      float: left;
+      margin-left: -1em;
+    }
+  }
+
+  &:before {
+    color: $brown16;
+    content: '“';
+    font-size: 4.236em;
+    left: -0.1em;
+    position: absolute;
+    top: -0.25em;
+  }
+}
