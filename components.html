@@ -650,6 +650,52 @@
         </section>
       </section>
 
+      <!-- File download -->
+      <section id="file-download" data-category="Content" class="component">
+        <h2>File download</h2>
+        <div class="preview">
+          <a href="#file-download" class="download" download>
+            <span class="label">v1.0.pdf</span>
+            <span class="details">application/pdf; 30.2 MB</span>
+          </a>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;a href="/path/to/v1.0.pdf" class="download" download&gt;
+  &lt;span class="label"&gt;v1.0.pdf&lt;/span&gt;
+  &lt;span class="details"&gt;application/pdf; 30.2 MB&lt;/span&gt;
+&lt;/a&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to present a link to download a file (e.g., a PDF).</li>
+            <li>Clicking on this component should always open an OS-specific dialogue box to save the file. Make sure to include the <code>download</code> attribute to ensure this in modern browsers. This will allow you to use this component even for images that would otherwise load in the browser.</li>
+            <li>This component should generally follow some text that clearly describes the file so that the user knows exactly what she will get if she downloads it.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Video -->
+      <section id="video" data-category="Content" class="component">
+        <h2>Video</h2>
+        <div class="preview">
+          <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/j0ke7eOhTJY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;div class="video-wrapper"&gt;
+  &lt;!-- Insert the embed code for your &lt;iframe&gt; from a service like YouTube or Vimeo here. --&gt;
+&lt;/div&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to embed videos from YouTube, Vimeo, or other such video hosting services on a page.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Place map -->
       <section id="place-map" data-category="Content" class="component">
         <h2>Place map</h2>

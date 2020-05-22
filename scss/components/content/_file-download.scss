@@ -1,0 +1,26 @@
+a.download {
+  @extend %aside;
+  color: $black;
+  display: block;
+  font-family: 'Fontin Sans';
+  padding: 1.618em 2.618em;
+  text-decoration: none;
+
+  .label {
+    display: block;
+  }
+
+  .details {
+    display: block;
+    font-size: 61.8%;
+    font-weight: normal;
+  }
+
+  &:hover {
+    background: lighten($brown16, 10%);
+  }
+
+  &:active {
+    background: $yellow16;
+  }
+}
