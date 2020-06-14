@@ -575,6 +575,44 @@
         </section>
       </section>
 
+      <!-- File upload -->
+      <section id="file-upload" data-category="Form elements" class="component">
+        <h2>File upload</h2>
+        <div class="preview">
+          <form action="#file-upload" method="GET">
+            <input type="text" name="other" />
+            <select name="select">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+            <textarea name="text"></textarea>
+            <label for="file">File</label>
+            <input type="file" name="file" id="file" />
+            <input type="checkbox" id="file-img" name="is-image" />
+            <label for="file-img">I&rsquo;ve uploaded an image.</label>
+            <p class="buttons">
+              <button>Submit</button>
+            </p>
+          </form>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;form action="/your/form/endpoint" method="POST"&gt;
+            &lt;label for="file"&gt;File&lt;/label&gt;
+            &lt;input type="file" name="file" id="file" /&gt;
+            &lt;input type="checkbox" id="file-img" /&gt;
+            &lt;label for="file-img"&gt;I&rsquo;ve uploaded an image.&lt;/label&gt;
+            &lt;/form&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to upload a file.</li>
+            <li>As a JavaScript enhancement, this component adds drag-and-drop functionality, as well as the option to create a thumbnail for your image. You must include this component inside of a form with an <code>action</code> attribute. As this relies on a JavaScript enhancement, make sure that the server-side script that receives the form can handle either receiving a thumbnail from the form, or generating a thumbnail if it doesn&rsquo;t. The <em>&ldquo;I&rsquo;ve uploaded an image&rdquo;</em> input should provide an additional bit of input when determining whether or not you need to generate a thumbnail.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Breadcrumbs -->
       <section id="breadcrumbs" data-category="Navigation" class="component">
         <h2>Breadcrumbs</h2>
@@ -735,38 +773,6 @@
             <li>You can make the content of any <a href="#aside">aside</a> collapsible by adding the <code>collapsible</code> class. The first element in the <code>&lt;aside&gt;</code> must be a heading tag, which will be used to toggle the collapsible area open and closed. Any other content can follow.</li>
             <li>If JavaScript fails for any reason, collapsible areas render like any other aside.</li>
             <li>Do <em>not</em> place important content inside a collapsible element! Collapsible elements hide items from users, so anything you put into one is something that many users will never see, so you want to make sure that&rsquo;s OK. For example, we use collapsible areas for metadata forms. If a user never realizes these options exist, that&rsquo;s OK, because these should be automatically populated with appropriate values, and other users can always correct any problems that may pop up later.</li>
-          </ul>
-        </section>
-      </section>
-
-      <!-- File upload -->
-      <section id="file-upload" data-category="Interactive content" class="component">
-        <h2>File upload</h2>
-        <div class="preview">
-          <form action="#file-upload" method="GET">
-            <input type="text" name="other" />
-            <label for="file">File</label>
-            <input type="file" name="file" id="file" />
-            <input type="checkbox" id="file-img" />
-            <label for="file-img">I&rsquo;ve uploaded an image.</label>
-            <p class="buttons">
-              <button>Submit</button>
-            </p>
-          </form>
-        </div>
-        <details class="markup">
-          <summary>Example markup</summary>
-          <code class="language-markup">&lt;form action="/your/form/endpoint" method="POST"&gt;
-  &lt;label for="file"&gt;File&lt;/label&gt;
-  &lt;input type="file" name="file" id="file" /&gt;
-  &lt;input type="checkbox" id="file-img" /&gt;
-  &lt;label for="file-img"&gt;I&rsquo;ve uploaded an image.&lt;/label&gt;
-&lt;/form&gt;</code>
-        </details>
-        <section class="notes">
-          <ul>
-            <li>Use this component to upload a file.</li>
-            <li>As a JavaScript enhancement, this component adds drag-and-drop functionality, as well as the option to create a thumbnail for your image. You must include this component inside of a form with an <code>action</code> attribute. As this relies on a JavaScript enhancement, make sure that the server-side script that receives the form can handle either receiving a thumbnail from the form, or generating a thumbnail if it doesn&rsquo;t. The <em>&ldquo;I&rsquo;ve uploaded an image&rdquo;</em> input should provide an additional bit of input when determining whether or not you need to generate a thumbnail.</li>
           </ul>
         </section>
       </section>
