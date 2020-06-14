@@ -4,10 +4,11 @@ import {
   ready,
   select,
   closest,
+  next,
+  nextMatching,
   create,
   remove,
   removeSelector,
-  next,
   hasClass,
   addClass,
   removeClass
@@ -69,6 +70,34 @@ describe('closest', () => {
   })
 })
 
+describe('next', () => {
+  it('returns the next element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el1')
+    expect(next(el).getAttribute('id')).toEqual('el2')
+  })
+
+  it('returns null if there is no next element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el2')
+    expect(next(el)).toEqual(null)
+  })
+})
+
+describe('nextMatching', () => {
+  it('returns the next matching sibling', () => {
+    document.body.innerHTML = '<div id="anchor"></div><p>1</p><p class="target">2</p>'
+    const el = document.getElementById('anchor')
+    expect(nextMatching(el, '.target').innerHTML).toEqual('2')
+  })
+
+  it('returns undefined if nothing matches', () => {
+    document.body.innerHTML = '<div id="anchor"></div><p>1</p><p>2</p>'
+    const el = document.getElementById('anchor')
+    expect(nextMatching(el, '.target')).toEqual(undefined)
+  })
+})
+
 describe('create', () => {
   it('creates a node', () => {
     const actual = create()
@@ -127,20 +156,6 @@ describe('removeSelector', () => {
     const el = document.querySelector('.parent')
     removeSelector('.test', el)
     expect(document.body.innerHTML).toEqual('<main><div class="parent"></div><div class="test">Test</div><p>Hello world!</p></main>')
-  })
-})
-
-describe('next', () => {
-  it('returns the next element', () => {
-    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
-    const el = document.getElementById('el1')
-    expect(next(el).getAttribute('id')).toEqual('el2')
-  })
-
-  it('returns null if there is no next element', () => {
-    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
-    const el = document.getElementById('el2')
-    expect(next(el)).toEqual(null)
   })
 })
 
