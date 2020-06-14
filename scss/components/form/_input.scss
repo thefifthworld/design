@@ -5,3 +5,7 @@ input {
 input[type="search"] {
   width: calc(100% + 3.236em);
 }
+
+input[type="file"] {
+  border: 0;
+}

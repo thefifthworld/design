@@ -45,6 +45,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "core-js-pure": "^3.6.5",
+    "cropperjs": "^1.5.7",
     "leaflet": "^1.6.0",
     "regenerator-runtime": "^0.13.5",
     "typogr": "^0.6.8"

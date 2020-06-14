@@ -7,6 +7,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
     <link rel="stylesheet" media="all" href="/css/style.css" />
     <link rel="stylesheet" media="all" href="/css/prism.css" />
+    <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.7/cropper.min.css" crossorigin="" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 
     <meta charset="UTF-8" />
@@ -571,6 +572,42 @@
             <li>Use this pattern for forms that consist of a single <a href="#input">input field</a> and a button to submit it (e.g., a search form, as shown here, or a form to sign up for a newsletter).</li>
             <li>You can use any type for the <a href="#input">input field</a>, not just <code>text</code>. As with any other input field, use the most specific type that applies.</li>
             <li>You might not need a label for the input in some cases, if context makes it clear what the form does. For example, if this follows a paragraph of text explaining that it will allow you to sign up for an email list, you don&rsquo;t need to also use a label.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- File upload -->
+      <section id="file-upload" data-category="Form elements" class="component">
+        <h2>File upload</h2>
+        <div class="preview">
+          <form method="POST" action="#file-upload" enctype="multipart/form-data">
+            <input type="text" name="other" />
+            <select name="select">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+            <textarea name="text"></textarea>
+            <label for="file">File</label>
+            <input type="file" name="file" id="file" />
+            <p class="buttons">
+              <button>Submit</button>
+            </p>
+          </form>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;form action="/your/form/endpoint" method="POST"&gt;
+            &lt;label for="file"&gt;File&lt;/label&gt;
+            &lt;input type="file" name="file" id="file" /&gt;
+            &lt;input type="checkbox" id="file-img" /&gt;
+            &lt;label for="file-img"&gt;I&rsquo;ve uploaded an image.&lt;/label&gt;
+            &lt;/form&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to upload a file.</li>
+            <li>As a JavaScript enhancement, this component adds drag-and-drop functionality, as well as the option to create a thumbnail for your image. You must include this component inside of a form with an <code>action</code> attribute. As this relies on a JavaScript enhancement, make sure that the server-side script that receives the form can handle either receiving a thumbnail from the form, or generating a thumbnail if it doesn&rsquo;t. The <em>&ldquo;I&rsquo;ve uploaded an image&rdquo;</em> input should provide an additional bit of input when determining whether or not you need to generate a thumbnail.</li>
           </ul>
         </section>
       </section>
