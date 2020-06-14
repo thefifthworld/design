@@ -1,12 +1,20 @@
 import { select, create, closest, addClass } from '../../utils'
 
-const submit = event => {
+const stop = event => {
   event.preventDefault()
-  console.log('what up')
+  event.stopPropagation()
+}
+
+const drop = event => {
+  stop(event)
+  const id = closest(event.target, 'label').getAttribute('for')
+  const input = document.getElementById(id)
+  input.files = event.dataTransfer.files
 }
 
 const initFileUploads = () => {
-  const inputs = select('form[action] input[type="file"]:not(.initialized)')
+  const validFormSelector = 'form[action][method="POST"][enctype="multipart/form-data"]'
+  const inputs = select(`${validFormSelector} input[type="file"]:not(.initialized)`)
   inputs.forEach((input, index) => {
     const id = input.getAttribute('id') || `file-upload-${index + 1}`
     input.setAttribute('id', id)
@@ -22,9 +30,11 @@ const initFileUploads = () => {
     label.insertBefore(strong, label.firstChild)
     input.insertAdjacentElement('afterend', label)
 
-    // Set up form handling
-    const form = closest(input, 'form[action]')
-    if (form) form.addEventListener('submit', submit)
+    // Set up drag and drop
+    label.addEventListener('drop', drop)
+    label.addEventListener('dragenter', stop)
+    label.addEventListener('dragleave', stop)
+    label.addEventListener('dragover', stop)
   })
 }
 
