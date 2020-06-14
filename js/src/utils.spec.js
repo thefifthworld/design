@@ -3,10 +3,12 @@
 import {
   ready,
   select,
+  closest,
+  next,
+  nextMatching,
   create,
   remove,
   removeSelector,
-  next,
   hasClass,
   addClass,
   removeClass
@@ -45,6 +47,54 @@ describe('select', () => {
     const actual = select('.test', false)
     expect(actual).toHaveLength(1)
     expect(actual[0].innerHTML).toEqual('Test #1')
+  })
+})
+
+describe('closest', () => {
+  it('returns the element itself if it matches', () => {
+    document.body.innerHTML = '<main class="thefifthworld"><div class="outer"><div class="inner" id="start">Hello world</div></div></main>'
+    const actual = closest(document.getElementById('start'), '.inner')
+    expect(actual.innerHTML).toEqual('Hello world')
+  })
+
+  it('returns the closest element that matches', () => {
+    document.body.innerHTML = '<main class="thefifthworld"><div class="outer"><div class="inner" id="start">Hello world</div></div></main>'
+    const actual = closest(document.getElementById('start'), '.thefifthworld')
+    expect(actual.tagName.toLowerCase()).toEqual('main')
+  })
+
+  it('returns null if nothing matches', () => {
+    document.body.innerHTML = '<main class="thefifthworld"><div class="outer" data-tag="outer"><div class="inner" id="start">Hello world</div></div></main>'
+    const actual = closest(document.getElementById('start'), '.nope')
+    expect(actual).toEqual(null)
+  })
+})
+
+describe('next', () => {
+  it('returns the next element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el1')
+    expect(next(el).getAttribute('id')).toEqual('el2')
+  })
+
+  it('returns null if there is no next element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el2')
+    expect(next(el)).toEqual(null)
+  })
+})
+
+describe('nextMatching', () => {
+  it('returns the next matching sibling', () => {
+    document.body.innerHTML = '<div id="anchor"></div><p>1</p><p class="target">2</p>'
+    const el = document.getElementById('anchor')
+    expect(nextMatching(el, '.target').innerHTML).toEqual('2')
+  })
+
+  it('returns undefined if nothing matches', () => {
+    document.body.innerHTML = '<div id="anchor"></div><p>1</p><p>2</p>'
+    const el = document.getElementById('anchor')
+    expect(nextMatching(el, '.target')).toEqual(undefined)
   })
 })
 
@@ -106,20 +156,6 @@ describe('removeSelector', () => {
     const el = document.querySelector('.parent')
     removeSelector('.test', el)
     expect(document.body.innerHTML).toEqual('<main><div class="parent"></div><div class="test">Test</div><p>Hello world!</p></main>')
-  })
-})
-
-describe('next', () => {
-  it('returns the next element', () => {
-    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
-    const el = document.getElementById('el1')
-    expect(next(el).getAttribute('id')).toEqual('el2')
-  })
-
-  it('returns null if there is no next element', () => {
-    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
-    const el = document.getElementById('el2')
-    expect(next(el)).toEqual(null)
   })
 })
 

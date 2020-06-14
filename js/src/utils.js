@@ -31,6 +31,60 @@ const select = (selector, all = true) => {
 }
 
 /**
+ * Finds the nearest ancestor of the given element that matches the given
+ * selector.
+ * @param el {Element} - The element to search from.
+ * @param selector {string} - The selector to search for.
+ * @returns {Element|null} = Returns the nearest ancestor of `el` that matches
+ *   `selector` if one exists. If it does not exist, returns `null`.
+ */
+
+const closest = (el, selector) => {
+  if (el.matches && el.matches(selector)) {
+    return el
+  } else if (el.parentNode) {
+    return closest(el.parentNode, selector)
+  } else {
+    return null
+  }
+}
+
+/**
+ * Return the next element sibling of the element provided.
+ * @param el {Element} - The element to begin with.
+ * @returns {Element|null} - The next element sibling of the element given, or
+ *   `null` if no such element could be found.
+ */
+
+const next = el => {
+  function nextElementSibling (el) {
+    do { el = el.nextSibling; } while ( el && el.nodeType !== 1 )
+    return el
+  }
+
+  return el.nextElementSibling || nextElementSibling(el)
+}
+
+/**
+ * Return the next sibling of `el` that matches the selector `selector`.
+ * @param el {Element} - The element to begin searching from.
+ * @param selector {string} - The selector that the sibling should match.
+ * @returns {Element|undefined} - The next sibling from `el` that matches the
+ *   given selector, or `undefined` if no such sibling could be found.
+ */
+
+const nextMatching = (el, selector) => {
+  const n = next(el)
+  if (n && n.matches(selector)) {
+    return n
+  } else if (n) {
+    return nextMatching(n, selector)
+  } else {
+    return undefined
+  }
+}
+
+/**
  * Create a Node.
  * @param tag {string=} - The name of the tag to use (e.g., `div`, `section`,
  *   `aside`, `p`, etc.) (Default: `div`).
@@ -70,22 +124,6 @@ const remove = el => {
 const removeSelector = (selector, el = document) => {
   const els = Array.from(el.querySelectorAll(selector))
   if (els) { els.forEach(el => { remove(el) }) }
-}
-
-/**
- * Return the next element sibling of the element provided.
- * @param el {Element} - The element to begin with.
- * @returns {Element|null} - The next element sibling of the element given, or
- *   `null` if no such element could be found.
- */
-
-const next = el => {
-  function nextElementSibling (el) {
-    do { el = el.nextSibling; } while ( el && el.nodeType !== 1 )
-    return el
-  }
-
-  return el.nextElementSibling || nextElementSibling(el)
 }
 
 /**
@@ -153,10 +191,12 @@ const requestLocation = opts => {
 export {
   ready,
   select,
+  closest,
+  next,
+  nextMatching,
   create,
   remove,
   removeSelector,
-  next,
   hasClass,
   addClass,
   removeClass,
