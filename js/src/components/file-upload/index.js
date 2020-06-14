@@ -23,8 +23,6 @@ const initThumbnailer = (label, img) => {
         guides: false
       }
       const cropper = new Cropper(thumbnailer, opts)
-      thumbnailer.addEventListener('ready', saveThumbnail)
-      thumbnailer.addEventListener('cropend', saveThumbnail)
       window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id] = cropper
     }
     reader.readAsDataURL(img)
@@ -77,6 +75,56 @@ const drop = event => {
 }
 
 /**
+ * Turn a canvas into a file.
+ * @param canvas {HTMLCanvasElement} - An HTML canvas element.
+ * @param filename {string} - The filename to use for the file created.
+ * @returns {Promise<File>} - A PNG file created from the canvas.
+ */
+
+const getFileFromCanvas = (canvas, filename) => {
+  return new Promise(resolve => {
+    canvas.toBlob(blob => {
+      blob.lastModifiedDate = new Date()
+      blob.fileName = filename
+      resolve(blob)
+    })
+  })
+}
+
+/**
+ * Run form submission with thumbnail handling.
+ * @param event {Object} - The event object.
+ * @returns {Promise<void>} - A Promise that resolves when the form has been
+ *   submitted.
+ */
+
+const submit = async event => {
+  stop(event)
+  const data = new FormData(event.target)
+  const files = Array.from(event.target.querySelectorAll('input[type="file"]'))
+  for (const file of files) {
+    const id = file.getAttribute('id')
+    if (window.__THEFIFTHWORLD_FILEUPLOADS__[id]) {
+      const canvas = window.__THEFIFTHWORLD_FILEUPLOADS__[id].getCroppedCanvas({ height: 256, width: 256, imageSmoothingQuality: 'high' })
+      const thumbnail = await getFileFromCanvas(canvas, 'thumbnail.png')
+      data.append('thumbnail', thumbnail)
+    }
+  }
+
+  const request = new XMLHttpRequest()
+
+  request.addEventListener('load', event => {
+    const res = JSON.parse(event.target.responseText)
+    const { protocol, hostname, port } = window.location
+    const base = port !== '' ? `${protocol}://${hostname}:${port}` : `${protocol}://${hostname}`
+    if (res.page.path) window.location.href = `${base}${res.page.path}`
+  })
+
+  request.open('POST', event.target.getAttribute('action'))
+  request.send(data)
+}
+
+/**
  * Initialize file upload components.
  */
 
@@ -88,6 +136,10 @@ const initFileUploads = () => {
     const id = input.getAttribute('id') || `file-upload-${index + 1}`
     input.setAttribute('id', id)
     addClass(input, 'initialized')
+
+    // Set up form submission
+    const form = closest(input, validFormSelector)
+    if (form) form.addEventListener('submit', submit)
 
     // Remove any label that might have existed before.
     const oldLabel = id ? document.querySelector(`label[for="${id}"]`) : null
