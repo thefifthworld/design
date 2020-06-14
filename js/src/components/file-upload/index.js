@@ -1,4 +1,14 @@
-import { select, create, closest, addClass } from '../../utils'
+import { select, create, closest, next, addClass } from '../../utils'
+
+const initThumbnailer = input => {
+  const thumbnailer = create('p', [ 'thumbnailer' ], null, 'Thumbnailer goes here')
+  input.insertAdjacentElement('afterend', thumbnailer)
+}
+
+const destroyThumbnailer = input => {
+  const thumbnailer = next(input, '.thumbnailer')
+  if (thumbnailer) thumbnailer.parentNode.removeChild(thumbnailer)
+}
 
 const stop = event => {
   event.preventDefault()
@@ -7,9 +17,15 @@ const stop = event => {
 
 const drop = event => {
   stop(event)
-  const id = closest(event.target, 'label').getAttribute('for')
+  const label = closest(event.target, 'label')
+  const id = label.getAttribute('for')
   const input = document.getElementById(id)
   input.files = event.dataTransfer.files
+  if (input.files.length > 0 && input.files[0].type.startsWith('image/')) {
+    initThumbnailer(label)
+  } else {
+    destroyThumbnailer(label)
+  }
 }
 
 const initFileUploads = () => {
