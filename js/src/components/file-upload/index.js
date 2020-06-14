@@ -1,4 +1,5 @@
-import { select, create, closest, next, addClass } from '../../utils'
+import Cropper from 'cropperjs'
+import { select, create, closest, nextMatching, addClass } from '../../utils'
 
 /**
  * Initialize thumbnailer.
@@ -6,9 +7,28 @@ import { select, create, closest, next, addClass } from '../../utils'
  *   paired with.
  */
 
-const initThumbnailer = label => {
-  const thumbnailer = create('p', [ 'thumbnailer' ], null, 'Thumbnailer goes here')
-  label.insertAdjacentElement('afterend', thumbnailer)
+const initThumbnailer = (label, img) => {
+  if (FileReader && img) {
+    const reader = new FileReader()
+    reader.onload = () => {
+      const id = label.getAttribute('for')
+      const attrs = { src: reader.result, 'data-cropper': id }
+      const thumbnailer = create('img', [ 'thumbnailer' ], attrs)
+      const input = create('input', ['initialized'], { name: 'thumbnail', type: 'file' })
+      label.insertAdjacentElement('afterend', thumbnailer)
+      thumbnailer.insertAdjacentElement('afterend', input)
+      const opts = {
+        aspectRatio: 1,
+        center: false,
+        guides: false
+      }
+      const cropper = new Cropper(thumbnailer, opts)
+      thumbnailer.addEventListener('ready', saveThumbnail)
+      thumbnailer.addEventListener('cropend', saveThumbnail)
+      window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id] = cropper
+    }
+    reader.readAsDataURL(img)
+  }
 }
 
 /**
@@ -18,8 +38,14 @@ const initThumbnailer = label => {
  */
 
 const destroyThumbnailer = label => {
-  const thumbnailer = next(label, '.thumbnailer')
-  if (thumbnailer) thumbnailer.parentNode.removeChild(thumbnailer)
+  const thumbnailer = nextMatching(label, '.thumbnailer')
+  const input = nextMatching(label, 'input[type="file"][name="thumbnail"].initialized')
+  if (thumbnailer) {
+    const id = label.getAttribute('for')
+    if (window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]) window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].destroy()
+    thumbnailer.parentNode.removeChild(thumbnailer)
+  }
+  if (input) input.parentNode.removeChild(input)
 }
 
 /**
@@ -44,7 +70,7 @@ const drop = event => {
   const input = document.getElementById(id)
   input.files = event.dataTransfer.files
   if (input.files.length > 0 && input.files[0].type.startsWith('image/')) {
-    initThumbnailer(label)
+    initThumbnailer(label, input.files[0])
   } else {
     destroyThumbnailer(label)
   }
@@ -55,6 +81,7 @@ const drop = event => {
  */
 
 const initFileUploads = () => {
+  window.__THEFIFTHWORLD_FILEUPLOADS__ = { croppers: {} }
   const validFormSelector = 'form[action][method="POST"][enctype="multipart/form-data"]'
   const inputs = select(`${validFormSelector} input[type="file"]:not(.initialized)`)
   inputs.forEach((input, index) => {
