@@ -1,19 +1,41 @@
 import { select, create, closest, next, addClass } from '../../utils'
 
-const initThumbnailer = input => {
+/**
+ * Initialize thumbnailer.
+ * @param label {Element} - The drag-and-drop element that this thumbnailer is
+ *   paired with.
+ */
+
+const initThumbnailer = label => {
   const thumbnailer = create('p', [ 'thumbnailer' ], null, 'Thumbnailer goes here')
-  input.insertAdjacentElement('afterend', thumbnailer)
+  label.insertAdjacentElement('afterend', thumbnailer)
 }
 
-const destroyThumbnailer = input => {
-  const thumbnailer = next(input, '.thumbnailer')
+/**
+ * Tear down a thumbnailer.
+ * @param label {Element} - The drag-and-drop element that this thumbnailer is
+ *   paired with.
+ */
+
+const destroyThumbnailer = label => {
+  const thumbnailer = next(label, '.thumbnailer')
   if (thumbnailer) thumbnailer.parentNode.removeChild(thumbnailer)
 }
+
+/**
+ * Stop an event's default behavior and propagation.
+ * @param event {Object} - The event to stop.
+ */
 
 const stop = event => {
   event.preventDefault()
   event.stopPropagation()
 }
+
+/**
+ * Event handler for the drop event.
+ * @param event {Object} - The drop event.
+ */
 
 const drop = event => {
   stop(event)
@@ -27,6 +49,10 @@ const drop = event => {
     destroyThumbnailer(label)
   }
 }
+
+/**
+ * Initialize file upload components.
+ */
 
 const initFileUploads = () => {
   const validFormSelector = 'form[action][method="POST"][enctype="multipart/form-data"]'
