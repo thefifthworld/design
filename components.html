@@ -600,6 +600,69 @@
         </section>
       </section>
 
+      <!-- Login form -->
+      <section id="login-form" data-category="Form elements" class="component">
+        <h2>Login form</h2>
+        <div class="preview">
+          <section class="login">
+            <form action="#login-form" method="post">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="you@example.com" />
+              <label for="passphrase">Passphrase</label>
+              <input type="text" name="passphrase" id="passphrase" placeholder="Whisper your secret passphrase" />
+              <p class="buttons">
+                <button>Log in</button>
+              </p>
+              <p class="note">
+                <a href="/forgot-passphrase">Forgot your passphrase?</a>
+              </p>
+            </form>
+            <div class="oauth2-login">
+              <p>Or login with&hellip;</p>
+              <ul>
+                <li><a href="/login/patreon" class="button patreon">Patreon</a></li>
+                <li><a href="/login/discord" class="button discord">Discord</a></li>
+                <li><a href="/login/google" class="button google">Google</a></li>
+                <li><a href="/login/facebook" class="button facebook">Facebook</a></li>
+                <li><a href="/login/twitter" class="button twitter">Twitter</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;section class="login"&gt;
+  &lt;form action="#login-form" method="post"&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" name="email" id="email" placeholder="you@example.com" /&gt;
+    &lt;label for="passphrase"&gt;Passphrase&lt;/label&gt;
+    &lt;input type="text" name="passphrase" id="passphrase" placeholder="Whisper your secret passphrase" /&gt;
+    &lt;p class="buttons"&gt;
+      &lt;button&gt;Log in&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p class="note"&gt;
+      &lt;a href="/forgot-passphrase"&gt;Forgot your passphrase?&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/form&gt;
+  &lt;div class="oauth2-login"&gt;
+    &lt;p&gt;Or login with&amp;hellip;&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="/login/patreon" class="button patreon"&gt;Patreon&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/login/discord" class="button discord"&gt;Discord&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/login/google" class="button google"&gt;Google&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/login/facebook" class="button facebook"&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/login/twitter" class="button twitter"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to offer a user the opportunity to authenticate herself, using either her Fifth World account or any of the OAuth2 providers recognized by the Fifth World website.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Breadcrumbs -->
       <section id="breadcrumbs" data-category="Navigation" class="component">
         <h2>Breadcrumbs</h2>
