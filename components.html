@@ -581,33 +581,21 @@
         <h2>File upload</h2>
         <div class="preview">
           <form method="POST" action="#file-upload" enctype="multipart/form-data">
-            <input type="text" name="other" />
-            <select name="select">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-            </select>
-            <textarea name="text"></textarea>
             <label for="file">File</label>
             <input type="file" name="file" id="file" />
-            <p class="buttons">
-              <button>Submit</button>
-            </p>
           </form>
         </div>
         <details class="markup">
           <summary>Example markup</summary>
-          <code class="language-markup">&lt;form action="/your/form/endpoint" method="POST"&gt;
-            &lt;label for="file"&gt;File&lt;/label&gt;
-            &lt;input type="file" name="file" id="file" /&gt;
-            &lt;input type="checkbox" id="file-img" /&gt;
-            &lt;label for="file-img"&gt;I&rsquo;ve uploaded an image.&lt;/label&gt;
-            &lt;/form&gt;</code>
+          <code class="language-markup">&lt;form action="/your/form/endpoint" method="POST" enctype="multipart/form-data"&gt;
+  &lt;label for="file"&gt;File&lt;/label&gt;
+  &lt;input type="file" name="file" id="file" /&gt;
+&lt;/form&gt;</code>
         </details>
         <section class="notes">
           <ul>
             <li>Use this component to upload a file.</li>
-            <li>As a JavaScript enhancement, this component adds drag-and-drop functionality, as well as the option to create a thumbnail for your image. You must include this component inside of a form with an <code>action</code> attribute. As this relies on a JavaScript enhancement, make sure that the server-side script that receives the form can handle either receiving a thumbnail from the form, or generating a thumbnail if it doesn&rsquo;t. The <em>&ldquo;I&rsquo;ve uploaded an image&rdquo;</em> input should provide an additional bit of input when determining whether or not you need to generate a thumbnail.</li>
+            <li>As a JavaScript enhancement, this component adds drag-and-drop functionality, as well as the option to create a thumbnail for your image. You must include this component inside of a form with an <code>action</code> attribute as well as <code>enctype="multipart/form-data</code>.</li>
           </ul>
         </section>
       </section>
