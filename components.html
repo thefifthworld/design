@@ -581,33 +581,84 @@
         <h2>File upload</h2>
         <div class="preview">
           <form method="POST" action="#file-upload" enctype="multipart/form-data">
-            <input type="text" name="other" />
-            <select name="select">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-            </select>
-            <textarea name="text"></textarea>
             <label for="file">File</label>
             <input type="file" name="file" id="file" />
-            <p class="buttons">
-              <button>Submit</button>
-            </p>
           </form>
         </div>
         <details class="markup">
           <summary>Example markup</summary>
-          <code class="language-markup">&lt;form action="/your/form/endpoint" method="POST"&gt;
-            &lt;label for="file"&gt;File&lt;/label&gt;
-            &lt;input type="file" name="file" id="file" /&gt;
-            &lt;input type="checkbox" id="file-img" /&gt;
-            &lt;label for="file-img"&gt;I&rsquo;ve uploaded an image.&lt;/label&gt;
-            &lt;/form&gt;</code>
+          <code class="language-markup">&lt;form action="/your/form/endpoint" method="POST" enctype="multipart/form-data"&gt;
+  &lt;label for="file"&gt;File&lt;/label&gt;
+  &lt;input type="file" name="file" id="file" /&gt;
+&lt;/form&gt;</code>
         </details>
         <section class="notes">
           <ul>
             <li>Use this component to upload a file.</li>
-            <li>As a JavaScript enhancement, this component adds drag-and-drop functionality, as well as the option to create a thumbnail for your image. You must include this component inside of a form with an <code>action</code> attribute. As this relies on a JavaScript enhancement, make sure that the server-side script that receives the form can handle either receiving a thumbnail from the form, or generating a thumbnail if it doesn&rsquo;t. The <em>&ldquo;I&rsquo;ve uploaded an image&rdquo;</em> input should provide an additional bit of input when determining whether or not you need to generate a thumbnail.</li>
+            <li>As a JavaScript enhancement, this component adds drag-and-drop functionality, as well as the option to create a thumbnail for your image. You must include this component inside of a form with an <code>action</code> attribute as well as <code>enctype="multipart/form-data</code>.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Login form -->
+      <section id="login-form" data-category="Form elements" class="component">
+        <h2>Login form</h2>
+        <div class="preview">
+          <section class="login">
+            <form action="#login-form" method="post">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="you@example.com" />
+              <label for="passphrase">Passphrase</label>
+              <input type="text" name="passphrase" id="passphrase" placeholder="Whisper your secret passphrase" />
+              <p class="buttons">
+                <button>Log in</button>
+              </p>
+              <p class="note">
+                <a href="/forgot-passphrase">Forgot your passphrase?</a>
+              </p>
+            </form>
+            <div class="oauth2-login">
+              <p>Or login with&hellip;</p>
+              <ul>
+                <li><a href="/login/patreon" class="button patreon">Patreon</a></li>
+                <li><a href="/login/discord" class="button discord">Discord</a></li>
+                <li><a href="/login/google" class="button google">Google</a></li>
+                <li><a href="/login/facebook" class="button facebook">Facebook</a></li>
+                <li><a href="/login/twitter" class="button twitter">Twitter</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;section class="login"&gt;
+  &lt;form action="#login-form" method="post"&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" name="email" id="email" placeholder="you@example.com" /&gt;
+    &lt;label for="passphrase"&gt;Passphrase&lt;/label&gt;
+    &lt;input type="text" name="passphrase" id="passphrase" placeholder="Whisper your secret passphrase" /&gt;
+    &lt;p class="buttons"&gt;
+      &lt;button&gt;Log in&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p class="note"&gt;
+      &lt;a href="/forgot-passphrase"&gt;Forgot your passphrase?&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/form&gt;
+  &lt;div class="oauth2-login"&gt;
+    &lt;p&gt;Or login with&amp;hellip;&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="/login/patreon" class="button patreon"&gt;Patreon&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/login/discord" class="button discord"&gt;Discord&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/login/google" class="button google"&gt;Google&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/login/facebook" class="button facebook"&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/login/twitter" class="button twitter"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to offer a user the opportunity to authenticate herself, using either her Fifth World account or any of the OAuth2 providers recognized by the Fifth World website.</li>
           </ul>
         </section>
       </section>

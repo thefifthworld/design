@@ -1,0 +1,58 @@
+.login {
+  .buttons,
+  .note {
+    text-align: center;
+  }
+
+  .oauth2-login {
+    p {
+      font-style: italic;
+      text-align: center;
+    }
+
+    ul {
+      @extend %unformatted-list;
+    }
+
+    li {
+      margin-bottom: 0.382em;
+    }
+
+    a {
+      display: block;
+      margin-right: 0;
+      text-align: center;
+    }
+
+    .patreon { @include button-color($patreon, $white); }
+    .discord { @include button-color($discord, $white); }
+    .google { @include button-color($google, $white); }
+    .facebook { @include button-color($facebook, $white); }
+    .twitter { @include button-color($twitter, $white); }
+  }
+
+  @media (min-width: 45em) {
+    overflow: auto;
+
+    form,
+    .oauth2-login {
+      box-sizing: border-box;
+      float: left;
+      width: 50%;
+    }
+
+    form {
+      padding: 1.618em 1em 0 0;
+    }
+
+    .oauth2-login {
+      padding-left: 1em;
+    }
+
+    form input {
+      margin-left: 0;
+      margin-right: 0;
+      width: calc(100% - 3.036em);
+    }
+  }
+}
