@@ -1,0 +1,27 @@
+.autocomplete {
+  @extend %unformatted-list;
+  border: 0.1em solid $brown13;
+  border-top: 0;
+  font-family: 'Fontin Sans';
+  margin-top: -1em;
+
+  li {
+    cursor: pointer;
+    margin-bottom: 0;
+    padding: 1em;
+  }
+
+  li + li {
+    border-top: 0.1em solid $brown13;
+  }
+
+  li:hover {
+    background: $blue16;
+  }
+
+  .url {
+    color: $brown;
+    display: block;
+    font-size: 0.618em;
+  }
+}
