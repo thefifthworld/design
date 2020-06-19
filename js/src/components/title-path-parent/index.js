@@ -13,6 +13,28 @@ import {
 } from '../../utils'
 
 /**
+ * Return the title, path, and parent fields, given an event object that is
+ * targeted on something inside the same form.
+ * @param event {Object} - An event object.
+ * @returns {{ form: Element, title: Element|null, path: Element|null, parent:
+ *   Element|null }|null} - Either an object with `title`, `path`, and `parent`
+ *   properties, each providing the input Element for those fields, or `null`
+ *   if no form could be found.
+ */
+
+const getFieldsFromEvent = event => {
+  const form = closest(event.target, 'form')
+  return form
+    ? {
+      form,
+      title: form.querySelector('input[name="title"]'),
+      path: form.querySelector('input[name="path"]'),
+      parent: form.querySelector('input[name="parent"]')
+    }
+    : null
+}
+
+/**
  * Generate a default path based on the input fields given.
  * @param fields {{ title: Element, parent: Element }} - An object with `title`
  *   and `parent` properties, each the Element for that corresponding input
@@ -25,27 +47,44 @@ import {
 const generateDefaultPath = fields => {
   const slug = fields.title && fields.title.value ? slugify(fields.title.value, { lower: true, strict: true }) : null
   const parent = fields.parent && fields.parent.value && fields.parent.value.startsWith('/') ? fields.parent.value : null
-  return parent && slug ? `${parent}/${slug}` : slug ? `/${slug}` : null
+  return parent && slug ? `${parent}/${slug}` : slug ? `/${slug}` : ''
 }
 
 /**
  * Updates the `path` input field to the generated default if the input is
  * currently set to receive a default path value.
- * @param form {Element} - The form element that the fields belong to.
- * @param fields {{ title: Element, path: Element, parent: Element }}- An
- *   object with `title`, `path`, and `parent` properties, all pointing to the
- *   appropriate input fields.
+ * @param event {Object} - The event object.
  */
 
-const updatePath = (form, fields) => {
-  const defaultPath = generateDefaultPath(fields)
+const updatePath = event => {
+  const fields = getFieldsFromEvent(event)
+  if (fields && fields.title && fields.path && fields.parent) {
+    const defaultPath = generateDefaultPath({ title: fields.title, path: fields.path, parent: fields.parent })
 
-  if (fields.path && hasClass(fields.path, 'use-default')) {
-    fields.path.value = defaultPath
+    if (fields.path && hasClass(fields.path, 'use-default')) {
+      fields.path.value = defaultPath
+    }
+
+    const path = fields.form ? fields.form.querySelector('p.path code') : null
+    if (path) path.innerHTML = defaultPath
   }
+}
 
-  const path = form.querySelector('p.path code')
-  if (path) path.innerHTML = defaultPath
+/**
+ * Update whether or not the path should be synced to the title and parent.
+ * @param event {Object} - The event object that prompts the update.
+ */
+
+const updatePathSync = event => {
+  const fields = getFieldsFromEvent(event)
+  if (fields && fields.title && fields.path && fields.parent) {
+    const defaultPath = generateDefaultPath({ title: fields.title, path: fields.path, parent: fields.parent })
+    if (fields.path.value === defaultPath) {
+      addClass(fields.path, 'use-default')
+    } else {
+      removeClass(fields.path, 'use-default')
+    }
+  }
 }
 
 /**
@@ -66,22 +105,13 @@ const clearAutocomplete = field => {
  */
 
 const selectAutocomplete = event => {
+  const fields = getFieldsFromEvent(event)
   const item = closest(event.target, 'li')
   const { path } = item.dataset
-  const list = closest(item, 'ul.autocomplete')
-  const field = list ? prevMatching(list, 'input[name="parent"]') : null
-  if (field && path) {
-    field.value = path
-    clearAutocomplete(field)
-  }
-
-  const form = closest(field, 'form')
-  if (form) {
-    const title = form.querySelector('input[name="title"]')
-    const path = form.querySelector('input[name="path"]')
-    if (title && path) {
-      updatePath(form, { title, path, parent: field })
-    }
+  if (fields && fields.path && path) {
+    fields.parent.value = path
+    updatePath(event)
+    clearAutocomplete(fields.parent)
   }
 }
 
@@ -138,27 +168,35 @@ const autocomplete = async field => {
   }
 }
 
-const hidePath = (form, title, path) => {
-  const id = path.getAttribute('id')
-  const label = id ? form.querySelector(`label[for="${id}"]`) : null
-  if (label) addClass(label, 'visually-hidden')
-  addClass(path, 'visually-hidden')
+/**
+ * Hide the path field.
+ * @param form {Element} - The form that the path field belongs to.
+ */
 
-  const p = create('p', ['path'])
-  const em = create('em', null, null, 'Path:')
-  const btn = create('button', null, null, 'Edit')
-  const code = create('code', null, null, path.value)
-  p.appendChild(em)
-  p.appendChild(code)
-  p.appendChild(btn)
-  title.insertAdjacentElement('afterend', p)
+const hidePath = form => {
+  const fields = getFieldsFromEvent({ target: form })
+  if (fields && fields.title && fields.path) {
+    const id = fields.path.getAttribute('id')
+    const pathLabel = id ? form.querySelector(`label[for="${id}"]`) : null
+    if (pathLabel) addClass(pathLabel, 'visually-hidden')
+    addClass(fields.path, 'visually-hidden')
 
-  btn.addEventListener('click', event => {
-    event.preventDefault()
-    removeClass(label, 'visually-hidden')
-    removeClass(path, 'visually-hidden')
-    p.parentNode.removeChild(p)
-  })
+    const p = create('p', ['path'])
+    const em = create('em', null, null, 'Path:')
+    const btn = create('button', null, null, 'Edit')
+    const code = create('code', null, null, path.value)
+    p.appendChild(em)
+    p.appendChild(code)
+    p.appendChild(btn)
+    fields.title.insertAdjacentElement('afterend', p)
+
+    btn.addEventListener('click', event => {
+      event.preventDefault()
+      removeClass(pathLabel, 'visually-hidden')
+      removeClass(fields.path, 'visually-hidden')
+      p.parentNode.removeChild(p)
+    })
+  }
 }
 
 /**
@@ -173,34 +211,26 @@ const initTitlePathParent = () => {
 
   if (title && path && parent) {
     // Set up default path behavior
-    const defaultPath = generateDefaultPath({ title, path, parent })
-    if (path.value === '' || defaultPath === path.value) {
-      path.value = defaultPath
-      addClass(path, 'use-default')
-    }
+    updatePathSync({ target: form })
 
     // Update default path when title or parent are changed
-    title.addEventListener('keyup', () => updatePath(form, { title, path, parent }))
+    title.addEventListener('keyup', event => {
+      updatePath(event)
+      updatePathSync(event)
+    })
 
     // Let the user override the default path
-    path.addEventListener('keyup', () => {
-      const defaultPath = generateDefaultPath({ title, path, parent })
-      if (path.value === defaultPath) {
-        addClass(path, 'use-default')
-      } else {
-        removeClass(path, 'use-default')
-      }
-    })
+    path.addEventListener('keyup', updatePathSync)
 
     // Provide autocomplete options for the parent field
     parent.addEventListener('keyup', event => {
       const db = debounce(() => autocomplete(event.target), 500)
       db()
-      updatePath(form, { title, path, parent })
+      updatePath(event)
     })
 
     // Hide path
-    hidePath(form, title, path)
+    hidePath(form)
   }
 }
 
