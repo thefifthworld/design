@@ -23,7 +23,7 @@ import {
  */
 
 const generateDefaultPath = fields => {
-  const slug = fields.title && fields.title.value ? slugify(fields.title.value, { lower: true }) : null
+  const slug = fields.title && fields.title.value ? slugify(fields.title.value, { lower: true, strict: true }) : null
   const parent = fields.parent && fields.parent.value && fields.parent.value.startsWith('/') ? fields.parent.value : null
   return parent && slug ? `${parent}/${slug}` : slug ? `/${slug}` : null
 }
@@ -31,16 +31,21 @@ const generateDefaultPath = fields => {
 /**
  * Updates the `path` input field to the generated default if the input is
  * currently set to receive a default path value.
+ * @param form {Element} - The form element that the fields belong to.
  * @param fields {{ title: Element, path: Element, parent: Element }}- An
  *   object with `title`, `path`, and `parent` properties, all pointing to the
  *   appropriate input fields.
  */
 
-const updatePath = fields => {
+const updatePath = (form, fields) => {
   const defaultPath = generateDefaultPath(fields)
+
   if (fields.path && hasClass(fields.path, 'use-default')) {
     fields.path.value = defaultPath
   }
+
+  const path = form.querySelector('p.path code')
+  if (path) path.innerHTML = defaultPath
 }
 
 /**
@@ -61,12 +66,22 @@ const clearAutocomplete = field => {
  */
 
 const selectAutocomplete = event => {
-  const { path } = event.target.dataset
-  const list = closest(event.target, 'ul.autocomplete')
+  const item = closest(event.target, 'li')
+  const { path } = item.dataset
+  const list = closest(item, 'ul.autocomplete')
   const field = list ? prevMatching(list, 'input[name="parent"]') : null
   if (field && path) {
     field.value = path
     clearAutocomplete(field)
+  }
+
+  const form = closest(field, 'form')
+  if (form) {
+    const title = form.querySelector('input[name="title"]')
+    const path = form.querySelector('input[name="path"]')
+    if (title && path) {
+      updatePath(form, { title, path, parent: field })
+    }
   }
 }
 
@@ -128,6 +143,15 @@ const hidePath = (form, title, path) => {
   const label = id ? form.querySelector(`label[for="${id}"]`) : null
   if (label) addClass(label, 'visually-hidden')
   addClass(path, 'visually-hidden')
+
+  const p = create('p', ['path'])
+  const em = create('em', null, null, 'Path:')
+  const btn = create('button', null, null, 'Edit')
+  const code = create('code', null, null, path.value)
+  p.appendChild(em)
+  p.appendChild(code)
+  p.appendChild(btn)
+  title.insertAdjacentElement('afterend', p)
 }
 
 /**
@@ -149,8 +173,7 @@ const initTitlePathParent = () => {
     }
 
     // Update default path when title or parent are changed
-    title.addEventListener('keyup', () => updatePath({ title, path, parent }))
-    parent.addEventListener('change', () => updatePath({ title, path, parent }))
+    title.addEventListener('keyup', () => updatePath(form, { title, path, parent }))
 
     // Let the user override the default path
     path.addEventListener('keyup', () => {
@@ -166,6 +189,7 @@ const initTitlePathParent = () => {
     parent.addEventListener('keyup', event => {
       const db = debounce(() => autocomplete(event.target), 500)
       db()
+      updatePath(form, { title, path, parent })
     })
 
     // Hide path
