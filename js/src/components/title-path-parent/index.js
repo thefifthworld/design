@@ -134,20 +134,18 @@ const initTitlePathParent = () => {
   const parent = form.querySelector('input[name="parent"]')
 
   if (title && path && parent) {
+    // Set up default path behavior
     const defaultPath = generateDefaultPath({ title, path, parent })
     if (path.value === '' || defaultPath === path.value) {
       path.value = defaultPath
       addClass(path, 'use-default')
     }
 
+    // Update default path when title or parent are changed
     title.addEventListener('keyup', () => updatePath({ title, path, parent }))
     parent.addEventListener('change', () => updatePath({ title, path, parent }))
 
-    parent.addEventListener('keyup', event => {
-      const db = debounce(() => autocomplete(event.target), 500)
-      db()
-    })
-
+    // Let the user override the default path
     path.addEventListener('keyup', () => {
       const defaultPath = generateDefaultPath({ title, path, parent })
       if (path.value === defaultPath) {
@@ -155,6 +153,12 @@ const initTitlePathParent = () => {
       } else {
         removeClass(path, 'use-default')
       }
+    })
+
+    // Provide autocomplete options for the parent field
+    parent.addEventListener('keyup', event => {
+      const db = debounce(() => autocomplete(event.target), 500)
+      db()
     })
   }
 }
