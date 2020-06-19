@@ -121,11 +121,13 @@ const initTitlePathParent = () => {
     }
 
     title.addEventListener('keyup', () => updatePath({ title, path, parent }))
+    parent.addEventListener('change', () => updatePath({ title, path, parent }))
+
     parent.addEventListener('keyup', event => {
       const db = debounce(() => autocomplete(event.target), 500)
       db()
     })
-    parent.addEventListener('change', () => updatePath({ title, path, parent }))
+
     path.addEventListener('keyup', () => {
       const defaultPath = generateDefaultPath({ title, path, parent })
       if (path.value === defaultPath) {
