@@ -15,7 +15,8 @@
     border-top: 0.1em solid $brown13;
   }
 
-  li:hover {
+  li:hover,
+  li:focus {
     background: $blue16;
   }
 
