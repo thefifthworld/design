@@ -15,7 +15,7 @@ import {
 const generateDefaultPath = fields => {
   const slug = fields.title && fields.title.value ? slugify(fields.title.value, { lower: true }) : null
   const parent = fields.parent && fields.parent.value && fields.parent.value.startsWith('/') ? fields.parent.value : null
-  return parent ? `${parent}/${slug}` : `/${slug}`
+  return parent && slug ? `${parent}/${slug}` : slug ? `/${slug}` : null
 }
 
 const updatePath = fields => {
