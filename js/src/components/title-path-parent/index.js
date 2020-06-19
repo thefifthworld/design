@@ -123,6 +123,13 @@ const autocomplete = async field => {
   }
 }
 
+const hidePath = (form, title, path) => {
+  const id = path.getAttribute('id')
+  const label = id ? form.querySelector(`label[for="${id}"]`) : null
+  if (label) addClass(label, 'visually-hidden')
+  addClass(path, 'visually-hidden')
+}
+
 /**
  * Initialize title, path & parent components.
  */
@@ -160,6 +167,9 @@ const initTitlePathParent = () => {
       const db = debounce(() => autocomplete(event.target), 500)
       db()
     })
+
+    // Hide path
+    hidePath(form, title, path)
   }
 }
 
