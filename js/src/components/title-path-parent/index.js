@@ -12,11 +12,29 @@ import {
   removeClass
 } from '../../utils'
 
+/**
+ * Generate a default path based on the input fields given.
+ * @param fields {{ title: Element, parent: Element }} - An object with `title`
+ *   and `parent` properties, each the Element for that corresponding input
+ *   field.
+ * @returns {string|null} - The default path based on the current values of the
+ *   `title` and `parent` fields, or `null` if no appropriate default path can
+ *   be generated in their current state.
+ */
+
 const generateDefaultPath = fields => {
   const slug = fields.title && fields.title.value ? slugify(fields.title.value, { lower: true }) : null
   const parent = fields.parent && fields.parent.value && fields.parent.value.startsWith('/') ? fields.parent.value : null
   return parent && slug ? `${parent}/${slug}` : slug ? `/${slug}` : null
 }
+
+/**
+ * Updates the `path` input field to the generated default if the input is
+ * currently set to receive a default path value.
+ * @param fields {{ title: Element, path: Element, parent: Element }}- An
+ *   object with `title`, `path`, and `parent` properties, all pointing to the
+ *   appropriate input fields.
+ */
 
 const updatePath = fields => {
   const defaultPath = generateDefaultPath(fields)
