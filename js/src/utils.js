@@ -66,6 +66,22 @@ const next = el => {
 }
 
 /**
+ * Return the previous element sibling of the element provided.
+ * @param el {Element} - The element to begin with.
+ * @returns {Element|null} - The previous element sibling of the element given,
+ *   or `null` if no such element could be found.
+ */
+
+const prev = el => {
+  function previousElementSibling (el) {
+    do { el = el.previousSibling; } while ( el && el.nodeType !== 1 )
+    return el
+  }
+
+  return el.previousElementSibling || previousElementSibling(el)
+}
+
+/**
  * Return the next sibling of `el` that matches the selector `selector`.
  * @param el {Element} - The element to begin searching from.
  * @param selector {string} - The selector that the sibling should match.
@@ -79,6 +95,25 @@ const nextMatching = (el, selector) => {
     return n
   } else if (n) {
     return nextMatching(n, selector)
+  } else {
+    return undefined
+  }
+}
+
+/**
+ * Return the previous sibling of `el` that matches the selector `selector`.
+ * @param el {Element} - The element to begin searching from.
+ * @param selector {string} - The selector that the sibling should match.
+ * @returns {Element|undefined} - The previous sibling from `el` that matches
+ *   the given selector, or `undefined` if no such sibling could be found.
+ */
+
+const prevMatching = (el, selector) => {
+  const p = prev(el)
+  if (p && p.matches(selector)) {
+    return p
+  } else if (p) {
+    return prevMatching(p, selector)
   } else {
     return undefined
   }
@@ -193,7 +228,9 @@ export {
   select,
   closest,
   next,
+  prev,
   nextMatching,
+  prevMatching,
   create,
   remove,
   removeSelector,

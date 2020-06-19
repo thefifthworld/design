@@ -5,7 +5,9 @@ import {
   select,
   closest,
   next,
+  prev,
   nextMatching,
+  prevMatching,
   create,
   remove,
   removeSelector,
@@ -84,6 +86,20 @@ describe('next', () => {
   })
 })
 
+describe('prev', () => {
+  it('returns the prrebious element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el2')
+    expect(prev(el).getAttribute('id')).toEqual('el1')
+  })
+
+  it('returns null if there is no prebious element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el1')
+    expect(prev(el)).toEqual(null)
+  })
+})
+
 describe('nextMatching', () => {
   it('returns the next matching sibling', () => {
     document.body.innerHTML = '<div id="anchor"></div><p>1</p><p class="target">2</p>'
@@ -95,6 +111,20 @@ describe('nextMatching', () => {
     document.body.innerHTML = '<div id="anchor"></div><p>1</p><p>2</p>'
     const el = document.getElementById('anchor')
     expect(nextMatching(el, '.target')).toEqual(undefined)
+  })
+})
+
+describe('prevMatching', () => {
+  it('returns the previous matching sibling', () => {
+    document.body.innerHTML = '<p class="target">1</p><p>2</p><div id="anchor"></div>'
+    const el = document.getElementById('anchor')
+    expect(prevMatching(el, '.target').innerHTML).toEqual('1')
+  })
+
+  it('returns undefined if nothing matches', () => {
+    document.body.innerHTML = '<p>1</p><p>2</p><div id="anchor"></div>'
+    const el = document.getElementById('anchor')
+    expect(prevMatching(el, '.target')).toEqual(undefined)
   })
 })
 
