@@ -1,7 +1,29 @@
 import axios from 'axios'
 import debounce from 'lodash.debounce'
+import slugify from 'slugify'
 import config from '../../../config.json'
-import { create, closest, nextMatching, prevMatching } from '../../utils'
+import {
+  create,
+  closest,
+  nextMatching,
+  prevMatching,
+  hasClass,
+  addClass,
+  removeClass
+} from '../../utils'
+
+const generateDefaultPath = fields => {
+  const slug = fields.title && fields.title.value ? slugify(fields.title.value, { lower: true }) : null
+  const parent = fields.parent && fields.parent.value && fields.parent.value.startsWith('/') ? fields.parent.value : null
+  return parent ? `${parent}/${slug}` : `/${slug}`
+}
+
+const updatePath = fields => {
+  const defaultPath = generateDefaultPath(fields)
+  if (fields.path && hasClass(fields.path, 'use-default')) {
+    fields.path.value = defaultPath
+  }
+}
 
 /**
  * Clear the autocomplete options from a field.
@@ -92,9 +114,25 @@ const initTitlePathParent = () => {
   const parent = form.querySelector('input[name="parent"]')
 
   if (title && path && parent) {
+    const defaultPath = generateDefaultPath({ title, path, parent })
+    if (path.value === '' || defaultPath === path.value) {
+      path.value = defaultPath
+      addClass(path, 'use-default')
+    }
+
+    title.addEventListener('keyup', () => updatePath({ title, path, parent }))
     parent.addEventListener('keyup', event => {
       const db = debounce(() => autocomplete(event.target), 500)
       db()
+    })
+    parent.addEventListener('change', () => updatePath({ title, path, parent }))
+    path.addEventListener('keyup', () => {
+      const defaultPath = generateDefaultPath({ title, path, parent })
+      if (path.value === defaultPath) {
+        addClass(path, 'use-default')
+      } else {
+        removeClass(path, 'use-default')
+      }
     })
   }
 }
