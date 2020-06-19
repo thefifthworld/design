@@ -5,6 +5,7 @@ import {
   select,
   closest,
   next,
+  prev,
   nextMatching,
   create,
   remove,
@@ -81,6 +82,20 @@ describe('next', () => {
     document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
     const el = document.getElementById('el2')
     expect(next(el)).toEqual(null)
+  })
+})
+
+describe('prev', () => {
+  it('returns the prrebious element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el2')
+    expect(prev(el).getAttribute('id')).toEqual('el1')
+  })
+
+  it('returns null if there is no prebious element', () => {
+    document.body.innerHTML = '<div id="el1"></div><div id="el2"></div>'
+    const el = document.getElementById('el1')
+    expect(prev(el)).toEqual(null)
   })
 })
 

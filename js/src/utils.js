@@ -66,6 +66,22 @@ const next = el => {
 }
 
 /**
+ * Return the previous element sibling of the element provided.
+ * @param el {Element} - The element to begin with.
+ * @returns {Element|null} - The previous element sibling of the element given,
+ *   or `null` if no such element could be found.
+ */
+
+const prev = el => {
+  function previousElementSibling (el) {
+    do { el = el.previousSibling; } while ( el && el.nodeType !== 1 )
+    return el
+  }
+
+  return el.previousElementSibling || previousElementSibling(el)
+}
+
+/**
  * Return the next sibling of `el` that matches the selector `selector`.
  * @param el {Element} - The element to begin searching from.
  * @param selector {string} - The selector that the sibling should match.
@@ -193,6 +209,7 @@ export {
   select,
   closest,
   next,
+  prev,
   nextMatching,
   create,
   remove,
