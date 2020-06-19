@@ -25,6 +25,7 @@
   margin: 0;
   padding: 0;
 
+  @import 'partials/general';
   @import 'partials/typography';
 
   @import 'components/html/aside';
@@ -51,6 +52,8 @@
   @import 'components/form/checkbox';
   @import 'components/form/input-button';
   @import 'components/form/login';
+  @import 'components/form/autocomplete';
+  @import 'components/form/path';
 
   @import 'components/navigation/breadcrumbs';
   @import 'components/navigation/panel-link';

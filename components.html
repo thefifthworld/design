@@ -663,6 +663,51 @@
         </section>
       </section>
 
+      <!-- Title, Path & Parent -->
+      <section id="title-path-parent" data-category="Form elements" class="component">
+        <h2>Title, Path &amp; Parent</h2>
+        <div class="preview">
+          <form class="page">
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text" placeholder="What do you want to write about?" />
+            <label for="path">
+              Path
+              <p class="note">This sets the page&rsquo;s URL. If left blank, it will default to a &ldquo;slugified&rdquo; version of the title (e.g., &ldquo;New Page&rdquo; will become <code>/new-page</code>).</p>
+            </label>
+            <input id="path" name="path" type="text" placeholder="/example" />
+            <label for="parent">
+              Parent
+              <p class="note">Should this page belong to another one? If so, provide the path to that other page here.</p>
+            </label>
+            <input id="parent" name="parent" type="text" />
+            <button>Create Page</button>
+          </form>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;form class="page"&gt;
+  &lt;label for="title"&gt;Title&lt;/label&gt;
+  &lt;input id="title" name="title" type="text" placeholder="What do you want to write about?" /&gt;
+  &lt;label for="path"&gt;
+    Path
+    &lt;p class="note"&gt;This sets the page&amp;rsquo;s URL. If left blank, it will default to a &amp;ldquo;slugified&amp;rdquo; version of the title (e.g., &amp;ldquo;New Page&amp;rdquo; will become &lt;code&gt;/new-page&lt;/code&gt;).&lt;/p&gt;
+  &lt;/label&gt;
+  &lt;input id="path" name="path" type="text" placeholder="/example" /&gt;
+  &lt;label for="parent"&gt;
+    Parent
+    &lt;p class="note"&gt;Should this page belong to another one? &lt;span class="instructions"&gt;If so, provide the path to that other page here.&lt;/span&gt;&lt;/p&gt;
+  &lt;/label&gt;
+  &lt;input id="parent" name="parent" type="text" /&gt;
+  &lt;button&gt;Create Page&lt;/button&gt;
+&lt;/form&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>We designed this component specifically for the title, path, and parent fields used when we create and edit pages. These fields relate to each other and to the rest of the wiki in specific ways, so we built some specific JavaScript enhancements around them. We enhance the parent field with an autocomplete to make it easier to find the page you&rsquo;d like to connect this page to. We move the path field out of the way unless you want to override the default, based on the title and parent. And if you create an invalid path, we provide a JavaScript enhancement to warn you and disable the form&rsquo;s submit button.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Breadcrumbs -->
       <section id="breadcrumbs" data-category="Navigation" class="component">
         <h2>Breadcrumbs</h2>

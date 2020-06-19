@@ -9,6 +9,7 @@ import initFigures from './components/figure'
 import initFileUploads from './components/file-upload'
 import initJumpToNav from './components/jump-to-nav'
 import initMap from './components/map'
+import initTitlePathParent from './components/title-path-parent'
 
 ready(() => {
   initTypography()
@@ -17,4 +18,5 @@ ready(() => {
   initFigures()
   initJumpToNav()
   initMap()
+  initTitlePathParent()
 })
