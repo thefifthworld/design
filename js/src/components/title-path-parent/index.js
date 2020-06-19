@@ -62,19 +62,21 @@ const selectAutocomplete = event => {
 
 const renderAutocomplete = (res, field) => {
   clearAutocomplete(field)
-  const list = create('ul', ['autocomplete'])
-  res.forEach(row => {
-    const item = create('li', null, { 'data-path': row.path, tabindex: 0 }, row.title)
-    const path = create('span', ['url'], null, row.path)
-    item.appendChild(path)
-    list.appendChild(item)
-    item.addEventListener('click', selectAutocomplete)
-    item.addEventListener('keyup', event => {
-      event.stopPropagation()
-      if (event.keyCode === 13) selectAutocomplete(event)
+  if (res.length > 0) {
+    const list = create('ul', ['autocomplete'])
+    res.forEach(row => {
+      const item = create('li', null, { 'data-path': row.path, tabindex: 0 }, row.title)
+      const path = create('span', ['url'], null, row.path)
+      item.appendChild(path)
+      list.appendChild(item)
+      item.addEventListener('click', selectAutocomplete)
+      item.addEventListener('keyup', event => {
+        event.stopPropagation()
+        if (event.keyCode === 13) selectAutocomplete(event)
+      })
     })
-  })
-  field.insertAdjacentElement('afterend', list)
+    field.insertAdjacentElement('afterend', list)
+  }
 }
 
 /**
