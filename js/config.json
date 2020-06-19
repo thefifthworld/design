@@ -1,3 +1,4 @@
 {
-  "apibase": "https://thefifthworld.com/api/v0"
+  "apibase": "https://thefifthworld.com/api/v0",
+  "domain": "https://thefifthworld.com"
 }
