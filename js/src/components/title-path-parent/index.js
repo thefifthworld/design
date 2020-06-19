@@ -152,6 +152,13 @@ const hidePath = (form, title, path) => {
   p.appendChild(code)
   p.appendChild(btn)
   title.insertAdjacentElement('afterend', p)
+
+  btn.addEventListener('click', event => {
+    event.preventDefault()
+    removeClass(label, 'visually-hidden')
+    removeClass(path, 'visually-hidden')
+    p.parentNode.removeChild(p)
+  })
 }
 
 /**
