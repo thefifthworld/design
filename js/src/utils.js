@@ -101,6 +101,25 @@ const nextMatching = (el, selector) => {
 }
 
 /**
+ * Return the previous sibling of `el` that matches the selector `selector`.
+ * @param el {Element} - The element to begin searching from.
+ * @param selector {string} - The selector that the sibling should match.
+ * @returns {Element|undefined} - The previous sibling from `el` that matches
+ *   the given selector, or `undefined` if no such sibling could be found.
+ */
+
+const prevMatching = (el, selector) => {
+  const p = prev(el)
+  if (p && p.matches(selector)) {
+    return p
+  } else if (p) {
+    return prevMatching(p, selector)
+  } else {
+    return undefined
+  }
+}
+
+/**
  * Create a Node.
  * @param tag {string=} - The name of the tag to use (e.g., `div`, `section`,
  *   `aside`, `p`, etc.) (Default: `div`).
@@ -211,6 +230,7 @@ export {
   next,
   prev,
   nextMatching,
+  prevMatching,
   create,
   remove,
   removeSelector,

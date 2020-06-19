@@ -7,6 +7,7 @@ import {
   next,
   prev,
   nextMatching,
+  prevMatching,
   create,
   remove,
   removeSelector,
@@ -110,6 +111,20 @@ describe('nextMatching', () => {
     document.body.innerHTML = '<div id="anchor"></div><p>1</p><p>2</p>'
     const el = document.getElementById('anchor')
     expect(nextMatching(el, '.target')).toEqual(undefined)
+  })
+})
+
+describe('prevMatching', () => {
+  it('returns the previous matching sibling', () => {
+    document.body.innerHTML = '<p class="target">1</p><p>2</p><div id="anchor"></div>'
+    const el = document.getElementById('anchor')
+    expect(prevMatching(el, '.target').innerHTML).toEqual('1')
+  })
+
+  it('returns undefined if nothing matches', () => {
+    document.body.innerHTML = '<p>1</p><p>2</p><div id="anchor"></div>'
+    const el = document.getElementById('anchor')
+    expect(prevMatching(el, '.target')).toEqual(undefined)
   })
 })
 
