@@ -228,6 +228,7 @@ const initTitlePathParent = () => {
       db()
       updatePath(event)
     })
+    parent.addEventListener('blur', () => clearAutocomplete(parent))
 
     // Hide path
     hidePath(form)
