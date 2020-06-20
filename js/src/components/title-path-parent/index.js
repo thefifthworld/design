@@ -228,7 +228,11 @@ const initTitlePathParent = () => {
       db()
       updatePath(event)
     })
-    parent.addEventListener('blur', () => clearAutocomplete(parent))
+    parent.addEventListener('blur', () => {
+      setTimeout(() => {
+        clearAutocomplete(parent)
+      }, 100)
+    })
 
     // Hide path
     hidePath(form)
