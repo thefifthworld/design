@@ -6,7 +6,6 @@ import {
   create,
   closest,
   nextMatching,
-  prevMatching,
   hasClass,
   addClass,
   removeClass
