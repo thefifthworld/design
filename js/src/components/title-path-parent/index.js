@@ -199,6 +199,48 @@ const hidePath = form => {
 }
 
 /**
+ * Remove any existing error message about an invalid path.
+ * @param el {Element} - The input field for the path.
+ */
+
+const removePathError = el => {
+  const err = nextMatching(el, 'p.error')
+  if (err) err.parentElement.removeChild(err)
+}
+
+/**
+ * Add an error message about an invalid path.
+ * @param el {Element} - The input field for the path.
+ * @param msg {string} - The error message to display.
+ */
+
+const addPathError = (el, msg) => {
+  removePathError(el)
+  const p = create('p', ['error'])
+  p.innerHTML = `Sorry, that won&rsquo;t work. ${msg}`
+  el.insertAdjacentElement('afterend', p)
+}
+
+/**
+ * Send the proposed path to the POST /checkpath endpoint to see if it will be
+ * a valid path.
+ * @param path {Element} - The input field for the path.
+ * @returns {Promise<void>} - A Promise that resolves when the API has been
+ *   called and its result used to either display an error message or remove
+ *   any error message that might be presently displayed.
+ */
+
+const checkPath = async path => {
+  const url = `${config.apibase}/checkpath`
+  const res = await axios.post(url, { path: path.value })
+  if (res.data.ok) {
+    removePathError(path)
+  } else {
+    addPathError(path, res.data.error)
+  }
+}
+
+/**
  * Initialize title, path & parent components.
  */
 
@@ -232,6 +274,13 @@ const initTitlePathParent = () => {
         clearAutocomplete(parent)
       }, 100)
     })
+
+    // Check path
+    const debouncedCheckpath = debounce(checkPath, 1000)
+    const checkPathOnTitleOrParent = () => { if (hasClass(path, 'use-default')) debouncedCheckpath(path) }
+    title.addEventListener('keyup', checkPathOnTitleOrParent)
+    parent.addEventListener('keyup', checkPathOnTitleOrParent)
+    path.addEventListener('keyup', () => { debouncedCheckpath(path) })
 
     // Hide path
     hidePath(form)
