@@ -182,7 +182,7 @@ const hidePath = form => {
 
     const p = create('p', ['path'])
     const em = create('em', null, null, 'Path:')
-    const btn = create('button', null, null, 'Edit')
+    const btn = create('button', ['path-toggle'], null, 'Edit')
     const code = create('code', null, null, path.value)
     p.appendChild(em)
     p.appendChild(code)
@@ -199,11 +199,49 @@ const hidePath = form => {
 }
 
 /**
+ * Get all of the buttons that could submit a form, given one element inside
+ * that form.
+ * @param el {Element} - An element inside the form.
+ * @returns {Element[]} - An array of all of the buttons that could submit the
+ *   closest form to `el`, if `el` is indeed inside a form and any buttons
+ *   could be found. If not, it simply returns an empty array.
+ */
+
+const getButtonsFromField = el => {
+  const form = closest(el, 'form')
+  const buttons = form ? Array.from(form.querySelectorAll('button:not(.path-toggle), input[type="submit"]')) : null
+  return buttons && buttons.length > 0 ? buttons : []
+}
+
+/**
+ * Disables all of the buttons that could submit a form, given an element
+ * inside that form.
+ * @param el {Element} - An element inside the form.
+ */
+
+const disableForm = el => {
+  const buttons = getButtonsFromField(el)
+  buttons.forEach(button => { button.setAttribute('disabled', 'disabled') })
+}
+
+/**
+ * Enables all of the buttons that could submit a form, given an element
+ * inside that form.
+ * @param el {Eleemnt} - An element inside the form.
+ */
+
+const enableForm = el => {
+  const buttons = getButtonsFromField(el)
+  buttons.forEach(button => { button.removeAttribute('disabled') })
+}
+
+/**
  * Remove any existing error message about an invalid path.
  * @param el {Element} - The input field for the path.
  */
 
 const removePathError = el => {
+  enableForm(el)
   const err = nextMatching(el, 'p.error')
   if (err) err.parentElement.removeChild(err)
 }
@@ -216,6 +254,7 @@ const removePathError = el => {
 
 const addPathError = (el, msg) => {
   removePathError(el)
+  disableForm(el)
   const p = create('p', ['error'])
   p.innerHTML = `Sorry, that won&rsquo;t work. ${msg}`
   el.insertAdjacentElement('afterend', p)
