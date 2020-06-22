@@ -6,7 +6,6 @@ import {
   create,
   closest,
   nextMatching,
-  prevMatching,
   hasClass,
   addClass,
   removeClass
@@ -183,7 +182,7 @@ const hidePath = form => {
 
     const p = create('p', ['path'])
     const em = create('em', null, null, 'Path:')
-    const btn = create('button', null, null, 'Edit')
+    const btn = create('button', ['path-toggle'], null, 'Edit')
     const code = create('code', null, null, path.value)
     p.appendChild(em)
     p.appendChild(code)
@@ -196,6 +195,87 @@ const hidePath = form => {
       removeClass(fields.path, 'visually-hidden')
       p.parentNode.removeChild(p)
     })
+  }
+}
+
+/**
+ * Get all of the buttons that could submit a form, given one element inside
+ * that form.
+ * @param el {Element} - An element inside the form.
+ * @returns {Element[]} - An array of all of the buttons that could submit the
+ *   closest form to `el`, if `el` is indeed inside a form and any buttons
+ *   could be found. If not, it simply returns an empty array.
+ */
+
+const getButtonsFromField = el => {
+  const form = closest(el, 'form')
+  const buttons = form ? Array.from(form.querySelectorAll('button:not(.path-toggle), input[type="submit"]')) : null
+  return buttons && buttons.length > 0 ? buttons : []
+}
+
+/**
+ * Disables all of the buttons that could submit a form, given an element
+ * inside that form.
+ * @param el {Element} - An element inside the form.
+ */
+
+const disableForm = el => {
+  const buttons = getButtonsFromField(el)
+  buttons.forEach(button => { button.setAttribute('disabled', 'disabled') })
+}
+
+/**
+ * Enables all of the buttons that could submit a form, given an element
+ * inside that form.
+ * @param el {Eleemnt} - An element inside the form.
+ */
+
+const enableForm = el => {
+  const buttons = getButtonsFromField(el)
+  buttons.forEach(button => { button.removeAttribute('disabled') })
+}
+
+/**
+ * Remove any existing error message about an invalid path.
+ * @param el {Element} - The input field for the path.
+ */
+
+const removePathError = el => {
+  enableForm(el)
+  const err = nextMatching(el, 'p.error')
+  if (err) err.parentElement.removeChild(err)
+}
+
+/**
+ * Add an error message about an invalid path.
+ * @param el {Element} - The input field for the path.
+ * @param msg {string} - The error message to display.
+ */
+
+const addPathError = (el, msg) => {
+  removePathError(el)
+  disableForm(el)
+  const p = create('p', ['error'])
+  p.innerHTML = `Sorry, that won&rsquo;t work. ${msg}`
+  el.insertAdjacentElement('afterend', p)
+}
+
+/**
+ * Send the proposed path to the POST /checkpath endpoint to see if it will be
+ * a valid path.
+ * @param path {Element} - The input field for the path.
+ * @returns {Promise<void>} - A Promise that resolves when the API has been
+ *   called and its result used to either display an error message or remove
+ *   any error message that might be presently displayed.
+ */
+
+const checkPath = async path => {
+  const url = `${config.apibase}/checkpath`
+  const res = await axios.post(url, { path: path.value })
+  if (res.data.ok) {
+    removePathError(path)
+  } else {
+    addPathError(path, res.data.error)
   }
 }
 
@@ -228,7 +308,18 @@ const initTitlePathParent = () => {
       db()
       updatePath(event)
     })
-    parent.addEventListener('blur', () => clearAutocomplete(parent))
+    parent.addEventListener('blur', () => {
+      setTimeout(() => {
+        clearAutocomplete(parent)
+      }, 100)
+    })
+
+    // Check path
+    const debouncedCheckpath = debounce(checkPath, 1000)
+    const checkPathOnTitleOrParent = () => { if (hasClass(path, 'use-default')) debouncedCheckpath(path) }
+    title.addEventListener('keyup', checkPathOnTitleOrParent)
+    parent.addEventListener('keyup', checkPathOnTitleOrParent)
+    path.addEventListener('keyup', () => { debouncedCheckpath(path) })
 
     // Hide path
     hidePath(form)
