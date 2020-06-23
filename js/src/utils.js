@@ -211,6 +211,20 @@ const removeClass = (el, ...classes) => {
 }
 
 /**
+ * Return the `label` element connected to the given `input` element via its
+ * `for` attribute.
+ * @param input {Element} - An input element.
+ * @returns {Element|null} - The `label` element that is connected to the given
+ *   `input` element via its `for` attribute, or `null` if no such label could
+ *   be found.
+ */
+
+const getLabel = input => {
+  const id = input.getAttribute('id')
+  return id ? document.querySelector(`label[for="${id}"]`) : null
+}
+
+/**
  * Wraps a geolocation request in a Promise.
  * @param opts {Object} - Options to pass to the geolocation request.
  * @returns {Promise<unknown>} - A Promise that resolves with the result of a
@@ -237,5 +251,6 @@ export {
   hasClass,
   addClass,
   removeClass,
+  getLabel,
   requestLocation
 }

@@ -13,7 +13,8 @@ import {
   removeSelector,
   hasClass,
   addClass,
-  removeClass
+  removeClass,
+  getLabel
 } from './utils'
 
 describe('ready', () => {
@@ -232,5 +233,17 @@ describe('removeClass', () => {
     const el = create('div', ['test1', 'test2', 'test3'])
     removeClass(el, 'test1', 'test2')
     expect(el.outerHTML).toEqual('<div class="test3"></div>')
+  })
+})
+
+describe('getLabel', () => {
+  it('returns the label', () => {
+    document.body.innerHTML = '<label for="test">Label</label><input id="test" />'
+    expect(getLabel(document.getElementById('test')).innerHTML).toEqual('Label')
+  })
+
+  it('returns null if there is no label', () => {
+    document.body.innerHTML = '<label>Label</label><input id="test" />'
+    expect(getLabel(document.getElementById('test'))).toEqual(null)
   })
 })
