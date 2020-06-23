@@ -424,6 +424,30 @@
         </section>
       </section>
 
+      <!-- Input in error state -->
+      <section id="input-error" data-category="Form elements" class="component">
+        <h2>Input (error state)</h2>
+        <div class="preview">
+          <label for="input-err" class="error">Label</label>
+          <input type="text" id="input-err" class="error" value="Bad input" />
+          <p class="error">Sorry, <strong>Bad input</strong> won&rsquo;t work.</p>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;label for="input-err" class="error"&gt;Label&lt;/label&gt;
+&lt;input type="text" id="input-err" class="error" value="Bad input" /&gt;
+&lt;p class="error"&gt;Sorry, &lt;strong&gt;Bad input&lt;/strong&gt; won&amp;rsquo;t work.&lt;/p&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use the <code>error</code> class to highlight fields that a user will need to correct in order to proceed.</li>
+            <li>Our <a href="https://thefifthworld.com/policies/eprime">guidance on using E-Prime</a> applies to error messages, too!</li>
+            <li>Use JavaScript wherever possible to provide immediate feedback, but that doesn&rsquo;t mean duplicating code. For example, you can write an API endpoint to check inputs, and then use it both on the backend and from the client as an optional enhancement.</li>
+            <li>See the <a href="#title-path-parent">Title, Path &amp; Parent</a> component for an example of this component in action. It uses JavaScript to provide a client-side enhancement, which checks a path&rsquo;s validity against an API. While the path field remains hidden, we use only a paragraph with the <code>error</code> class, but when the user has revealed the field the field and its label also use the error state.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Textarea -->
       <section id="textarea" data-category="Form elements" class="component">
         <h2>Textarea</h2>
