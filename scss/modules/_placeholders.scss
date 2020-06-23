@@ -148,6 +148,10 @@
     border: 0.1em solid $blue;
     outline: none;
   }
+
+  &.error {
+    border-color: $red;
+  }
 }
 
 %button {
