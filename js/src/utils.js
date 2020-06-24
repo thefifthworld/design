@@ -211,6 +211,44 @@ const removeClass = (el, ...classes) => {
 }
 
 /**
+ * Return the `label` element connected to the given `input` element via its
+ * `for` attribute.
+ * @param input {Element} - An input element.
+ * @returns {Element|null} - The `label` element that is connected to the given
+ *   `input` element via its `for` attribute, or `null` if no such label could
+ *   be found.
+ */
+
+const getLabel = input => {
+  const id = input.getAttribute('id')
+  return id ? document.querySelector(`label[for="${id}"]`) : null
+}
+
+/**
+ * Add the `error` class to an input and its label (if its label can be found).
+ * @param input {Element} - The input that should have the `error` class added.
+ */
+
+const setError = input => {
+  const label = getLabel(input)
+  if (label) addClass(label, 'error')
+  addClass(input, 'error')
+}
+
+/**
+ * Removes the `error` class from an input and its label (if its label can be
+ * found).
+ * @param input {Element} - The input that should have the `error` class
+ *   removed.
+ */
+
+const removeError = input => {
+  const label = getLabel(input)
+  if (label) removeClass(label, 'error')
+  removeClass(input, 'error')
+}
+
+/**
  * Wraps a geolocation request in a Promise.
  * @param opts {Object} - Options to pass to the geolocation request.
  * @returns {Promise<unknown>} - A Promise that resolves with the result of a
@@ -237,5 +275,8 @@ export {
   hasClass,
   addClass,
   removeClass,
+  getLabel,
+  setError,
+  removeError,
   requestLocation
 }

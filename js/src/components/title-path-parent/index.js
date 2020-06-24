@@ -8,7 +8,9 @@ import {
   nextMatching,
   hasClass,
   addClass,
-  removeClass
+  removeClass,
+  setError,
+  removeError
 } from '../../utils'
 
 /**
@@ -242,6 +244,7 @@ const enableForm = el => {
 
 const removePathError = el => {
   enableForm(el)
+  removeError(el)
   const err = nextMatching(el, 'p.error')
   if (err) err.parentElement.removeChild(err)
 }
@@ -255,6 +258,7 @@ const removePathError = el => {
 const addPathError = (el, msg) => {
   removePathError(el)
   disableForm(el)
+  setError(el)
   const p = create('p', ['error'])
   p.innerHTML = `Sorry, that won&rsquo;t work. ${msg}`
   el.insertAdjacentElement('afterend', p)
