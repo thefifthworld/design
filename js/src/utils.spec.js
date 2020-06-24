@@ -198,6 +198,11 @@ describe('hasClass', () => {
     expect(hasClass(el, 'test')).toEqual(true)
   })
 
+  it('returns true if the element has any of the classes', () => {
+    const el = create('div', ['test1', 'test2'])
+    expect(hasClass(el, 'test1', 'test2', 'test3')).toEqual(true)
+  })
+
   it('returns false if the element does not have the class', () => {
     const el = create('div', ['somethingelse'])
     expect(hasClass(el, 'test')).toEqual(false)
