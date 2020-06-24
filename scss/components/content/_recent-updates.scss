@@ -1,0 +1,28 @@
+table.updates {
+  font-family: 'Fontin Sans';
+
+  a {
+    color: $black;
+    display: block;
+    text-decoration: none;
+
+    .path {
+      display: block;
+      font-size: 0.618em;
+      font-style: italic;
+      font-weight: normal;
+      margin-top: 0.236em;
+    }
+
+    &:hover {
+      color: $red;
+    }
+  }
+
+  time {
+    display: block;
+    font-size: 0.618em;
+    text-align: right;
+    width: 100%;
+  }
+}
