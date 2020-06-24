@@ -807,6 +807,42 @@
         </section>
       </section>
 
+      <!-- Like & Unlike -->
+      <section id="like-unlike" data-category="Content" class="component">
+        <h2>Like &amp; Unlike</h2>
+        <div class="preview">
+          <p class="likes">
+            <a href="#like-unlike" class="like">Like</a>
+            100 likes
+          </p>
+          <p class="likes">
+            <a href="#like-unlike" class="unlike">Unlike</a>
+            101 likes
+          </p>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;!-- Use this version when the user hasn't liked it yet --&gt;
+&lt;p class="likes"&gt;
+  &lt;a href="/path/to/like/content" class="like"&gt;Like&lt;/a&gt;
+  100 likes
+&lt;/p&gt;
+
+&lt;!-- Use this version when the user has already liked it --&gt;
+&lt;p class="likes"&gt;
+  &lt;a href="/path/to/unlike/content" class="unlike"&gt;Unlike&lt;/a&gt;
+  101 likes
+&lt;/p&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component when you know the user&rsquo;s identity and can tell if she has liked this content before or not. If she has, present the option to unlike it. If she hasn&rsquo;t, give her the opportunity to like it.</li>
+            <li>As a client-side enhancement, this component can send the request without reloading the page. This enhancement uses <em>optimistic feedback</em>, assuming that everything will go well (since it normally does), but then providing an error message if something goes wrong.</li>
+            <li>Only use this component when you can also determine how many other people have already liked this content. Use it to present that information to the user.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- File download -->
       <section id="file-download" data-category="Content" class="component">
         <h2>File download</h2>
