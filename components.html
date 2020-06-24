@@ -807,6 +807,42 @@
         </section>
       </section>
 
+      <!-- Like & Unlike -->
+      <section id="like-unlike" data-category="Content" class="component">
+        <h2>Like &amp; Unlike</h2>
+        <div class="preview">
+          <p class="likes">
+            <a href="#like-unlike" class="like" data-unlike="#like-unlike">Like</a>
+            <span class="count">100</span> likes
+          </p>
+          <p class="likes">
+            <a href="#like-unlike" class="unlike" data-like="#like-unlike">Unlike</a>
+            <span class="count">101</span> likes
+          </p>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;!-- Use this version when the user has not liked the content yet. --&gt;
+&lt;p class="likes"&gt;
+  &lt;a href="/path/to/like/content" class="like" data-unlike="/path/to/unlike/content"&gt;Like&lt;/a&gt;
+  &lt;span class="count"&gt;100&lt;/span&gt; likes
+&lt;/p&gt;
+
+&lt;!-- Use this version when the user has liked the content already. --&gt;
+&lt;p class="likes"&gt;
+  &lt;a href="/path/to/unlike/content" class="unlike" data-like="/path/to/like/content"&gt;Unlike&lt;/a&gt;
+  &lt;span class="count"&gt;101&lt;/span&gt; likes
+&lt;/p&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component when you know the user&rsquo;s identity and can tell if she has liked this content before or not. If she has, present the option to unlike it. If she hasn&rsquo;t, give her the opportunity to like it.</li>
+            <li>As a client-side enhancement, this component can send the request without reloading the page. This enhancement uses <em>optimistic feedback</em>, assuming that everything will go well (since it normally does), but then providing an error message if something goes wrong.</li>
+            <li>Only use this component when you can also determine how many other people have already liked this content. Use it to present that information to the user.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- File download -->
       <section id="file-download" data-category="Content" class="component">
         <h2>File download</h2>
@@ -871,7 +907,7 @@
       </section>
 
       <!-- Collapsible -->
-      <section id="collapsible" data-category="Interactive content" class="component">
+      <section id="collapsible" data-category="Content" class="component">
         <h2>Collapsible</h2>
         <div class="preview">
           <aside class="collapsible">

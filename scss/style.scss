@@ -54,17 +54,17 @@
   @import 'components/form/login';
   @import 'components/form/autocomplete';
   @import 'components/form/path';
+  @import 'components/form/file-upload';
 
   @import 'components/navigation/breadcrumbs';
   @import 'components/navigation/panel-link';
 
   @import 'components/content/error';
+  @import 'components/content/like-unlike';
   @import 'components/content/file-download';
   @import 'components/content/map';
   @import 'components/content/video';
-
-  @import 'components/interactive/collapsible';
-  @import 'components/interactive/file-upload';
+  @import 'components/content/collapsible';
 
   @import 'components/meta/component';
   @import 'components/meta/details-markup';
