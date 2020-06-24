@@ -16,16 +16,36 @@ const getCount = link => {
 }
 
 /**
+ * Flip the URL for the like/unlike link.
+ * @param link {Element} - The like/unlike link.
+ */
+
+const flipURLs = link => {
+  const href = link.getAttribute('href')
+  const like = link.dataset ? link.dataset.like : null
+  const unlike = link.dataset ? link.dataset.unlike : null
+  if (hasClass(link, 'like') && href && unlike) {
+    link.dataset.like = href
+    link.setAttribute('href', unlike)
+  } else if (hasClass(link, 'unlike') && href && like) {
+    link.dataset.unlike = href
+    link.setAttribute('href', like)
+  }
+}
+
+/**
  * Update the page to reflect a like.
  * @param link {Element} - The link that was clicked to like the content.
  */
 
 const like = link => {
+  flipURLs(link)
+  removeClass(link, 'like')
+  addClass(link, 'unlike')
+  link.innerText = 'Unlike'
+
   const { count, num } = getCount(link)
   if (!isNaN(num)) {
-    removeClass(link, 'like')
-    addClass(link, 'unlike')
-    link.innerText = 'Unlike'
     count.innerText = num + 1
   }
 }
@@ -36,11 +56,13 @@ const like = link => {
  */
 
 const unlike = link => {
+  flipURLs(link)
+  removeClass(link, 'unlike')
+  addClass(link, 'like')
+  link.innerText = 'Like'
+
   const { count, num } = getCount(link)
   if (!isNaN(num)) {
-    removeClass(link, 'unlike')
-    addClass(link, 'like')
-    link.innerText = 'Like'
     count.innerText = num - 1
   }
 }
