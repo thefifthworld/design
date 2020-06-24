@@ -135,7 +135,7 @@ const create = (tag = 'div', classes, attrs, text) => {
   const el = document.createElement(tag)
   if (classes) el.setAttribute('class', classes.join(' '))
   if (attrs) Object.keys(attrs).forEach(attr => { el.setAttribute(attr, attrs[attr]) })
-  if (text) { const node = document.createTextNode(text); el.appendChild(node) }
+  if (text) el.innerHTML = text
   return el
 }
 

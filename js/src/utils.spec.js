@@ -157,6 +157,11 @@ describe('create', () => {
     expect(actual.outerHTML).toEqual('<div>Test</div>')
   })
 
+  it('applies HTML', () => {
+    const actual = create(undefined, undefined, undefined, '<strong>Test&hellip;</strong>')
+    expect(actual.outerHTML).toEqual('<div><strong>Test…</strong></div>')
+  })
+
   it('does it all at once', () => {
     const actual = create('p', ['test1', 'test2'], { id: 'test' }, 'Test')
     expect(actual.outerHTML).toEqual('<p class="test1 test2" id="test">Test</p>')
