@@ -135,7 +135,7 @@ const create = (tag = 'div', classes, attrs, text) => {
   const el = document.createElement(tag)
   if (classes) el.setAttribute('class', classes.join(' '))
   if (attrs) Object.keys(attrs).forEach(attr => { el.setAttribute(attr, attrs[attr]) })
-  if (text) { const node = document.createTextNode(text); el.appendChild(node) }
+  if (text) el.innerHTML = text
   return el
 }
 
@@ -164,14 +164,15 @@ const removeSelector = (selector, el = document) => {
 /**
  * Tests if an element has a partciular class.
  * @param el {Element} - The element to test.
- * @param className {string} - The class to test for.
+ * @param classes {string} - The class to test for.
  * @returns {boolean} - `true` if `el` has the class `className`, or `false`
  *   if it does not.
  */
 
-const hasClass = (el, className) => {
-  const classes = el.classList ? Array.from(el.classList) : el.className.split(' ')
-  return classes.includes(className)
+const hasClass = (el, ...classes) => {
+  const has = el.classList ? Array.from(el.classList) : el.className.split(' ')
+  const intersection = has.filter(x => classes.includes(x))
+  return intersection.length > 0
 }
 
 /**

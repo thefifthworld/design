@@ -1,0 +1,29 @@
+.likes {
+  color: $brown;
+  font-family: 'Fontin Sans';
+  margin: 1.618em 0;
+
+  a {
+    color: $brown;
+    display: inline-block;
+    padding-right: 0.618em;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 2em;
+      vertical-align: middle;
+      width: 2em;
+    }
+
+    &.like:before {
+      background: url(/img/icons/black/like.svg) no-repeat center;
+      background-size: contain;
+    }
+
+    &.unlike:before {
+      background: url(/img/icons/black/like-filled.svg) no-repeat center;
+      background-size: contain;
+    }
+  }
+}
