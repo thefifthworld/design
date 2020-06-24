@@ -1,4 +1,5 @@
-import { closest, select, hasClass, addClass, removeClass } from '../../utils'
+import axios from 'axios'
+import { closest, create, select, hasClass, addClass, removeClass } from '../../utils'
 
 /**
  * Return the count element and the number inside it associated with a
@@ -68,12 +69,37 @@ const unlike = link => {
 }
 
 /**
+ * Clear any error that might already be applied to the likes component.
+ * @param link {Element} - The component's like/unlike link.
+ */
+
+const clearError = link => {
+  const wrapper = closest(link, '.likes')
+  const existing = wrapper ? wrapper.querySelector('span.error') : null
+  if (existing) existing.parentElement.removeChild(existing)
+}
+
+/**
+ * Display an error on the likes component.
+ * @param link {Element} - The component's like/unlike link.
+ */
+
+const showError = link => {
+  const wrapper = closest(link, '.likes')
+  if (wrapper) {
+    const error = create('span', ['error'], null, '&nbsp;&nbsp;Sorry, something went wrong&hellip;')
+    wrapper.appendChild(error)
+  }
+}
+
+/**
  * Handle the click event on the like/unlike links.
  * @param event {Object} - The click event object.
  */
 
 const handleClick = async event => {
   const a = event.target
+  clearError(a)
   const isLike = hasClass(a, 'like')
   const isUnlike = hasClass(a, 'unlike')
   if (isLike || isUnlike) {
@@ -82,7 +108,14 @@ const handleClick = async event => {
     if (url) {
       if (isLike) like(a)
       if (isUnlike) unlike(a)
-     }
+
+      const res = await axios.get(url)
+      if (res.status !== 200) {
+        if (isLike) unlike(a)
+        if (isUnlike) like(a)
+        showError(a)
+      }
+    }
   }
 }
 
