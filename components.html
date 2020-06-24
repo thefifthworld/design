@@ -812,25 +812,25 @@
         <h2>Like &amp; Unlike</h2>
         <div class="preview">
           <p class="likes">
-            <a href="#like-unlike" class="like">Like</a>
+            <a href="#like-unlike" class="like" data-unlike="#like-unlike">Like</a>
             <span class="count">100</span> likes
           </p>
           <p class="likes">
-            <a href="#like-unlike" class="unlike">Unlike</a>
+            <a href="#like-unlike" class="unlike" data-like="#like-unlike">Unlike</a>
             <span class="count">101</span> likes
           </p>
         </div>
         <details class="markup">
           <summary>Example markup</summary>
-          <code class="language-markup">&lt;!-- Use this version when the user hasn't liked it yet --&gt;
+          <code class="language-markup">&lt;!-- Use this version when the user has not liked the content yet. --&gt;
 &lt;p class="likes"&gt;
-  &lt;a href="/path/to/like/content" class="like"&gt;Like&lt;/a&gt;
+  &lt;a href="/path/to/like/content" class="like" data-unlike="/path/to/unlike/content"&gt;Like&lt;/a&gt;
   &lt;span class="count"&gt;100&lt;/span&gt; likes
 &lt;/p&gt;
 
-&lt;!-- Use this version when the user has already liked it --&gt;
+&lt;!-- Use this version when the user has liked the content already. --&gt;
 &lt;p class="likes"&gt;
-  &lt;a href="/path/to/unlike/content" class="unlike"&gt;Unlike&lt;/a&gt;
+  &lt;a href="/path/to/unlike/content" class="unlike" data-like="/path/to/like/content"&gt;Unlike&lt;/a&gt;
   &lt;span class="count"&gt;101&lt;/span&gt; likes
 &lt;/p&gt;</code>
         </details>
