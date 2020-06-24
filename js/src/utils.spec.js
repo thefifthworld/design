@@ -13,7 +13,10 @@ import {
   removeSelector,
   hasClass,
   addClass,
-  removeClass
+  removeClass,
+  getLabel,
+  setError,
+  removeError
 } from './utils'
 
 describe('ready', () => {
@@ -232,5 +235,57 @@ describe('removeClass', () => {
     const el = create('div', ['test1', 'test2', 'test3'])
     removeClass(el, 'test1', 'test2')
     expect(el.outerHTML).toEqual('<div class="test3"></div>')
+  })
+})
+
+describe('getLabel', () => {
+  it('returns the label', () => {
+    document.body.innerHTML = '<label for="test">Label</label><input id="test" />'
+    expect(getLabel(document.getElementById('test')).innerHTML).toEqual('Label')
+  })
+
+  it('returns null if there is no label', () => {
+    document.body.innerHTML = '<label>Label</label><input id="test" />'
+    expect(getLabel(document.getElementById('test'))).toEqual(null)
+  })
+})
+
+describe('setError', () => {
+  it('sets the error state on the field and its label', () => {
+    document.body.innerHTML = '<label for="test">Label</label><input id="test" />'
+    const input = document.getElementById('test')
+    const label = getLabel(input)
+    setError(input)
+    expect(hasClass(input, 'error')).toEqual(true)
+    expect(hasClass(label, 'error')).toEqual(true)
+  })
+
+  it('just sets the error state on the field if it has no label', () => {
+    document.body.innerHTML = '<label id="label">Label</label><input id="test" />'
+    const input = document.getElementById('test')
+    const label = document.getElementById('label')
+    setError(input)
+    expect(hasClass(input, 'error')).toEqual(true)
+    expect(hasClass(label, 'error')).toEqual(false)
+  })
+})
+
+describe('removeError', () => {
+  it('removes the error state on the field and its label', () => {
+    document.body.innerHTML = '<label for="test" class="error">Label</label><input class="error" id="test" />'
+    const input = document.getElementById('test')
+    const label = getLabel(input)
+    removeError(input)
+    expect(hasClass(input, 'error')).toEqual(false)
+    expect(hasClass(label, 'error')).toEqual(false)
+  })
+
+  it('just sets the error state on the field if it has no label', () => {
+    document.body.innerHTML = '<label class="error" id="label">Label</label><input class="error" id="test" />'
+    const input = document.getElementById('test')
+    const label = document.getElementById('label')
+    removeError(input)
+    expect(hasClass(input, 'error')).toEqual(false)
+    expect(hasClass(label, 'error')).toEqual(true)
   })
 })
