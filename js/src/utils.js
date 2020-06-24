@@ -236,6 +236,19 @@ const setError = input => {
 }
 
 /**
+ * Removes the `error` class from an input and its label (if its label can be
+ * found).
+ * @param input {Element} - The input that should have the `error` class
+ *   removed.
+ */
+
+const removeError = input => {
+  const label = getLabel(input)
+  if (label) removeClass(label, 'error')
+  removeClass(input, 'error')
+}
+
+/**
  * Wraps a geolocation request in a Promise.
  * @param opts {Object} - Options to pass to the geolocation request.
  * @returns {Promise<unknown>} - A Promise that resolves with the result of a
@@ -264,5 +277,6 @@ export {
   removeClass,
   getLabel,
   setError,
+  removeError,
   requestLocation
 }

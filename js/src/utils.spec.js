@@ -15,7 +15,8 @@ import {
   addClass,
   removeClass,
   getLabel,
-  setError
+  setError,
+  removeError
 } from './utils'
 
 describe('ready', () => {
@@ -266,5 +267,25 @@ describe('setError', () => {
     setError(input)
     expect(hasClass(input, 'error')).toEqual(true)
     expect(hasClass(label, 'error')).toEqual(false)
+  })
+})
+
+describe('removeError', () => {
+  it('removes the error state on the field and its label', () => {
+    document.body.innerHTML = '<label for="test" class="error">Label</label><input class="error" id="test" />'
+    const input = document.getElementById('test')
+    const label = getLabel(input)
+    removeError(input)
+    expect(hasClass(input, 'error')).toEqual(false)
+    expect(hasClass(label, 'error')).toEqual(false)
+  })
+
+  it('just sets the error state on the field if it has no label', () => {
+    document.body.innerHTML = '<label class="error" id="label">Label</label><input class="error" id="test" />'
+    const input = document.getElementById('test')
+    const label = document.getElementById('label')
+    removeError(input)
+    expect(hasClass(input, 'error')).toEqual(false)
+    expect(hasClass(label, 'error')).toEqual(true)
   })
 })
