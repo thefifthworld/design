@@ -1092,6 +1092,91 @@
         </section>
       </section>
 
+      <!-- Page history -->
+      <section id="page-history" data-category="Content" class="component">
+        <h2>Page history</h2>
+        <div class="preview">
+          <table class="history">
+            <thead>
+              <tr>
+                <th />
+                <th />
+                <th>Summary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input type="radio" name="a" value="12346" />
+                </td>
+                <td>
+                  <input type="radio" name="b" value="12346">
+                </td>
+                <td>
+                  An update
+                  <p class="details">Change made by <a href="#page-history">Jason Godesky</a>, <a href="#page-history">24&nbsp;June&nbsp;2020 7:33&nbsp;PM</a></p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="radio" name="a" value="12345" />
+                </td>
+                <td>
+                  <input type="radio" name="b" value="12345">
+                </td>
+                <td>
+                  Initial text
+                  <p class="details">Change made by <a href="#page-history">Jason Godesky</a>, <a href="#page-history">24&nbsp;June&nbsp;2020 7:27&nbsp;PM</a></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;table class="historry"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th /&gt;
+      &lt;th /&gt;
+      &lt;th&gt;Summary&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;input type="radio" name="a" value="12346" /&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;input type="radio" name="b" value="12346"&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        An update
+        &lt;p class="details"&gt;Change made by &lt;a href="/member/123"&gt;Jason Godesky&lt;/a&gt;, &lt;a href="/page/12346"&gt;24&amp;nbsp;June&amp;nbsp;2020 7:33&amp;nbsp;PM&lt;/a&gt;&lt;/p&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;input type="radio" name="a" value="12345" /&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;input type="radio" name="b" value="12345"&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        Initial text
+        &lt;p class="details"&gt;Change made by &lt;a href="/member/123"&gt;Jason Godesky&lt;/a&gt;, &lt;a href="/page/12345"&gt;24&amp;nbsp;June&amp;nbsp;2020 7:27&amp;nbsp;PM&lt;/a&gt;&lt;/p&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>We use this component to show the history of changes made to a page.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Place map -->
       <section id="place-map" data-category="Content" class="component">
         <h2>Place map</h2>
