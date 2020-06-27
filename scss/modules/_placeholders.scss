@@ -137,7 +137,7 @@
   font-size: 1em;
   padding: 0.618em 1.518em;
   margin: 1em -1.618em;
-  width: 100%;
+  width: calc(100% + 3.236em);
 
   &::placeholder {
     color: $brown23;
