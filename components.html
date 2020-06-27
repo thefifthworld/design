@@ -889,6 +889,32 @@
         </section>
       </section>
 
+      <!-- Collapsible -->
+      <section id="collapsible" data-category="Content" class="component">
+        <h2>Collapsible</h2>
+        <div class="preview">
+          <aside class="collapsible">
+            <h3>Missing Games</h3>
+            <p>Roleplaying games require significant blocks of time. Even a short game can take as long as watching a movie. Hopefully you find it time well-spent with friends, but that doesn’t make it any less significant an<span class="widont">&nbsp;</span>investment.</p>
+            <p>To play a Fifth World saga you don’t need a group of friends who can commit to perfect attendance. In every game we focus on some members of the family (the characters of the people present), while other members of the family fade into the background. If you can’t make it to game night, your character simply joins them as one of the family members that tonight’s story doesn’t focus on. When you return next time, you can pick right up again without a<span class="widont">&nbsp;</span>problem.</p>
+          </aside>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;aside class="collapsible"&gt;
+            &lt;h3&gt;Missing Games&lt;/h3&gt;
+            &lt;!-- Content --&gt;
+            &lt;/aside&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>You can make the content of any <a href="#aside">aside</a> collapsible by adding the <code>collapsible</code> class. The first element in the <code>&lt;aside&gt;</code> must be a heading tag, which will be used to toggle the collapsible area open and closed. Any other content can follow.</li>
+            <li>If JavaScript fails for any reason, collapsible areas render like any other aside.</li>
+            <li>Do <em>not</em> place important content inside a collapsible element! Collapsible elements hide items from users, so anything you put into one is something that many users will never see, so you want to make sure that&rsquo;s OK. For example, we use collapsible areas for metadata forms. If a user never realizes these options exist, that&rsquo;s OK, because these should be automatically populated with appropriate values, and other users can always correct any problems that may pop up later.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Recent updates -->
       <section id="recent-updates" data-category="Content" class="component">
         <h2>Recent updates</h2>
@@ -1299,32 +1325,6 @@
         <section class="notes">
           <ul>
             <li>We use this map on locations &mdash; pages about a particular place. If JavaScript loads, then you see a map of the locale around the place. If JavaScipt fails for any reason, you don&rsquo;t even know you missed anything.</li>
-          </ul>
-        </section>
-      </section>
-
-      <!-- Collapsible -->
-      <section id="collapsible" data-category="Content" class="component">
-        <h2>Collapsible</h2>
-        <div class="preview">
-          <aside class="collapsible">
-            <h3>Missing Games</h3>
-            <p>Roleplaying games require significant blocks of time. Even a short game can take as long as watching a movie. Hopefully you find it time well-spent with friends, but that doesn’t make it any less significant an<span class="widont">&nbsp;</span>investment.</p>
-            <p>To play a Fifth World saga you don’t need a group of friends who can commit to perfect attendance. In every game we focus on some members of the family (the characters of the people present), while other members of the family fade into the background. If you can’t make it to game night, your character simply joins them as one of the family members that tonight’s story doesn’t focus on. When you return next time, you can pick right up again without a<span class="widont">&nbsp;</span>problem.</p>
-          </aside>
-        </div>
-        <details class="markup">
-          <summary>Example markup</summary>
-          <code class="language-markup">&lt;aside class="collapsible"&gt;
-  &lt;h3&gt;Missing Games&lt;/h3&gt;
-  &lt;!-- Content --&gt;
-&lt;/aside&gt;</code>
-        </details>
-        <section class="notes">
-          <ul>
-            <li>You can make the content of any <a href="#aside">aside</a> collapsible by adding the <code>collapsible</code> class. The first element in the <code>&lt;aside&gt;</code> must be a heading tag, which will be used to toggle the collapsible area open and closed. Any other content can follow.</li>
-            <li>If JavaScript fails for any reason, collapsible areas render like any other aside.</li>
-            <li>Do <em>not</em> place important content inside a collapsible element! Collapsible elements hide items from users, so anything you put into one is something that many users will never see, so you want to make sure that&rsquo;s OK. For example, we use collapsible areas for metadata forms. If a user never realizes these options exist, that&rsquo;s OK, because these should be automatically populated with appropriate values, and other users can always correct any problems that may pop up later.</li>
           </ul>
         </section>
       </section>
