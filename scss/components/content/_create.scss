@@ -1,0 +1,28 @@
+section.create {
+  @extend aside;
+  text-align: center;
+
+  h3 {
+    font-family: 'Fontin Sans Small Caps';
+    font-weight: normal;
+  }
+
+  ul {
+    @extend %unformatted-list;
+    margin-top: 1.618em;
+  }
+
+  a {
+    width: 100%;
+  }
+
+  @media (min-width: 60em) {
+    background: $brown16 url(/img/create.png) no-repeat bottom right;
+    background-size: contain;
+    padding-right: 25%;
+
+    a {
+      max-width: 17.942em;
+    }
+  }
+}
