@@ -1183,17 +1183,17 @@
         <div class="preview">
           <table class="diff">
             <thead>
-              <tr>
-                <th>
-                  <p><strong>Version created by <a href="#page-diff">Jason Godesky</a> on 20 June 2020 8:00 PM</strong></p>
-                  <p><em>Initial text</em></p>
-                  <p><a href="#page-diff">Roll back to this version</a></p>
-                </th>
-                <th>
-                  <p><strong>Version created by <a href="#page-diff">Giulianna Lamanna</a> on 20 June 2020 8:15 PM</strong></p>
-                  <p><em>Updated some stuff</em></p>
-                  <p class="current">Current version</p>
-                </th>
+              <tr class="version">
+                <th>Version created by <a href="#page-diff">Jason Godesky</a> on 20 June 2020 8:00 PM</th>
+                <th>Version created by <a href="#page-diff">Giulianna Lamanna</a> on 20 June 2020 8:15 PM</th>
+              </tr>
+              <tr class="msg">
+                <th>Initial text</th>
+                <th>Updated some stuff</th>
+              </tr>
+              <tr class="rollback">
+                <th><a href="#page-diff">Roll back to this version</a></th>
+                <th class="current">Current version</th>
               </tr>
             </thead>
             <tbody>
@@ -1232,17 +1232,17 @@
           <summary>Example markup</summary>
           <code class="language-markup">&lt;table class="diff"&gt;
   &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;
-        &lt;p&gt;&lt;strong&gt;Version created by &lt;a href="/member/12345"&gt;Jason Godesky&lt;/a&gt; on 20 June 2020 8:00 PM&lt;/strong&gt;&lt;/p&gt;
-        &lt;p&gt;&lt;em&gt;Initial text&lt;/em&gt;&lt;/p&gt;
-        &lt;p&gt;&lt;a href="/path/to/rollback/to/this/version"&gt;Roll back to this version&lt;/a&gt;&lt;/p&gt;
-      &lt;/th&gt;
-      &lt;th&gt;
-        &lt;p&gt;&lt;strong&gt;Version created by &lt;a href="/member/54321"&gt;Giulianna Lamanna&lt;/a&gt; on 20 June 2020 8:15 PM&lt;/strong&gt;&lt;/p&gt;
-        &lt;p&gt;&lt;em&gt;Updated some stuff&lt;/em&gt;&lt;/p&gt;
-        &lt;p class="current"&gt;Current version&lt;/p&gt;
-      &lt;/th&gt;
+    &lt;tr class="version"&gt;
+      &lt;th&gt;Version created by &lt;a href="/member/123"&gt;Jason Godesky&lt;/a&gt; on 20 June 2020 8:00 PM&lt;/th&gt;
+      &lt;th&gt;Version created by &lt;a href="/member/321"&gt;Giulianna Lamanna&lt;/a&gt; on 20 June 2020 8:15 PM&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr class="msg"&gt;
+      &lt;th&gt;Initial text&lt;/th&gt;
+      &lt;th&gt;Updated some stuff&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr class="rollback"&gt;
+      &lt;th&gt;&lt;a href="/path/to/roll/back/to/this/version"&gt;Roll back to this version&lt;/a&gt;&lt;/th&gt;
+      &lt;th class="current"&gt;Current version&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
