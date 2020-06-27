@@ -1,0 +1,26 @@
+section.action-cols {
+  text-align: center;
+
+  h3 {
+    font-family: 'Fontin Sans Small Caps';
+    font-weight: normal;
+    margin-bottom: 1.618em;
+  }
+
+  ul {
+    @extend %unformatted-list;
+
+    @supports (display: grid) {
+      @media (min-width: 50em) {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-gap: 1.618em;
+        width: calc(100% - 1.618em);
+      }
+    }
+  }
+
+  a {
+    width: 100%;
+  }
+}
