@@ -1,0 +1,54 @@
+table.diff {
+  font-family: 'Fontin Sans';
+
+  tr:nth-child(even) td {
+    background: transparent;
+  }
+
+  thead {
+    th {
+      border-bottom: 0;
+      font-weight: normal;
+      position: relative;
+    }
+
+    .version th {
+      padding-top: 1.618em;
+    }
+
+    .msg th {
+      font-style: italic;
+    }
+
+    .rollback th {
+      padding-bottom: 1.618em;
+
+      &.current {
+        color: $brown13;
+      }
+    }
+  }
+
+  tbody th {
+    background: $brown16;
+    border: 0;
+    color: $brown;
+  }
+
+  tbody td {
+    font-family: monospace;
+  }
+
+  del,
+  ins {
+    text-decoration: none;
+  }
+
+  del {
+    background: $del;
+  }
+
+  ins {
+    background: $ins;
+  }
+}

@@ -1177,6 +1177,115 @@
         </section>
       </section>
 
+      <!-- Page diff -->
+      <section id="page-diff" data-category="Content" class="component">
+        <h2>Page diff</h2>
+        <div class="preview">
+          <table class="diff">
+            <thead>
+              <tr class="version">
+                <th>Version created by <a href="#page-diff">Jason Godesky</a> on 20 June 2020 8:00 PM</th>
+                <th>Version created by <a href="#page-diff">Giulianna Lamanna</a> on 20 June 2020 8:15 PM</th>
+              </tr>
+              <tr class="msg">
+                <th>Initial text</th>
+                <th>Updated some stuff</th>
+              </tr>
+              <tr class="rollback">
+                <th><a href="#page-diff">Roll back to this version</a></th>
+                <th class="current">Current version</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th colspan="2">Title</th>
+              </tr>
+              <tr>
+                <td>Test Page</td>
+                <td>Test Page</td>
+              </tr>
+              <tr>
+                <th colspan="2">Path</th>
+              </tr>
+              <tr>
+                <td>/test</td>
+                <td>/test</td>
+              </tr>
+              <tr>
+                <th colspan="2">Parent</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th colspan="2">Body</th>
+              </tr>
+              <tr>
+                <td>This is the original text.</td>
+                <td>This is the <del>original</del><ins>new</ins> text.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;table class="diff"&gt;
+  &lt;thead&gt;
+    &lt;tr class="version"&gt;
+      &lt;th&gt;Version created by &lt;a href="/member/123"&gt;Jason Godesky&lt;/a&gt; on 20 June 2020 8:00 PM&lt;/th&gt;
+      &lt;th&gt;Version created by &lt;a href="/member/321"&gt;Giulianna Lamanna&lt;/a&gt; on 20 June 2020 8:15 PM&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr class="msg"&gt;
+      &lt;th&gt;Initial text&lt;/th&gt;
+      &lt;th&gt;Updated some stuff&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr class="rollback"&gt;
+      &lt;th&gt;&lt;a href="/path/to/roll/back/to/this/version"&gt;Roll back to this version&lt;/a&gt;&lt;/th&gt;
+      &lt;th class="current"&gt;Current version&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th colspan="2"&gt;Title&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Test Page&lt;/td&gt;
+      &lt;td&gt;Test Page&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th colspan="2"&gt;Path&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/test&lt;/td&gt;
+      &lt;td&gt;/test&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th colspan="2"&gt;Parent&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th colspan="2"&gt;Body&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;This is the original text.&lt;/td&gt;
+      &lt;td&gt;This is the &lt;del&gt;original&lt;/del&gt;&lt;ins&gt;new&lt;/ins&gt; text.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>We use this component to compare two versions of the same page. Show the older version on the left (in the first column) and the more recent version on the right (in the second column).</li>
+            <li>The older version never shows any changes, because it serves as the baseline that we compare the more recent version against. The more recent version highlights what changed between them.</li>
+            <li>If the more recent version represents the latest version of the page, use the <em>&ldquo;Current version&rdquo;</em> version demonstrated here. If it does not represent the most recent version, then both versions should provide links in the header that will provide the user to roll the page back to that version.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Place map -->
       <section id="place-map" data-category="Content" class="component">
         <h2>Place map</h2>
