@@ -31,9 +31,7 @@
 
   @import 'components/html/aside';
   @import 'components/html/blockquote';
-  @import 'components/html/figure';
   @import 'components/html/hr';
-  @import 'components/html/img';
   @import 'components/html/link';
   @import 'components/html/list';
   @import 'components/html/button';
@@ -64,13 +62,17 @@
   @import 'components/content/like-unlike';
   @import 'components/content/file-download';
   @import 'components/content/map';
-  @import 'components/content/video';
   @import 'components/content/collapsible';
   @import 'components/content/recent-updates';
   @import 'components/content/page-history';
   @import 'components/content/diff';
   @import 'components/content/create';
   @import 'components/content/action-columns';
+
+  @import 'components/media/figure';
+  @import 'components/media/img';
+  @import 'components/media/thumbnail-gallery';
+  @import 'components/media/video';
 
   @import 'components/meta/component';
   @import 'components/meta/details-markup';
