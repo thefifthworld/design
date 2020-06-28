@@ -1,0 +1,16 @@
+ul.thumbnails {
+  @extend %unformatted-list;
+  margin-right: -1em;
+  overflow: auto;
+
+  li {
+    display: block;
+    float: left;
+    margin: 0 1em 1em 0;
+    width: calc(25% - 1em);
+  }
+
+  img {
+    width: 100%;
+  }
+}
