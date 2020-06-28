@@ -1,0 +1,13 @@
+section.artist {
+  h2 {
+    border-bottom: 0.2em solid $red;
+    color: $red;
+
+    a {
+      color: $red;
+      display: block;
+      text-decoration: none;
+      width: 100%;
+    }
+  }
+}
