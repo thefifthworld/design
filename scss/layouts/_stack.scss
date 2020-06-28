@@ -3,7 +3,7 @@
 }
 
 header.home {
-  background: url(/img/bottom.png) repeat-x bottom center, url(/img/hero.jpg) no-repeat top center;
+  background: url(#{$img}/bottom.png) repeat-x bottom center, url(#{$img}/hero.jpg) no-repeat top center;
   background-size: auto, cover;
   color: #fff;
   overflow: auto;
@@ -53,8 +53,8 @@ section.stack {
   }
 
   &.highlight {
-    background: url(/img/top.png) repeat-x top center,
-      url(/img/bottom.png) repeat-x bottom center;
+    background: url(#{$img}/top.png) repeat-x top center,
+      url(#{$img}/bottom.png) repeat-x bottom center;
     background-color: #000;
     color: #fff;
 
@@ -88,15 +88,15 @@ section.stack {
     }
 
     &.wormwood {
-      background: url(/img/top.png) repeat-x top center,
-        url(/img/bottom.png) repeat-x bottom center,
+      background: url(#{$img}/top.png) repeat-x top center,
+        url(#{$img}/bottom.png) repeat-x bottom center,
         url(https://s3.amazonaws.com/thefifthworld/website/images/wormwood/1400.jpg) no-repeat center;
       background-size: auto, auto, cover;
     }
 
     &.rpg {
-      background: url(/img/top.png) repeat-x top center,
-        url(/img/bottom.png) repeat-x bottom center,
+      background: url(#{$img}/top.png) repeat-x top center,
+        url(#{$img}/bottom.png) repeat-x bottom center,
         url(https://s3.amazonaws.com/thefifthworld/website/images/forest.jpg) no-repeat center;
       background-size: auto, auto, cover;
     }

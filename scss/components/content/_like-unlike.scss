@@ -17,12 +17,12 @@
     }
 
     &.like:before {
-      background: url(/img/icons/black/like.svg) no-repeat center;
+      background: url(#{$icons}/black/like.svg) no-repeat center;
       background-size: contain;
     }
 
     &.unlike:before {
-      background: url(/img/icons/black/like-filled.svg) no-repeat center;
+      background: url(#{$icons}/black/like-filled.svg) no-repeat center;
       background-size: contain;
     }
   }
