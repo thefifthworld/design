@@ -31,9 +31,7 @@
 
   @import 'components/html/aside';
   @import 'components/html/blockquote';
-  @import 'components/html/figure';
   @import 'components/html/hr';
-  @import 'components/html/img';
   @import 'components/html/link';
   @import 'components/html/list';
   @import 'components/html/button';
@@ -71,6 +69,9 @@
   @import 'components/content/diff';
   @import 'components/content/create';
   @import 'components/content/action-columns';
+
+  @import 'components/media/figure';
+  @import 'components/media/img';
 
   @import 'components/meta/component';
   @import 'components/meta/details-markup';
