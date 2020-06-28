@@ -172,48 +172,6 @@
         </section>
       </section>
 
-      <!-- Image -->
-      <section id="img" data-category="HTML Tags" class="component">
-        <h2>Image</h2>
-        <div class="preview">
-          <img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" />
-        </div>
-        <details class="markup">
-          <summary>Example markup</summary>
-          <code class="language-markup">&lt;img src="/img/forest.png" alt="The Suburban Forest, by Nick Pedersen" /&gt;</code>
-        </details>
-        <section class="notes">
-          <ul>
-            <li><em>Every image must have an <code>alt</code> tag!</em> The <code>alt</code> attribute should meaningfully describe the image shown.</li>
-            <li>If you have a hard time coming up with appropriate content for this, that might offer you a hint that you shouldn&rsquo;t use the image. Images that we have a hard time describing usually offer decoration and little else. That means they&rsquo;ll require extra overheard for users without offering anything substantive in return. As we once heard from Edward Tufte, &ldquo;however nice your interface is, it would be better if there were less of it.&rdquo; We find a beauty in simplicity and usability. Have confidence in your design&rsquo;s ability to stand up without such decoration.</li>
-          </ul>
-        </section>
-      </section>
-
-      <!-- Figure -->
-      <section id="figure" data-category="HTML Tags" class="component">
-        <h2>Figure</h2>
-        <div class="preview">
-          <figure>
-            <img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" />
-            <figcaption class="numbered">&ldquo;The Suburban Forest&rdquo; by <a href="https://nick-pedersen.com/">Nick Pedersen</a></figcaption>
-          </figure>
-        </div>
-        <details class="markup">
-          <summary>Example markup</summary>
-          <code class="language-markup">&lt;figure&gt;
-  &lt;img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" /&gt;
-  &lt;figcaption class="numbered"&gt;&amp;ldquo;The Suburban Forest&amp;rdquo; by &lt;a href="https://nick-pedersen.com/"&gt;Nick Pedersen&lt;/a&gt;&lt;/figcaption&gt;
-&lt;/figure&gt;</code>
-        </details>
-        <section class="notes">
-          <ul>
-            <li>Use a figure to present an image or other such embedded media along with a caption.</li>
-            <li>If you add the <code>numbered</code> class to the <code>&lt;figcaption&gt;</code> tag (as in the example above) then a JavaScript enhancement will add <strong>Figure X</strong> to each such caption, numbering all such figures in the order they appear on the page.</li>
-          </ul>
-        </section>
-      </section>
-
       <!-- Basic table -->
       <section id="table" data-category="HTML Tags" class="component">
         <h2>Table</h2>
@@ -868,27 +826,6 @@
         </section>
       </section>
 
-      <!-- Video -->
-      <section id="video" data-category="Content" class="component">
-        <h2>Video</h2>
-        <div class="preview">
-          <div class="video-wrapper">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/j0ke7eOhTJY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-        <details class="markup">
-          <summary>Example markup</summary>
-          <code class="language-markup">&lt;div class="video-wrapper"&gt;
-  &lt;!-- Insert the embed code for your &lt;iframe&gt; from a service like YouTube or Vimeo here. --&gt;
-&lt;/div&gt;</code>
-        </details>
-        <section class="notes">
-          <ul>
-            <li>Use this component to embed videos from YouTube, Vimeo, or other such video hosting services on a page.</li>
-          </ul>
-        </section>
-      </section>
-
       <!-- Collapsible -->
       <section id="collapsible" data-category="Content" class="component">
         <h2>Collapsible</h2>
@@ -1425,6 +1362,116 @@
           <ul>
             <li>We use this component to present members with their options for creating new pages on the Fifth World website.</li>
             <li>Currently, we have the basic new page and file upload versions available. We&rsquo;ll add specialized forms for other types of content over time, and update this component&rsquo;s markup to link to those as they become available.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Image -->
+      <section id="img" data-category="Media" class="component">
+        <h2>Image</h2>
+        <div class="preview">
+          <img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" />
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;img src="/img/forest.png" alt="The Suburban Forest, by Nick Pedersen" /&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li><em>Every image must have an <code>alt</code> tag!</em> The <code>alt</code> attribute should meaningfully describe the image shown.</li>
+            <li>If you have a hard time coming up with appropriate content for this, that might offer you a hint that you shouldn&rsquo;t use the image. Images that we have a hard time describing usually offer decoration and little else. That means they&rsquo;ll require extra overheard for users without offering anything substantive in return. As we once heard from Edward Tufte, &ldquo;however nice your interface is, it would be better if there were less of it.&rdquo; We find a beauty in simplicity and usability. Have confidence in your design&rsquo;s ability to stand up without such decoration.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Figure -->
+      <section id="figure" data-category="Media" class="component">
+        <h2>Figure</h2>
+        <div class="preview">
+          <figure>
+            <img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" />
+            <figcaption class="numbered">&ldquo;The Suburban Forest&rdquo; by <a href="https://nick-pedersen.com/">Nick Pedersen</a></figcaption>
+          </figure>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;figure&gt;
+            &lt;img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" /&gt;
+            &lt;figcaption class="numbered"&gt;&amp;ldquo;The Suburban Forest&amp;rdquo; by &lt;a href="https://nick-pedersen.com/"&gt;Nick Pedersen&lt;/a&gt;&lt;/figcaption&gt;
+            &lt;/figure&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use a figure to present an image or other such embedded media along with a caption.</li>
+            <li>If you add the <code>numbered</code> class to the <code>&lt;figcaption&gt;</code> tag (as in the example above) then a JavaScript enhancement will add <strong>Figure X</strong> to each such caption, numbering all such figures in the order they appear on the page.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Thumbnail gallery -->
+      <section id="thumbnail-gallery" data-category="Media" class="component">
+        <h2>Thumbnail gallery</h2>
+        <div class="preview">
+          <ul class="thumbnails">
+            <li>
+              <a href="#thumbnail-gallery">
+                <img src="https://s3.us-east-1.amazonaws.com/thefifthworld/uploads/wormwood1400.20190916.210914.256x256.jpg" alt="Vulture Priest with Raycat, by Giulianna Maria Lamanna" />
+              </a>
+            </li>
+            <li>
+              <a href="#thumbnail-gallery">
+                <img src="https://s3.us-east-1.amazonaws.com/thefifthworld/uploads/shaman.20190902.173209.256x256.jpg" alt="Wizard, by Giulianna Maria Lamanna" />
+              </a>
+            </li>
+            <li>
+              <a href="#thumbnail-gallery">
+                <img src="https://s3.us-east-1.amazonaws.com/thefifthworld/uploads/knife.20190902.173122.256x256.jpg" alt="Knife, by Giulianna Maria Lamanna" />
+              </a>
+            </li>
+            <li>
+              <a href="#thumbnail-gallery">
+                <img src="https://s3.us-east-1.amazonaws.com/thefifthworld/uploads/bag.20190902.173017.256x256.jpg" alt="Bag, by Giulianna Maria Lamanna" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;ul class="thumbnails"&gt;
+  &lt;!-- Repeat the &lt;li&gt; element for each thumbnail in your gallery --&gt;
+  &lt;li&gt;
+    &lt;a href="/path/to/image/page"&gt;
+      &lt;img src="/path/to/thumbnail" alt="Title of Work, Artist Name" /&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to provide a user with the opportunity to browse through a variety of illustrations or other images.</li>
+            <li>This gallery only works with square thumbnails. Do not use this component to display the full pieces themselves.</li>
+            <li>The markup provided here assumes that each image has a page that you can link to, as art on the Fifth World website does. If you do not have pages for each work, you can skip the links, but this greatly reduces the utility of the component, since it then only displays thumbnails.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Video -->
+      <section id="video" data-category="Media" class="component">
+        <h2>Video</h2>
+        <div class="preview">
+          <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/j0ke7eOhTJY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;div class="video-wrapper"&gt;
+            &lt;!-- Insert the embed code for your &lt;iframe&gt; from a service like YouTube or Vimeo here. --&gt;
+            &lt;/div&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to embed videos from YouTube, Vimeo, or other such video hosting services on a page.</li>
           </ul>
         </section>
       </section>
