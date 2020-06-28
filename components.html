@@ -1408,6 +1408,53 @@
         </section>
       </section>
 
+      <!-- Thumbnail gallery -->
+      <section id="thumbnail-gallery" data-category="Media" class="component">
+        <h2>Thumbnail gallery</h2>
+        <div class="preview">
+          <ul class="thumbnails">
+            <li>
+              <a href="#thumbnail-gallery">
+                <img src="https://s3.us-east-1.amazonaws.com/thefifthworld/uploads/wormwood1400.20190916.210914.256x256.jpg" alt="Vulture Priest with Raycat, by Giulianna Maria Lamanna" />
+              </a>
+            </li>
+            <li>
+              <a href="#thumbnail-gallery">
+                <img src="https://s3.us-east-1.amazonaws.com/thefifthworld/uploads/shaman.20190902.173209.256x256.jpg" alt="Wizard, by Giulianna Maria Lamanna" />
+              </a>
+            </li>
+            <li>
+              <a href="#thumbnail-gallery">
+                <img src="https://s3.us-east-1.amazonaws.com/thefifthworld/uploads/knife.20190902.173122.256x256.jpg" alt="Knife, by Giulianna Maria Lamanna" />
+              </a>
+            </li>
+            <li>
+              <a href="#thumbnail-gallery">
+                <img src="https://s3.us-east-1.amazonaws.com/thefifthworld/uploads/bag.20190902.173017.256x256.jpg" alt="Bag, by Giulianna Maria Lamanna" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;ul class="thumbnails"&gt;
+  &lt;!-- Repeat the &lt;li&gt; element for each thumbnail in your gallery --&gt;
+  &lt;li&gt;
+    &lt;a href="/path/to/image/page"&gt;
+      &lt;img src="/path/to/thumbnail" alt="Title of Work, Artist Name" /&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to provide a user with the opportunity to browse through a variety of illustrations or other images.</li>
+            <li>This gallery only works with square thumbnails. Do not use this component to display the full pieces themselves.</li>
+            <li>The markup provided here assumes that each image has a page that you can link to, as art on the Fifth World website does. If you do not have pages for each work, you can skip the links, but this greatly reduces the utility of the component, since it then only displays thumbnails.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Video -->
       <section id="video" data-category="Media" class="component">
         <h2>Video</h2>
