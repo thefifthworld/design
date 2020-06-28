@@ -83,13 +83,13 @@
       }
 
       &:before {
-        background: url(/img/top.png) repeat-x top center;
+        background: url(#{$img}/top.png) repeat-x top center;
         top: 0;
         z-index: 401;
       }
 
       &:after {
-        background: url(/img/bottom.png) repeat-x bottom center;
+        background: url(#{$img}/bottom.png) repeat-x bottom center;
         bottom: 0;
         z-index: 402;
       }
