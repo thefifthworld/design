@@ -5,7 +5,9 @@ module.exports = {
   entry: './js/src/index.js',
   output: {
     filename: 'bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'js'),
+    publicPath: 'https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/v/1/0/0/'
   },
   module: {
     rules: [

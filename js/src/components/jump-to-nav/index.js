@@ -41,10 +41,11 @@ const onClick = event => {
 
 /**
  * Initializes jump-to navigation.
+ * @param wrappers {Element[]} - An array of elements that are requesting a
+ *   jump-to navigation element.
  */
 
-const initJumpToNav = () => {
-  const wrappers = select('.jump-to-nav')
+const initJumpToNav = wrappers => {
   const wrapper = wrappers && wrappers.length > 0 ? wrappers[0] : null
   const initialized = wrapper ? wrapper.querySelector('select.jump-to-nav') !== null : false
   if (wrapper && !initialized) {

@@ -126,12 +126,14 @@ const submit = async event => {
 
 /**
  * Initialize file upload components.
+ * @param validFormSelector {string} - The selector used to identify a form
+ *   that could have a valid file input.
+ * @param inputs {Element[]} - An array of the file inputs that should have
+ *   their behavior enhanced.
  */
 
-const initFileUploads = () => {
+const initFileUploads = (validFormSelector, inputs) => {
   window.__THEFIFTHWORLD_FILEUPLOADS__ = { croppers: {} }
-  const validFormSelector = 'form[action][method="POST"][enctype="multipart/form-data"]'
-  const inputs = select(`${validFormSelector} input[type="file"]:not(.initialized)`)
   inputs.forEach((input, index) => {
     const id = input.getAttribute('id') || `file-upload-${index + 1}`
     input.setAttribute('id', id)
