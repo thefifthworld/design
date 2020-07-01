@@ -289,9 +289,9 @@ const checkPath = async path => {
 
 const initTitlePathParent = () => {
   const form = document.querySelector('.thefifthworld form.page, form.page.thefifthworld')
-  const title = form.querySelector('input[name="title"]')
-  const path = form.querySelector('input[name="path"]')
-  const parent = form.querySelector('input[name="parent"]')
+  const title = form ? form.querySelector('input[name="title"]') : null
+  const path = form ? form.querySelector('input[name="path"]') : null
+  const parent = form ? form.querySelector('input[name="parent"]') : null
 
   if (title && path && parent) {
     // Set up default path behavior
