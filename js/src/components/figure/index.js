@@ -1,7 +1,11 @@
-import { select, create, removeClass } from '../../utils'
+import { create, removeClass } from '../../utils'
 
-const initFigures = () => {
-  const captions = select('figcaption.numbered')
+/**
+ * Initialize figures that should be numbered.
+ * @param captions {Element[]} - The figure captions that should be numbered.
+ */
+
+const initFigures = captions => {
   captions.forEach((caption, index) => {
     const num = index + 1
     const fig = create('strong', null, null, `Figure ${num}.`)

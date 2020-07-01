@@ -57,10 +57,11 @@ const handleToggle = event => {
 
 /**
  * Initialize collapsible components
+ * @param collapsibles {Element[]} - An array of elements to initialize with
+ *   collapsible behavior.
  */
 
-const initCollapsibles = () => {
-  const collapsibles = select('.collapsible')
+const initCollapsibles = (collapsibles) => {
   collapsibles.forEach(collapsible => {
     const heading = collapsible.querySelector('h1, h2, h3, h4, h5, h6')
     if (heading) {
