@@ -121,10 +121,10 @@ const handleClick = async event => {
 
 /**
  * Initialize like/unlike links.
+ * @param likes {Element[]} - Like/unlock elements that require enhancement.
  */
 
-const initLikes = () => {
-  const likes = select('.likes')
+const initLikes = likes => {
   likes.forEach(wrapper => {
     const link = wrapper.querySelector('a.like, a.unlike')
     if (link) link.addEventListener('click', handleClick)

@@ -1,9 +1,16 @@
 import leaflet from 'leaflet'
 import { select, removeSelector, addClass, hasClass, requestLocation } from '../../utils'
 
-const initMap = async () => {
+/**
+ * Initialize maps.
+ * @param wrappers {Element[]} - An array of the map wrappers that should be
+ *   populated.
+ * @returns {Promise<void>} - A Promise that resolves when the map wrappers
+ *   have been populated.
+ */
+
+const initMap = async wrappers => {
   removeSelector('.leaflet-wrapper .no-js')
-  const wrappers = select('.leaflet-wrapper')
   const worldWrappers = select('.leaflet-wrapper.world')
   const promptLocation = worldWrappers.length === 1
 

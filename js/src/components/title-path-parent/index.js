@@ -285,49 +285,46 @@ const checkPath = async path => {
 
 /**
  * Initialize title, path & parent components.
+ * @param form {Element} - The form element.
+ * @param title {Element} - The title input.
+ * @param path {Element} - The path input.
+ * @param parent {Element} - The parent input.
  */
 
-const initTitlePathParent = () => {
-  const form = document.querySelector('.thefifthworld form.page, form.page.thefifthworld')
-  const title = form ? form.querySelector('input[name="title"]') : null
-  const path = form ? form.querySelector('input[name="path"]') : null
-  const parent = form ? form.querySelector('input[name="parent"]') : null
+const initTitlePathParent = (form, title, path, parent) => {
+  // Set up default path behavior
+  updatePathSync({ target: form })
 
-  if (title && path && parent) {
-    // Set up default path behavior
-    updatePathSync({ target: form })
+  // Update default path when title or parent are changed
+  title.addEventListener('keyup', event => {
+    updatePath(event)
+    updatePathSync(event)
+  })
 
-    // Update default path when title or parent are changed
-    title.addEventListener('keyup', event => {
-      updatePath(event)
-      updatePathSync(event)
-    })
+  // Let the user override the default path
+  path.addEventListener('keyup', updatePathSync)
 
-    // Let the user override the default path
-    path.addEventListener('keyup', updatePathSync)
+  // Provide autocomplete options for the parent field
+  parent.addEventListener('keyup', event => {
+    const db = debounce(() => autocomplete(event.target), 500)
+    db()
+    updatePath(event)
+  })
+  parent.addEventListener('blur', () => {
+    setTimeout(() => {
+      clearAutocomplete(parent)
+    }, 100)
+  })
 
-    // Provide autocomplete options for the parent field
-    parent.addEventListener('keyup', event => {
-      const db = debounce(() => autocomplete(event.target), 500)
-      db()
-      updatePath(event)
-    })
-    parent.addEventListener('blur', () => {
-      setTimeout(() => {
-        clearAutocomplete(parent)
-      }, 100)
-    })
+  // Check path
+  const debouncedCheckpath = debounce(checkPath, 1000)
+  const checkPathOnTitleOrParent = () => { if (hasClass(path, 'use-default')) debouncedCheckpath(path) }
+  title.addEventListener('keyup', checkPathOnTitleOrParent)
+  parent.addEventListener('keyup', checkPathOnTitleOrParent)
+  path.addEventListener('keyup', () => { debouncedCheckpath(path) })
 
-    // Check path
-    const debouncedCheckpath = debounce(checkPath, 1000)
-    const checkPathOnTitleOrParent = () => { if (hasClass(path, 'use-default')) debouncedCheckpath(path) }
-    title.addEventListener('keyup', checkPathOnTitleOrParent)
-    parent.addEventListener('keyup', checkPathOnTitleOrParent)
-    path.addEventListener('keyup', () => { debouncedCheckpath(path) })
-
-    // Hide path
-    hidePath(form)
-  }
+  // Hide path
+  hidePath(form)
 }
 
 export default initTitlePathParent
