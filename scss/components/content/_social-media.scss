@@ -1,0 +1,29 @@
+@mixin social-media ($platform) {
+  .#{$platform} a {
+    background: url(https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/icons/social/#{$platform}.svg) no-repeat center;
+    background-size: contain;
+  }
+}
+
+.social-media {
+  @extend %unformatted-list;
+
+  li {
+    display: inline-block;
+    margin: 0 0.618em 0 0;
+  }
+
+  a {
+    background: #ccc;
+    display: block;
+    font-size: 0;
+    height: 80px;
+    width: 80px;
+  }
+
+  @include social-media('facebook');
+  @include social-media('twitter');
+  @include social-media('github');
+  @include social-media('patreon');
+  @include social-media('web');
+}
