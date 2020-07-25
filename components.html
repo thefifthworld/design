@@ -79,7 +79,7 @@
         <section class="notes">
           <ul>
             <li>Use <a href="#link">links</a> to <em>go somewhere</em>. Use buttons to <em>do something</em>.</li>
-            <li>Use a <a href="button-list">button list</a> to present a selection of buttons, but never place two regular buttons too close to one another. Decide which commits the <em>primary</em> action we expect a user to need, and make all of the other buttons secondary.</li>
+            <li>Use a <a href="#button-list">button list</a> to present a selection of buttons, but never place two regular buttons too close to one another. Decide which commits the <em>primary</em> action we expect a user to need, and make all of the other buttons secondary.</li>
           </ul>
         </section>
       </section>
@@ -1320,6 +1320,109 @@
           <ul>
             <li>We use this component to present the options that members have to administer their accounts on the dashboard page.</li>
             <li>You can reuse this component when you have several actions to present and each one requires a bit more explanation than what you can fit on a button.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Table with actions column -->
+      <section id="table-actions" data-category="Content" class="component">
+        <h2>Table with actions column</h2>
+        <div class="preview">
+          <table>
+            <tcaption><strong>Table 1.</strong> Table with actions column with just one action</tcaption>
+            <thead>
+              <tr>
+                <th>Text</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Row #1</td>
+                <td class="actions"><a href="#table-actions" class="button">Action</a></td>
+              </tr>
+              <tr>
+                <td>Row #2</td>
+                <td class="actions"><a href="#table-actions" class="button">Action</a></td>
+              </tr>
+              <tr>
+                <td>Row #3</td>
+                <td class="actions"><a href="#table-actions" class="button">Action</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table>
+            <tcaption><strong>Table 2.</strong> Table with actions column with multiple actions</tcaption>
+            <thead>
+            <tr>
+              <th>Text</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Row #1</td>
+                <td class="actions">
+                  <a href="#table-actions" class="button">Primary</a>
+                  <a href="#table-actions" class="button secondary">Secondary</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Row #2</td>
+                <td class="actions">
+                  <a href="#table-actions" class="button">Primary</a>
+                  <a href="#table-actions" class="button secondary">Secondary</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Row #3</td>
+                <td class="actions">
+                  <a href="#table-actions" class="button">Primary</a>
+                  <a href="#table-actions" class="button secondary">Secondary</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Text&lt;/th&gt;
+      &lt;th&gt;Actions&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Row #1&lt;/td&gt;
+      &lt;td class="actions"&gt;
+        &lt;a href="#table-actions" class="button"&gt;Primary&lt;/a&gt;
+        &lt;a href="#table-actions" class="button secondary"&gt;Secondary&lt;/a&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Row #2&lt;/td&gt;
+      &lt;td class="actions"&gt;
+        &lt;a href="#table-actions" class="button"&gt;Primary&lt;/a&gt;
+        &lt;a href="#table-actions" class="button secondary"&gt;Secondary&lt;/a&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Row #3&lt;/td&gt;
+      &lt;td class="actions"&gt;
+        &lt;a href="#table-actions" class="button"&gt;Primary&lt;/a&gt;
+        &lt;a href="#table-actions" class="button secondary"&gt;Secondary&lt;/a&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>As always, only use <a href="#table">tables</a> to present <em>tabular data</em>, never for presentation alone. If you would like to present the option to a user to perform one or more actions on each row of a table, you can present an <em>actions column</em> by applying the <code>actions</code> class to each cell in that column.</li>
+            <li>Just as with any other <a href="#button-list">button list</a>, decide which action a member will most likely need and make that the primary action. Make all other actions secondary by applying the <code>secondary</code> class to those buttons.</li>
           </ul>
         </section>
       </section>

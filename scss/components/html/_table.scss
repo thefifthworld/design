@@ -29,6 +29,17 @@ tr:nth-child(even) td {
   background: rgba($brown, 1/15);;
 }
 
+td.actions {
+  display: flex;
+
+  button,
+  a.button,
+  input[type="button"] {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
 tfoot {
   border-top: 0.1em dotted $blue;
 }
