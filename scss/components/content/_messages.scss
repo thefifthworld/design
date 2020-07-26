@@ -1,0 +1,13 @@
+aside.message {
+  background: $blue;
+  color: $white;
+  padding: 1em 2.618em;
+
+  & + aside.message {
+    margin-top: -1em;
+  }
+
+  &.confirm { background: $green; }
+  &.warning { background: $yellow; color: $black; }
+  &.error { background: $red; }
+}
