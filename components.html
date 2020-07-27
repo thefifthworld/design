@@ -801,6 +801,49 @@
         </section>
       </section>
 
+      <!-- Messages -->
+      <section id="messages" data-category="Content" class="component">
+        <h2>Messages</h2>
+        <div class="preview">
+          <aside class="message">
+            <p>This style presents a standard message.</p>
+          </aside>
+          <aside class="message confirm">
+            <p>This style presents a message that confirms that something worked as expected.</p>
+          </aside>
+          <aside class="message warning">
+            <p>This style presents a warning.</p>
+          </aside>
+          <aside class="message error">
+            <p>This style presents a message about a critical error.</p>
+          </aside>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;aside class="message"&gt;
+  &lt;p&gt;This style presents a standard message.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="message confirm"&gt;
+  &lt;p&gt;This style presents a message that confirms that something worked as expected..&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="message warning"&gt;
+  &lt;p&gt;This style presents a warning.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="message error"&gt;
+  &lt;p&gt;This style presents a message about a critical error.&lt;/p&gt;
+&lt;/aside&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use these components to provide feedback to a user about something the user has done. You should not use these components for anything that would appear on the page at all times, even if the user has not done anything, for example.</li>
+            <li>Use the standard version of this component to provide purely informational feedback. If none of the other styles apply, the basic version probably fits.</li>
+            <li>Us the <code>confirm</code> class to tell the user that something she did worked as expected.</li>
+            <li>Use the <code>warning</code> class when the message doesn&rsquo;t relate any critical failure, but the user&rsquo;s action has opened up the possibility of some future difficulty.</li>
+            <li>Use the <code>error</code> class when you have to tell the user about a system failure.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- File download -->
       <section id="file-download" data-category="Content" class="component">
         <h2>File download</h2>
