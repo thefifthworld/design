@@ -1,0 +1,9 @@
+.buttons.page-actions {
+  text-align: center;
+
+  &:before {
+    @extend %hr;
+    content: '';
+    display: block;
+  }
+}
