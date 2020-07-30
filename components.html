@@ -645,9 +645,9 @@
         </section>
       </section>
 
-      <!-- Title, Path & Parent -->
-      <section id="title-path-parent" data-category="Form elements" class="component">
-        <h2>Title, Path &amp; Parent</h2>
+      <!-- Page form -->
+      <section id="page-form" data-category="Form elements" class="component">
+        <h2>Page form</h2>
         <div class="preview">
           <form class="page">
             <label for="title">Title</label>
@@ -662,7 +662,11 @@
               <p class="note">Should this page belong to another one? If so, provide the path to that other page here.</p>
             </label>
             <input id="parent" name="parent" type="text" />
-            <button>Create Page</button>
+            <label for="body">
+              Body
+              <p class="note">You can format your page using <a href="/markdown">Markdown</a>.</p>
+            </label>
+            <textarea id="body" name="body"></textarea>
           </form>
         </div>
         <details class="markup">
@@ -681,11 +685,17 @@
   &lt;/label&gt;
   &lt;input id="parent" name="parent" type="text" /&gt;
   &lt;button&gt;Create Page&lt;/button&gt;
+  &lt;label for="body"&gt;
+    Body
+    &lt;p class="note"&gt;You can format your page using &lt;a href="/markdown"&gt;Markdown&lt;/a&gt;.&lt;/p&gt;
+  &lt;/label&gt;
+  &lt;textarea id="body" name="body"&gt;&lt;/textarea&gt;
 &lt;/form&gt;</code>
         </details>
         <section class="notes">
           <ul>
-            <li>We designed this component specifically for the title, path, and parent fields used when we create and edit pages. These fields relate to each other and to the rest of the wiki in specific ways, so we built some specific JavaScript enhancements around them. We enhance the parent field with an autocomplete to make it easier to find the page you&rsquo;d like to connect this page to. We move the path field out of the way unless you want to override the default, based on the title and parent. And if you create an invalid path, we provide a JavaScript enhancement to warn you and disable the form&rsquo;s submit button.</li>
+            <li>The title, path, and parent fields when we create and edit pages relate to each other and to the rest of the wiki in specific ways. We use JavaScript to enhance the parent field with an autocomplete to make it easier to find the page you&rsquo;d like to connect this page to. We move the path field out of the way unless you want to override the default, based on the title and parent. And if you create an invalid path, we provide a JavaScript enhancement to warn you and disable the form&rsquo;s submit button.</li>
+            <li>A textarea with the name <code>body</code> that appears in a <code>form.page</code> element appears taller than most other textareas for ease of editing long pages.</li>
           </ul>
         </section>
       </section>
