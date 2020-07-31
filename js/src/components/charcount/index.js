@@ -35,4 +35,4 @@ const initCharCount = textareas => {
   })
 }
 
-module.exports = initCharCount
+export default initCharCount
