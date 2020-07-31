@@ -2,10 +2,11 @@ import { create, next, hasClass } from '../../utils'
 
 const getCount = (curr, max) => {
   const remaining = max - curr
+  const chars = curr === 1 ? '1 character' : `${curr} characters`
   if (remaining > 30) {
-    return `${curr} characters (${remaining} left)`
+    return `${chars} (${remaining} left)`
   } else {
-    return `${curr} characters <span class="error">(${remaining} left)</span>`
+    return `${chars} <span class="error">(${remaining} left)</span>`
   }
 }
 
@@ -18,13 +19,19 @@ const getCount = (curr, max) => {
 const initCharCount = textareas => {
   textareas.forEach(textarea => {
     const max = parseInt(textarea.dataset.charCount)
-    const curr = textarea.value.length
-    const txt = getCount(curr, max)
-    const n = next(textarea)
+    const txt = getCount(textarea.value.length, max)
+    let n = next(textarea)
+
+    // If we don't have a counter yet, make one.
     if (!n || !hasClass(n, 'char-count')) {
-      const p = create('p', ['char-count'], null, txt)
-      textarea.insertAdjacentElement('afterend', p)
+      n = create('p', ['char-count'], null, txt)
+      textarea.insertAdjacentElement('afterend', n)
     }
+
+    // Set up event listener.
+    textarea.addEventListener('keyup', () => {
+      n.innerHTML = getCount(textarea.value.length, max)
+    })
   })
 }
 
