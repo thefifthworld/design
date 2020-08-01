@@ -1,4 +1,4 @@
-import { select, create } from '../../utils'
+import { create } from '../../utils'
 
 /**
  * Finds the sections on the page that one could jump to, and assembles an

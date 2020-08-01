@@ -58,7 +58,7 @@ const closest = (el, selector) => {
 
 const next = el => {
   function nextElementSibling (el) {
-    do { el = el.nextSibling; } while ( el && el.nodeType !== 1 )
+    do { el = el.nextSibling } while (el && el.nodeType !== 1)
     return el
   }
 
@@ -74,7 +74,7 @@ const next = el => {
 
 const prev = el => {
   function previousElementSibling (el) {
-    do { el = el.previousSibling; } while ( el && el.nodeType !== 1 )
+    do { el = el.previousSibling } while (el && el.nodeType !== 1)
     return el
   }
 
