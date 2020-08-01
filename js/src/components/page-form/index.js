@@ -291,7 +291,7 @@ const checkPath = async path => {
  * @param parent {Element} - The parent input.
  */
 
-const initTitlePathParent = (form, title, path, parent) => {
+const initPageForm = (form, title, path, parent) => {
   // Set up default path behavior
   updatePathSync({ target: form })
 
@@ -327,4 +327,4 @@ const initTitlePathParent = (form, title, path, parent) => {
   hidePath(form)
 }
 
-export default initTitlePathParent
+export default initPageForm
