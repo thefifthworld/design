@@ -185,7 +185,7 @@ const hidePath = form => {
     const p = create('p', ['path'])
     const em = create('em', null, null, 'Path:')
     const btn = create('button', ['path-toggle'], null, 'Edit')
-    const code = create('code', null, null, path.value)
+    const code = create('code', null, null, fields.path.value)
     p.appendChild(em)
     p.appendChild(code)
     p.appendChild(btn)

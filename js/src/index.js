@@ -55,7 +55,7 @@ const initTitlePathParent = async () => {
   const path = form ? form.querySelector('input[name="path"]') : null
   const parent = form ? form.querySelector('input[name="parent"]') : null
   if (form && title && path && parent) {
-    const init = (await import('./components/title-path-parent')).default
+    const init = (await import('./components/page-form')).default
     init(form, title, path, parent)
   }
 }

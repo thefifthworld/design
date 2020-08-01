@@ -1,4 +1,4 @@
-/* global describe, it, expect */
+/* global describe, it, expect, Event */
 
 import { select } from '../../utils'
 import initCharCount from './index'

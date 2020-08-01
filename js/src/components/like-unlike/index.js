@@ -109,8 +109,9 @@ const handleClick = async event => {
       if (isLike) like(a)
       if (isUnlike) unlike(a)
 
-      const res = await axios.get(url)
-      if (res.status !== 200) {
+      try {
+        await axios.get(url)
+      } catch (err) {
         if (isLike) unlike(a)
         if (isUnlike) like(a)
         showError(a)

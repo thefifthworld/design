@@ -1,4 +1,6 @@
-import { select, create, next, addClass, removeClass, hasClass } from '../../utils'
+/* global requestAnimationFrame */
+
+import { create, next, addClass, removeClass, hasClass } from '../../utils'
 
 /**
  * Collapse a togglable content wrapper.
@@ -27,7 +29,7 @@ const collapse = wrapper => {
 
 const expand = wrapper => {
   const h = wrapper.scrollHeight
-  wrapper.style.height= `${h}px`
+  wrapper.style.height = `${h}px`
 
   const onTransitionEnd = () => {
     wrapper.removeEventListener('transitionend', onTransitionEnd)
