@@ -1,5 +1,7 @@
+/* global FileReader, FormData, XMLHttpRequest */
+
 import Cropper from 'cropperjs'
-import { select, create, closest, nextMatching, addClass } from '../../utils'
+import { create, closest, nextMatching, addClass } from '../../utils'
 
 /**
  * Initialize thumbnailer.
@@ -13,7 +15,7 @@ const initThumbnailer = (label, img) => {
     reader.onload = () => {
       const id = label.getAttribute('for')
       const attrs = { src: reader.result, 'data-cropper': id }
-      const thumbnailer = create('img', [ 'thumbnailer' ], attrs)
+      const thumbnailer = create('img', ['thumbnailer'], attrs)
       const input = create('input', ['initialized'], { name: 'thumbnail', type: 'file' })
       label.insertAdjacentElement('afterend', thumbnailer)
       thumbnailer.insertAdjacentElement('afterend', input)
@@ -148,7 +150,7 @@ const initFileUploads = (validFormSelector, inputs) => {
     if (oldLabel) oldLabel.parentNode.removeChild(oldLabel)
 
     // Add our drag-and-drop label
-    const label = create('label', [ 'drag-and-drop' ], { for: id }, ' or drag it here')
+    const label = create('label', ['drag-and-drop'], { for: id }, ' or drag it here')
     const strong = create('strong', null, null, 'Choose a file')
     label.insertBefore(strong, label.firstChild)
     input.insertAdjacentElement('afterend', label)
