@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { closest, create, select, hasClass, addClass, removeClass } from '../../utils'
+import { closest, create, hasClass, addClass, removeClass } from '../../utils'
 
 /**
  * Return the count element and the number inside it associated with a
@@ -12,7 +12,7 @@ import { closest, create, select, hasClass, addClass, removeClass } from '../../
 const getCount = link => {
   const wrapper = closest(link, '.likes')
   const count = wrapper ? wrapper.querySelector('.count') : null
-  const num = count ? parseInt(count.innerText) : NaN
+  const num = count ? parseInt(count.innerHTML) : NaN
   return { count, num }
 }
 
@@ -43,11 +43,11 @@ const like = link => {
   flipURLs(link)
   removeClass(link, 'like')
   addClass(link, 'unlike')
-  link.innerText = 'Unlike'
+  link.innerHTML = 'Unlike'
 
   const { count, num } = getCount(link)
   if (!isNaN(num)) {
-    count.innerText = num + 1
+    count.innerHTML = num + 1
   }
 }
 
@@ -60,11 +60,11 @@ const unlike = link => {
   flipURLs(link)
   removeClass(link, 'unlike')
   addClass(link, 'like')
-  link.innerText = 'Like'
+  link.innerHTML = 'Like'
 
   const { count, num } = getCount(link)
   if (!isNaN(num)) {
-    count.innerText = num - 1
+    count.innerHTML = num - 1
   }
 }
 
