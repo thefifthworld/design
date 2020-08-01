@@ -25,6 +25,25 @@ describe('initPageForm', () => {
     expect(document.body.innerHTML).toEqual('<main class="thefifthworld"><form class="page"><label for="title">Title</label><input id="title" name="title" type="text"><p class="path"><em>Path:</em><code></code><button class="path-toggle">Edit</button></p><label for="path" class="visually-hidden">Path</label><input id="path" name="path" type="text" class="use-default visually-hidden"><label for="parent">Parent</label><input id="parent" name="parent" type="text"></form></main>')
   })
 
+  it('shows the path on demand', () => {
+    document.body.innerHTML = '<main class="thefifthworld"><form class="page"><label for="title">Title</label><input id="title" name="title" type="text" /><label for="path">Path</label><input id="path" name="path" type="text" /><label for="parent">Parent</label><input id="parent" name="parent" type="text" /></form></main>'
+    init()
+    const btn = document.querySelector('.path-toggle')
+    btn.dispatchEvent(new Event('click'))
+    expect(document.body.innerHTML).toEqual('<main class="thefifthworld"><form class="page"><label for="title">Title</label><input id="title" name="title" type="text"><label for="path" class="">Path</label><input id="path" name="path" type="text" class="use-default"><label for="parent">Parent</label><input id="parent" name="parent" type="text"></form></main>')
+  })
+
+  it('stops trying to figure out the path for you if you write something yourself', () => {
+    document.body.innerHTML = '<main class="thefifthworld"><form class="page"><label for="title">Title</label><input id="title" name="title" type="text" /><label for="path">Path</label><input id="path" name="path" type="text" /><label for="parent">Parent</label><input id="parent" name="parent" type="text" /></form></main>'
+    init()
+    const btn = document.querySelector('.path-toggle')
+    btn.dispatchEvent(new Event('click'))
+    const input = document.getElementById('path')
+    input.value = '/this-is-a-test'
+    input.dispatchEvent(new Event('keyup'))
+    expect(input.className).toEqual('')
+  })
+
   it('updates the path when you update the title', () => {
     document.body.innerHTML = '<main class="thefifthworld"><form class="page"><label for="title">Title</label><input id="title" name="title" type="text" /><label for="path">Path</label><input id="path" name="path" type="text" /><label for="parent">Parent</label><input id="parent" name="parent" type="text" /></form></main>'
     init()
