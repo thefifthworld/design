@@ -423,6 +423,23 @@
         </section>
       </section>
 
+      <!-- Textarea with character count -->
+      <section id="textarea-charcount" data-category="Form elements" class="component">
+        <h2>Textarea with character count</h2>
+        <div class="preview">
+          <textarea data-char-count="240"></textarea>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;textarea data-char-count="240"&gt;&lt;/textarea&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component when you ask a user for a large amount of text that must not exceed a particular number of characters. This adds a JavaScript enhancement that counts the number of characters used so far and tells the user how many characters she has left.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Select -->
       <section id="select" data-category="Form elements" class="component">
         <h2>Select</h2>
@@ -661,7 +678,7 @@
               Parent
               <p class="note">Should this page belong to another one? If so, provide the path to that other page here.</p>
             </label>
-            <input id="parent" name="parent" type="text" />
+            <input id="parent" name="parent" type="text" autocomplete="off" />
             <label for="body">
               Body
               <p class="note">You can format your page using <a href="/markdown">Markdown</a>.</p>
@@ -683,8 +700,7 @@
     Parent
     &lt;p class="note"&gt;Should this page belong to another one? &lt;span class="instructions"&gt;If so, provide the path to that other page here.&lt;/span&gt;&lt;/p&gt;
   &lt;/label&gt;
-  &lt;input id="parent" name="parent" type="text" /&gt;
-  &lt;button&gt;Create Page&lt;/button&gt;
+  &lt;input id="parent" name="parent" type="text" autocomplete="off" /&gt;
   &lt;label for="body"&gt;
     Body
     &lt;p class="note"&gt;You can format your page using &lt;a href="/markdown"&gt;Markdown&lt;/a&gt;.&lt;/p&gt;

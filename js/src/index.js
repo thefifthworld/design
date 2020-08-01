@@ -69,6 +69,7 @@ ready(async () => {
   initComponent('.jump-to-nav', 'jump-to-nav')
   initComponent('.likes', 'like-unlike')
   initComponent('.leaflet-wrapper', 'map')
+  initComponent('textarea[data-char-count]', 'charcount')
 
   // Components that take a little more specialized attention to properly load
   initFileUploads()
