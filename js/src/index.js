@@ -64,14 +64,14 @@ ready(async () => {
   initTypography() // There's always text.
 
   // Common components
-  initComponent('.collapsible', 'collapsible')
-  initComponent('figcaption.numbered', 'figure')
-  initComponent('.jump-to-nav', 'jump-to-nav')
-  initComponent('.likes', 'like-unlike')
-  initComponent('.leaflet-wrapper', 'map')
-  initComponent('textarea[data-char-count]', 'charcount')
+  await initComponent('.collapsible', 'collapsible')
+  await initComponent('figcaption.numbered', 'figure')
+  await initComponent('.jump-to-nav', 'jump-to-nav')
+  await initComponent('.likes', 'like-unlike')
+  await initComponent('.leaflet-wrapper', 'map')
+  await initComponent('textarea[data-char-count]', 'charcount')
 
   // Components that take a little more specialized attention to properly load
-  initFileUploads()
-  initTitlePathParent()
+  await initFileUploads()
+  await initTitlePathParent()
 })
