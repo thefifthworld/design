@@ -14,7 +14,7 @@ const initThumbnailer = (label, img) => {
     const reader = new FileReader()
     reader.onload = () => {
       const id = label.getAttribute('for')
-      const attrs = { src: reader.result, 'data-cropper': id }
+      const attrs = { src: reader.result, 'data-cropper': id, height: '300', width: '300' }
       const thumbnailer = create('img', ['thumbnailer'], attrs)
       const input = create('input', ['initialized'], { name: 'thumbnail', type: 'file' })
       label.insertAdjacentElement('afterend', thumbnailer)
