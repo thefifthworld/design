@@ -78,9 +78,7 @@ const drop = event => {
  */
 
 const choose = event => {
-  console.log(event)
   const label = nextMatching(event.target, 'label')
-  console.log(label)
   receive(label, event.target)
 }
 
