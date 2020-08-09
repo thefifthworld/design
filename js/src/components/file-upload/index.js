@@ -92,10 +92,9 @@ const choose = event => {
 
 const receive = (label, input) => {
   label.innerHTML = `Uploading <strong>${input.files[0].name}</strong>`
+  destroyThumbnailer(label)
   if (input.files.length > 0 && input.files[0].type.startsWith('image/')) {
     initThumbnailer(label, input.files[0])
-  } else {
-    destroyThumbnailer(label)
   }
 }
 
