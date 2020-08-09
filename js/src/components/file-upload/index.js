@@ -69,6 +69,29 @@ const drop = event => {
   const id = label.getAttribute('for')
   const input = document.getElementById(id)
   input.files = event.dataTransfer.files
+  receive(label, input)
+}
+
+/**
+ * Event handler for the file input event.
+ * @param event {Objec} - The file input event.
+ */
+
+const choose = event => {
+  console.log(event)
+  const label = nextMatching(event.target, 'label')
+  console.log(label)
+  receive(label, event.target)
+}
+
+/**
+ * Updates the label and the thumbnailer.
+ * @param label {Element} - The label element.
+ * @param input {Element} - The file input element.
+ */
+
+const receive = (label, input) => {
+  label.innerHTML = `Uploading <strong>${input.files[0].name}</strong>`
   if (input.files.length > 0 && input.files[0].type.startsWith('image/')) {
     initThumbnailer(label, input.files[0])
   } else {
@@ -160,6 +183,7 @@ const initFileUploads = (validFormSelector, inputs) => {
     label.addEventListener('dragenter', stop)
     label.addEventListener('dragleave', stop)
     label.addEventListener('dragover', stop)
+    input.addEventListener('input', choose)
   })
 }
 
