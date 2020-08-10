@@ -123,23 +123,22 @@ const getFileFromCanvas = (canvas, filename) => {
 const submit = async event => {
   stop(event)
   const data = new FormData(event.target)
+  data.delete('thumbnail')
   const files = Array.from(event.target.querySelectorAll('input[type="file"]'))
   for (const file of files) {
     const id = file.getAttribute('id')
-    if (window.__THEFIFTHWORLD_FILEUPLOADS__[id]) {
-      const canvas = window.__THEFIFTHWORLD_FILEUPLOADS__[id].getCroppedCanvas({ height: 256, width: 256, imageSmoothingQuality: 'high' })
+    if (window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]) {
+      const canvas = window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].getCroppedCanvas({ height: 256, width: 256, imageSmoothingQuality: 'high' })
       const thumbnail = await getFileFromCanvas(canvas, 'thumbnail.png')
-      data.append('thumbnail', thumbnail)
+      if (thumbnail.constructor.name === 'Blob') data.append('thumbnail', thumbnail)
     }
   }
 
   const request = new XMLHttpRequest()
 
   request.addEventListener('load', event => {
-    const res = JSON.parse(event.target.responseText)
-    const { protocol, hostname, port } = window.location
-    const base = port !== '' ? `${protocol}://${hostname}:${port}` : `${protocol}://${hostname}`
-    if (res.page.path) window.location.href = `${base}${res.page.path}`
+    const url = event.target.responseURL
+    if (url) window.location.href = url
   })
 
   request.open('POST', event.target.getAttribute('action'))
