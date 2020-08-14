@@ -125,7 +125,7 @@ const submit = async event => {
 
   // Some files will take a while to upload. Switch over to the loading style
   // so users know that something is happening.
-  const button = event.target.querySelector('button')
+  const button = event.target.querySelector('.page-actions button')
   if (button) {
     addClass(button, [ 'loading' ])
     button.setAttribute('disabled', 'disabled')
