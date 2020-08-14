@@ -107,7 +107,7 @@ const getFileFromCanvas = (canvas, filename) => {
   return new Promise(resolve => {
     canvas.toBlob(blob => {
       blob.lastModifiedDate = new Date()
-      blob.fileName = filename
+      blob.name = filename
       resolve(blob)
     })
   })
@@ -130,7 +130,7 @@ const submit = async event => {
     if (window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]) {
       const canvas = window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].getCroppedCanvas({ height: 256, width: 256, imageSmoothingQuality: 'high' })
       const thumbnail = await getFileFromCanvas(canvas, 'thumbnail.png')
-      if (thumbnail.constructor.name === 'Blob') data.append('thumbnail', thumbnail)
+      if (thumbnail.constructor.name === 'Blob') data.append('thumbnail', thumbnail, 'thumbnail.png')
     }
   }
 
