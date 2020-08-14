@@ -122,6 +122,16 @@ const getFileFromCanvas = (canvas, filename) => {
 
 const submit = async event => {
   stop(event)
+
+  // Some files will take a while to upload. Switch over to the loading style
+  // so users know that something is happening.
+  const button = event.target.querySelector('button')
+  if (button) {
+    addClass(button, [ 'loading' ])
+    button.setAttribute('disabled', 'disabled')
+  }
+
+  // Gather up the form data, including any possible thumbnail.
   const data = new FormData(event.target)
   data.delete('thumbnail')
   const files = Array.from(event.target.querySelectorAll('input[type="file"]'))
@@ -134,13 +144,12 @@ const submit = async event => {
     }
   }
 
+  // Submit the form.
   const request = new XMLHttpRequest()
-
   request.addEventListener('load', event => {
     const url = event.target.responseURL
     if (url) window.location.href = url
   })
-
   request.open('POST', event.target.getAttribute('action'))
   request.send(data)
 }
