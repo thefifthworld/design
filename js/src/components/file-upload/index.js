@@ -1,6 +1,6 @@
 /* global FileReader, FormData, XMLHttpRequest */
 
-import Cropper from 'cropperjs'
+import Croppie from 'croppie'
 import { create, closest, nextMatching, addClass } from '../../utils'
 
 /**
@@ -14,18 +14,22 @@ const initThumbnailer = (label, img) => {
     const reader = new FileReader()
     reader.onload = () => {
       const id = label.getAttribute('for')
-      const attrs = { src: reader.result, 'data-cropper': id }
-      const thumbnailer = create('img', ['thumbnailer'], attrs)
-      const input = create('input', ['initialized'], { name: 'thumbnail', type: 'file' })
-      label.insertAdjacentElement('afterend', thumbnailer)
-      thumbnailer.insertAdjacentElement('afterend', input)
-      const opts = {
-        aspectRatio: 1,
-        center: false,
-        guides: false
-      }
-      const cropper = new Cropper(thumbnailer, opts)
-      window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id] = cropper
+      const wrapper = create('div', ['thumbnailer'], { 'data-cropper': id })
+      label.insertAdjacentElement('afterend', wrapper)
+
+      const lbl = create('label', ['cropper'], null, 'Set thumbnail')
+      const img = create('img', ['thumbnailer'], { src: reader.result })
+      const inp = create('input', ['initialized'], { name: 'thumbnail', type: 'file' })
+      wrapper.appendChild(lbl)
+      wrapper.appendChild(img)
+      wrapper.appendChild(inp)
+
+      const crop = new Croppie(img, {
+        boundary: { height: 356, width: 356 },
+        viewport: { height: 256, width: 256 },
+        showZoomer: true
+      })
+      window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id] = crop
     }
     reader.readAsDataURL(img)
   }
@@ -39,13 +43,14 @@ const initThumbnailer = (label, img) => {
 
 const destroyThumbnailer = label => {
   const thumbnailer = nextMatching(label, '.thumbnailer')
-  const input = nextMatching(label, 'input[type="file"][name="thumbnail"].initialized')
   if (thumbnailer) {
-    const id = label.getAttribute('for')
-    if (window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]) window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].destroy()
+    const id = thumbnailer.dataset ? thumbnailer.dataset.cropper : undefined
+    if (id !== undefined && window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]) {
+      window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].destroy()
+      delete window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]
+    }
     thumbnailer.parentNode.removeChild(thumbnailer)
   }
-  if (input) input.parentNode.removeChild(input)
 }
 
 /**
@@ -69,10 +74,30 @@ const drop = event => {
   const id = label.getAttribute('for')
   const input = document.getElementById(id)
   input.files = event.dataTransfer.files
+  receive(label, input)
+}
+
+/**
+ * Event handler for the file input event.
+ * @param event {Objec} - The file input event.
+ */
+
+const choose = event => {
+  const label = nextMatching(event.target, 'label')
+  receive(label, event.target)
+}
+
+/**
+ * Updates the label and the thumbnailer.
+ * @param label {Element} - The label element.
+ * @param input {Element} - The file input element.
+ */
+
+const receive = (label, input) => {
+  label.innerHTML = `Uploading <strong>${input.files[0].name}</strong>`
+  destroyThumbnailer(label)
   if (input.files.length > 0 && input.files[0].type.startsWith('image/')) {
     initThumbnailer(label, input.files[0])
-  } else {
-    destroyThumbnailer(label)
   }
 }
 
@@ -87,7 +112,7 @@ const getFileFromCanvas = (canvas, filename) => {
   return new Promise(resolve => {
     canvas.toBlob(blob => {
       blob.lastModifiedDate = new Date()
-      blob.fileName = filename
+      blob.name = filename
       resolve(blob)
     })
   })
@@ -102,26 +127,38 @@ const getFileFromCanvas = (canvas, filename) => {
 
 const submit = async event => {
   stop(event)
+
+  // Some files will take a while to upload. Switch over to the loading style
+  // so users know that something is happening.
+  const button = event.target.querySelector('.page-actions button')
+  if (button) {
+    addClass(button, [ 'loading' ])
+    button.setAttribute('disabled', 'disabled')
+  }
+
+  // Gather up the form data, including any possible thumbnail.
   const data = new FormData(event.target)
+  data.delete('thumbnail')
   const files = Array.from(event.target.querySelectorAll('input[type="file"]'))
   for (const file of files) {
+    const orig = file && file.files && file.files[0] && file.files[0].name ? file.files[0].name : undefined
+    const base = orig ? orig.substr(0, orig.lastIndexOf('.')) : undefined
+    const ext = orig ? orig.substr(orig.lastIndexOf('.')) : undefined
     const id = file.getAttribute('id')
-    if (window.__THEFIFTHWORLD_FILEUPLOADS__[id]) {
-      const canvas = window.__THEFIFTHWORLD_FILEUPLOADS__[id].getCroppedCanvas({ height: 256, width: 256, imageSmoothingQuality: 'high' })
-      const thumbnail = await getFileFromCanvas(canvas, 'thumbnail.png')
-      data.append('thumbnail', thumbnail)
+    if (window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]) {
+      const blob = await window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].result({ type: 'blob', format: 'jpeg', quality: 0.9 })
+      blob.lastModifiedDate = new Date()
+      blob.name = base && ext ? `${base}.thumbnail${ext}` : 'thumbnail.jpg'
+      data.append('thumbnail', blob, blob.name)
     }
   }
 
+  // Submit the form.
   const request = new XMLHttpRequest()
-
   request.addEventListener('load', event => {
-    const res = JSON.parse(event.target.responseText)
-    const { protocol, hostname, port } = window.location
-    const base = port !== '' ? `${protocol}://${hostname}:${port}` : `${protocol}://${hostname}`
-    if (res.page.path) window.location.href = `${base}${res.page.path}`
+    const url = event.target.responseURL
+    if (url) window.location.href = url
   })
-
   request.open('POST', event.target.getAttribute('action'))
   request.send(data)
 }
@@ -160,6 +197,7 @@ const initFileUploads = (validFormSelector, inputs) => {
     label.addEventListener('dragenter', stop)
     label.addEventListener('dragleave', stop)
     label.addEventListener('dragover', stop)
+    input.addEventListener('input', choose)
   })
 }
 

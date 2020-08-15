@@ -169,7 +169,7 @@
   transition: 0.1s ease-in-out;
   width: auto;
 
-  &[disabled] {
+  &[disabled]:not(.loading) {
     background: $black16;
     border: 0.1em solid transparent;
     color: $black13;
@@ -178,6 +178,21 @@
     &.secondary {
       background: $white;
       border: 0.1em solid $black16;
+    }
+  }
+
+  &[disabled].loading {
+    cursor: not-allowed;
+
+    &:before {
+      background: url(https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/img/loading-button.gif) no-repeat center;
+      background-size: contain;
+      content: '';
+      display: inline-block;
+      height: 1em;
+      margin-right: 0.382em;
+      vertical-align: middle;
+      width: 1em;
     }
   }
 }

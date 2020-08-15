@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <title>The Fifth World Design System: Components</title>
-    <link rel="icon" href="https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/favicon.svg" />
-    <link rel=”mask-icon” href=”https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/favicon.svg” color=”#000000" />
+    <link rel="icon" href="https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/icons/favicon.svg" />
+    <link rel=”mask-icon” href=”https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/icons/favicon.svg” color=”#000000" />
     <link rel="apple-touch-icon" href="https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/img/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <link rel="stylesheet" href="https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/v/1/0/0/croppie.css" crossorigin="" />
     <link rel="stylesheet" media="all" href="/css/style.css" />
     <link rel="stylesheet" media="all" href="/css/prism.css" />
-    <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.7/cropper.min.css" crossorigin="" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -54,6 +54,10 @@
             <input type="button" value="Regular" />
           </p>
           <p style="text-align: center;">
+            <button class="loading" disabled>Loading</button>
+            <a href="#button" class="button loading" disabled>Loading</a>
+          </p>
+          <p style="text-align: center;">
             <button class="secondary">Secondary</button>
             <a href="#button" class="button secondary">Secondary</a>
             <input type="button" class="secondary" value="Secondary" />
@@ -68,6 +72,9 @@
           <code class="language-markup">&lt;button&gt;Regular&lt;/button&gt;
 &lt;a href="#button" class="button"&gt;Regular&lt;/a&gt;
 &lt;input type="button" value="Regular" /&gt;
+
+&lt;button class="loading" disabled&gt;Loading&lt;/button&gt;
+&lt;a href="#button" class="button loading" disabled&gt;Loading&lt;/a&gt;
 
 &lt;button class="secondary"&gt;Secondary&lt;/button&gt;
 &lt;a href="#button" class="button secondary"&gt;Secondary&lt;/a&gt;
@@ -582,6 +589,7 @@
           <form method="POST" action="#file-upload" enctype="multipart/form-data">
             <label for="file">File</label>
             <input type="file" name="file" id="file" />
+            <button>Send</button>
           </form>
         </div>
         <details class="markup">
@@ -1747,7 +1755,7 @@
         <h2>Video</h2>
         <div class="preview">
           <div class="video-wrapper">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/j0ke7eOhTJY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/j0ke7eOhTJY" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
           </div>
         </div>
         <details class="markup">
