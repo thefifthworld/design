@@ -22,3 +22,19 @@ input[type="file"].initialized {
     background: lighten($brown16, 10%);
   }
 }
+
+
+.croppie-container .cr-boundary {
+  margin: 1em 0 0 0;
+}
+
+.cr-slider-wrap {
+  margin: 1em 0;
+  width: 356px;
+}
+
+input:not([type="radio"]).cr-slider {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
