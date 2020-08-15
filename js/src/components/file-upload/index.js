@@ -1,6 +1,6 @@
 /* global FileReader, FormData, XMLHttpRequest */
 
-import Cropper from 'cropperjs'
+import Croppie from 'croppie'
 import { create, closest, nextMatching, addClass } from '../../utils'
 
 /**
@@ -14,18 +14,22 @@ const initThumbnailer = (label, img) => {
     const reader = new FileReader()
     reader.onload = () => {
       const id = label.getAttribute('for')
-      const attrs = { src: reader.result, 'data-cropper': id, height: '300', width: '300' }
-      const thumbnailer = create('img', ['thumbnailer'], attrs)
-      const input = create('input', ['initialized'], { name: 'thumbnail', type: 'file' })
-      label.insertAdjacentElement('afterend', thumbnailer)
-      thumbnailer.insertAdjacentElement('afterend', input)
-      const opts = {
-        aspectRatio: 1,
-        center: false,
-        guides: false
-      }
-      const cropper = new Cropper(thumbnailer, opts)
-      window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id] = cropper
+      const wrapper = create('div', ['thumbnailer'], { 'data-cropper': id })
+      label.insertAdjacentElement('afterend', wrapper)
+
+      const lbl = create('label', ['cropper'], null, 'Set thumbnail')
+      const img = create('img', ['thumbnailer'], { src: reader.result })
+      const inp = create('input', ['initialized'], { name: 'thumbnail', type: 'file' })
+      wrapper.appendChild(lbl)
+      wrapper.appendChild(img)
+      wrapper.appendChild(inp)
+
+      const crop = new Croppie(img, {
+        boundary: { height: 356, width: 356 },
+        viewport: { height: 256, width: 256 },
+        showZoomer: true
+      })
+      window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id] = crop
     }
     reader.readAsDataURL(img)
   }
@@ -39,13 +43,14 @@ const initThumbnailer = (label, img) => {
 
 const destroyThumbnailer = label => {
   const thumbnailer = nextMatching(label, '.thumbnailer')
-  const input = nextMatching(label, 'input[type="file"][name="thumbnail"].initialized')
   if (thumbnailer) {
-    const id = label.getAttribute('for')
-    if (window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]) window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].destroy()
+    const id = thumbnailer.dataset ? thumbnailer.dataset.cropper : undefined
+    if (id !== undefined && window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]) {
+      window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].destroy()
+      delete window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]
+    }
     thumbnailer.parentNode.removeChild(thumbnailer)
   }
-  if (input) input.parentNode.removeChild(input)
 }
 
 /**
@@ -136,11 +141,15 @@ const submit = async event => {
   data.delete('thumbnail')
   const files = Array.from(event.target.querySelectorAll('input[type="file"]'))
   for (const file of files) {
+    const orig = file && file.files && file.files[0] && file.files[0].name ? file.files[0].name : undefined
+    const base = orig ? orig.substr(0, orig.lastIndexOf('.')) : undefined
+    const ext = orig ? orig.substr(orig.lastIndexOf('.')) : undefined
     const id = file.getAttribute('id')
     if (window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id]) {
-      const canvas = window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].getCroppedCanvas({ height: 256, width: 256, imageSmoothingQuality: 'high' })
-      const thumbnail = await getFileFromCanvas(canvas, 'thumbnail.png')
-      if (thumbnail.constructor.name === 'Blob') data.append('thumbnail', thumbnail, 'thumbnail.png')
+      const blob = await window.__THEFIFTHWORLD_FILEUPLOADS__.croppers[id].result({ type: 'blob', format: 'jpeg', quality: 0.9 })
+      blob.lastModifiedDate = new Date()
+      blob.name = base && ext ? `${base}.thumbnail${ext}` : 'thumbnail.jpg'
+      data.append('thumbnail', blob, blob.name)
     }
   }
 
