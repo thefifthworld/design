@@ -7,7 +7,17 @@ aside.message {
     margin-top: -1em;
   }
 
+  a {
+    color: $white;
+  }
+
   &.confirm { background: $green; }
-  &.warning { background: $yellow; color: $black; }
   &.error { background: $red; }
+
+  &.warning {
+    background: $yellow;
+    color: $black;
+
+    a { color: $black; }
+  }
 }
