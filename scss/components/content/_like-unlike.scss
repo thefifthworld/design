@@ -1,7 +1,11 @@
 .likes {
+  background: $brown16;
+  border-radius: $border-radius-long;
   color: $brown;
   font-family: 'Fontin Sans';
-  margin: 1.618em 0;
+  margin: 1.618em -1em;
+  padding: 0.618em 1em;
+  width: 16.18em;
 
   a {
     color: $brown;
