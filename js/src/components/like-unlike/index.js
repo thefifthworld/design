@@ -2,18 +2,23 @@ import axios from 'axios'
 import { closest, create, hasClass, addClass, removeClass } from '../../utils'
 
 /**
- * Return the count element and the number inside it associated with a
- * particular like/unlike link.
+ * Update the count in the like/unlike widget.
  * @param link {Element} - The like/unlike link.
- * @returns {{num: number, count: null}} - An object containing the number
- *   currently shown in the `count` span and the span itself.
+ * @param delta {number} - The number by which the like count is changing
+ *   (generally either 1 when someone likes a page, or -1 when someone unlikes
+ *   the page).
  */
 
-const getCount = link => {
+const updateCount = (link, delta) => {
   const wrapper = closest(link, '.likes')
-  const count = wrapper ? wrapper.querySelector('.count') : null
-  const num = count ? parseInt(count.innerHTML) : NaN
-  return { count, num }
+  const count = wrapper ? wrapper.querySelector('.count') : false
+  const match = count ? count.innerHTML.match(/\d*/i) : false
+  if (match && Array.isArray(match) && match.length > 0) {
+    const before = parseInt(match[0])
+    const after = before + delta
+    const tense = after === 1 ? 'like' : 'likes'
+    count.innerHTML = `${after}<span class="widont">&nbsp;</span>${tense}`
+  }
 }
 
 /**
@@ -44,11 +49,7 @@ const like = link => {
   removeClass(link, 'like')
   addClass(link, 'unlike')
   link.innerHTML = 'Unlike'
-
-  const { count, num } = getCount(link)
-  if (!isNaN(num)) {
-    count.innerHTML = num + 1
-  }
+  updateCount(link, 1)
 }
 
 /**
@@ -61,11 +62,7 @@ const unlike = link => {
   removeClass(link, 'unlike')
   addClass(link, 'like')
   link.innerHTML = 'Like'
-
-  const { count, num } = getCount(link)
-  if (!isNaN(num)) {
-    count.innerHTML = num - 1
-  }
+  updateCount(link, -1)
 }
 
 /**
@@ -128,7 +125,11 @@ const handleClick = async event => {
 const initLikes = likes => {
   likes.forEach(wrapper => {
     const link = wrapper.querySelector('a.like, a.unlike')
-    if (link) link.addEventListener('click', handleClick)
+    if (link) {
+      addClass(wrapper, 'initialized')
+      link.addEventListener('click', handleClick)
+      wrapper.addEventListener('click', () => link.click())
+    }
   })
 }
 
