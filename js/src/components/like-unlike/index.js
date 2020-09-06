@@ -128,7 +128,11 @@ const handleClick = async event => {
 const initLikes = likes => {
   likes.forEach(wrapper => {
     const link = wrapper.querySelector('a.like, a.unlike')
-    if (link) link.addEventListener('click', handleClick)
+    if (link) {
+      addClass(wrapper, 'initialized')
+      link.addEventListener('click', handleClick)
+      wrapper.addEventListener('click', () => link.click())
+    }
   })
 }
 

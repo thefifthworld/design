@@ -7,6 +7,10 @@
   padding: 0.618em 1em;
   width: 16.18em;
 
+  &.initialized {
+    cursor: pointer;
+  }
+
   a {
     color: $brown;
     display: inline-block;
