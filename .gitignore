@@ -8,3 +8,4 @@ css
 scss/modules/_variables.scss
 js/bundle.js
 js/*.bundle.js
+.DS_Store
