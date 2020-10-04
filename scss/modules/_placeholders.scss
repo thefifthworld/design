@@ -218,3 +218,31 @@
   margin: 1em 0;
   padding: 0;
 }
+
+%code-block {
+  background: $brown16;
+  border: 1px solid $brown13;
+  margin: 1em -1.618em;
+
+  summary,
+  figcaption {
+    border: 0;
+    color: $brown;
+    font-family: 'Fontin Sans Small Caps';
+    margin: 0;
+    padding: 0.618em 1.618em;
+  }
+
+  summary {
+    cursor: pointer;
+  }
+
+  code {
+    border-top: 1px solid $brown13;
+    display: block;
+    max-height: 20em;
+    overflow: scroll;
+    padding: 1em 1.618em;
+    white-space: pre;
+  }
+}
