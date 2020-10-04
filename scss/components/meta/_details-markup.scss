@@ -1,22 +1,8 @@
 details.markup {
   @extend %findable;
-  background: $brown16;
-  border: 1px solid $brown13;
-  margin: 1em -1.618em;
+  @extend %code-block;
+}
 
-  summary {
-    color: $brown;
-    cursor: pointer;
-    font-family: 'Fontin Sans Small Caps';
-    padding: 0.618em 1.618em;
-  }
-
-  code {
-    border-top: 1px solid $brown13;
-    display: block;
-    max-height: 20em;
-    overflow: scroll;
-    padding: 1em 1.618em;
-    white-space: pre;
-  }
+figure.request-response {
+  @extend %code-block;
 }
