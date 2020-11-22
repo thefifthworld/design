@@ -176,7 +176,7 @@ const autocomplete = async field => {
 
 const hidePath = form => {
   const fields = getFieldsFromEvent({ target: form })
-  if (fields && fields.title && fields.path) {
+  if (fields && fields.title && fields.path && !hasClass(fields.path, 'error')) {
     const id = fields.path.getAttribute('id')
     const pathLabel = id ? form.querySelector(`label[for="${id}"]`) : null
     if (pathLabel) addClass(pathLabel, 'visually-hidden')
