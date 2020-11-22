@@ -176,7 +176,7 @@ const autocomplete = async field => {
 
 const hidePath = form => {
   const fields = getFieldsFromEvent({ target: form })
-  if (fields && fields.title && fields.path) {
+  if (fields && fields.title && fields.path && !hasClass(fields.path, 'error')) {
     const id = fields.path.getAttribute('id')
     const pathLabel = id ? form.querySelector(`label[for="${id}"]`) : null
     if (pathLabel) addClass(pathLabel, 'visually-hidden')
@@ -274,8 +274,7 @@ const addPathError = (el, msg) => {
  */
 
 const checkPath = async path => {
-  const url = `${config.apibase}/checkpath`
-  const res = await axios.post(url, { path: path.value })
+  const res = await axios.get(`${config.apibase}/checkpath${path.value}`)
   if (res.data.ok) {
     removePathError(path)
   } else {
