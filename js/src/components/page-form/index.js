@@ -274,8 +274,7 @@ const addPathError = (el, msg) => {
  */
 
 const checkPath = async path => {
-  const url = `${config.apibase}/checkpath`
-  const res = await axios.post(url, { path: path.value })
+  const res = await axios.get(`${config.apibase}/checkpath${path.value}`)
   if (res.data.ok) {
     removePathError(path)
   } else {
