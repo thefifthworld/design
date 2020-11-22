@@ -95,6 +95,7 @@ const showError = link => {
  */
 
 const handleClick = async event => {
+  event.stopPropagation()
   const a = event.target
   clearError(a)
   const isLike = hasClass(a, 'like')
