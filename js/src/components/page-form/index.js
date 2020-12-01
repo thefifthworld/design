@@ -274,12 +274,21 @@ const addPathError = (el, msg) => {
  */
 
 const checkPath = async path => {
-  const res = await axios.get(`${config.apibase}/checkpath${path.value}`)
-  if (res.data.ok) {
-    removePathError(path)
-  } else {
-    addPathError(path, res.data.error)
+  const form = closest(path, 'form')
+  const action = form ? form.getAttribute('action') : null
+  const isEdit = action && action !== '/new' && action === path.value
+  if (!isEdit) {
+    try {
+      const res = await axios.get(`${config.apibase}/checkpath${path.value}`)
+      if (!res.data.ok) {
+        addPathError(path, res.data.error)
+        return
+      }
+    } catch {
+      removePathError(path)
+    }
   }
+  removePathError(path)
 }
 
 /**
