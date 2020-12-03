@@ -21,6 +21,11 @@ input[type="file"].initialized {
   &:hover {
     background: lighten($brown16, 10%);
   }
+
+  @media (min-width: 50em) {
+    margin: 1.618em -2.618em;
+    padding: 4.236em 2.618em;
+  }
 }
 
 
