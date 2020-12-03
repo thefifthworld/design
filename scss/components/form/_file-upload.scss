@@ -10,8 +10,8 @@ input[type="file"].initialized {
   display: block;
   font-family: 'Fontin Sans';
   font-weight: normal;
-  margin: 1em 0;
-  padding: 4.236em;
+  margin: 1.618em -1.618em;
+  padding: 4.236em 1.618em;
   text-align: center;
 
   strong {
@@ -20,6 +20,11 @@ input[type="file"].initialized {
 
   &:hover {
     background: lighten($brown16, 10%);
+  }
+
+  @media (min-width: 50em) {
+    margin: 1.618em -2.618em;
+    padding: 4.236em 2.618em;
   }
 }
 
