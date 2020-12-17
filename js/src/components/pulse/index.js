@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import jsonwebtoken from 'jsonwebtoken'
-import { addClass, removeClass } from '../../utils'
+import { addClass, removeClass, closest } from '../../utils'
 
 /**
  * Writes an appropriate error message to the pulse element.
@@ -11,6 +11,9 @@ import { addClass, removeClass } from '../../utils'
  */
 
 const writeErrorMsg = (el, expire) => {
+  const inForm = Boolean(closest(el, 'form'))
+    ? ' If you submit the form after your session expires, you might lose your work!'
+    : ''
   if (expire > 0) {
     const mins = Math.floor(expire / 60000)
     const minStr = mins === 1 ? '1&nbsp;minute' : `${mins}&nbsp;minutes`
@@ -19,9 +22,9 @@ const writeErrorMsg = (el, expire) => {
     const left = mins > 0
       ? `${minStr} and ${secStr}`
       : secStr
-    el.innerHTML = `<p><strong>Your session will expire soon!</strong> We couldn&rsquo;t reauthenticate you. Your session will expire in ${left}.</p>`
+    el.innerHTML = `<p><strong>Your session will expire soon!</strong> We couldn&rsquo;t reauthenticate you.${inForm} Your session will expire in ${left}.</p>`
   } else {
-    el.innerHTML = '<p><strong>Your session has expired!</strong></p>'
+    el.innerHTML = `<p><strong>Your session has expired!</strong> We couldn&rsquo;t reauthenticate you.${inForm}</p>`
   }
 }
 
