@@ -1,6 +1,11 @@
 table.diff {
   font-family: 'Fontin Sans';
 
+  th,
+  td {
+    width: 50%;
+  }
+
   tr:nth-child(even) td {
     background: transparent;
   }

@@ -1,7 +1,7 @@
 {
   "name": "@thefifthworld/design",
   "description": "The Fifth World Design System",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "CC-BY-SA-4.0",
   "homepage": "https://design.thefifthworld.com",
   "repository": {
@@ -47,6 +47,8 @@
     "core-js": "^3.7.0",
     "core-js-pure": "^3.7.0",
     "croppie": "^2.6.5",
+    "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
     "leaflet": "^1.6.0",
     "lodash.debounce": "^4.0.8",
     "regenerator-runtime": "^0.13.5",

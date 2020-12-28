@@ -70,6 +70,7 @@ ready(async () => {
   await initComponent('.likes', 'like-unlike')
   await initComponent('.leaflet-wrapper', 'map')
   await initComponent('textarea[data-char-count]', 'charcount')
+  await initComponent('.message.pulse:not(.initialized)', 'pulse')
 
   // Components that take a little more specialized attention to properly load
   await initFileUploads()

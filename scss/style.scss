@@ -73,11 +73,16 @@
   @import 'components/content/action-columns';
   @import 'components/content/social-media';
 
-  @import 'components/media/figure';
   @import 'components/media/img';
+  @import 'components/media/figure';
+  @import 'components/media/image-preview';
+  @import 'components/media/cover';
   @import 'components/media/thumbnail-gallery';
   @import 'components/media/artist-listing';
+  @import 'components/media/novel-listing';
   @import 'components/media/video';
+
+  @import 'components/server/pulse';
 
   @import 'components/meta/component';
   @import 'components/meta/details-markup';

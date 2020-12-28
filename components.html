@@ -1672,6 +1672,44 @@ title=Orality&lt;/code&gt;
         </section>
       </section>
 
+      <!-- Image preview -->
+      <section id="image-preview" data-category="Media" class="component">
+        <h2>Image preview</h2>
+        <div class="preview">
+          <div class="image-preview">
+            <img src="https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" />
+          </div>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;div class="image-preview"&gt;
+  &lt;img src="/img/forest.jpg" alt="The Suburban Forest, by Nick Pedersen" /&gt;
+&lt;/div&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component in conjunction with the <a href="#file-upload">file uplad</a> component to show a previously-uploaded image.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Cover -->
+      <section id="cover" data-category="Media" class="component">
+        <h2>Cover</h2>
+        <div class="preview">
+          <img src="https://thefifthworld.s3.us-east-2.stackpathstorage.com/uploads/cover.20190916.211340.jpg" alt="Children of Wormwood" class="cover" />
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;img src="cover.jpg" alt="Title" class="cover" /&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>We use this pattern on novel pages (e.g., <em><a href="https://thefifthworld.com/wormwood">Children of Wormwood</a></em>) in place of an ordinary title to give these works a level of visual distinction. You can use this pattern in similar situations, where a work has something like a &ldquo;cover,&rdquo; or other image that provides the title and introduces the subject.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Thumbnail gallery -->
       <section id="thumbnail-gallery" data-category="Media" class="component">
         <h2>Thumbnail gallery</h2>
@@ -1776,6 +1814,55 @@ title=Orality&lt;/code&gt;
         </section>
       </section>
 
+      <!-- Novel listing -->
+      <section id="novel-listing" data-category="Media" class="component">
+        <h2>Novel listing</h2>
+        <div class="preview">
+          <ul class="novel-listing">
+            <li>
+              <a href="#novel-listing">
+                <img src="https://via.placeholder.com/1538x2325" alt="Novel Title" />
+              </a>
+            </li>
+            <li>
+              <a href="#novel-listing">
+                <img src="https://via.placeholder.com/1538x2325" alt="Novel Title" />
+              </a>
+            </li>
+            <li>
+              <a href="#novel-listing">
+                <img src="https://via.placeholder.com/1538x2325" alt="Novel Title" />
+              </a>
+            </li>
+            <li>
+              <a href="#novel-listing">
+                <img src="https://via.placeholder.com/1538x2325" alt="Novel Title" />
+              </a>
+            </li>
+            <li>
+              <a href="#novel-listing">
+                <img src="https://via.placeholder.com/1538x2325" alt="Novel Title" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;ul class="novel-listing"&gt;
+  &lt;li&gt;
+    &lt;a href="#novel-listing"&gt;
+      &lt;img src="https://via.placeholder.com/1538x2325" alt="Novel Title" /&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component to list a collection of novels. Each element should use the novel&rsquo;s cover and link to it.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Video -->
       <section id="video" data-category="Media" class="component">
         <h2>Video</h2>
@@ -1793,6 +1880,30 @@ title=Orality&lt;/code&gt;
         <section class="notes">
           <ul>
             <li>Use this component to embed videos from YouTube, Vimeo, or other such video hosting services on a page.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Pulse -->
+      <section id="pulse" data-category="Server/API Interaction" class="component">
+        <h2>Pulse</h2>
+        <div class="preview">
+          <aside class="message warning pulse" data-mock-jwt>
+            <p>Your session will only last for 15 minutes.</p>
+          </aside>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;aside class="message warning pulse"&gt;
+  &lt;p&gt;Expiration message.&lt;/p&gt;
+&lt;/aside&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li><a href="https://api.thefifthworld.com/v1/docs/">The Fifth World API</a> uses JSON Web Tokens (JWT) to create a session for users. As we cannot revoke JWT&rsquo;s once we&rsquo;ve issued them, we must issue them for a limited time (15 minutes). To allow members to log in and do things that might take longer than that, we have this &ldquo;pulse&rdquo; component, which re-authenticates the user in the background every 10 minutes.</li>
+            <li>You can potentially use this component on every page that a logged-in user might visit, but it becomes <em>especially</em> important on pages where a user might spend more than 15 minutes and where losing their session could mean losing their work &mdash; like forms where they edit or create a page.</li>
+            <li>Try to provide the most helpful warning message that you can. If you can provide the time that the session will expire in the text that comes from the server, do so. That will provide a much more useful warning to users in the event that something prevents JavaScript from properly operating (which can happen at any time for any number of reasons).</li>
+            <li>In cases where JavaScript and the API all function properly, this component becomes invisible to the end user. Every ten minutes, it renews the session in the background, allowing the user to take her time without having to worry about when her session expires. The component only becomes visible when something goes wrong.</li>
           </ul>
         </section>
       </section>
