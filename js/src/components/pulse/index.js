@@ -11,7 +11,7 @@ import { addClass, removeClass, closest } from '../../utils'
  */
 
 const writeErrorMsg = (el, expire) => {
-  const inForm = Boolean(closest(el, 'form'))
+  const inForm = closest(el, 'form')
     ? ' If you submit the form after your session expires, you might lose your work!'
     : ''
   if (expire > 0) {
