@@ -11,7 +11,7 @@ import { addClass, removeClass, closest } from '../../utils'
  */
 
 const writeErrorMsg = (el, expire) => {
-  const inForm = Boolean(closest(el, 'form'))
+  const inForm = closest(el, 'form')
     ? ' If you submit the form after your session expires, you might lose your work!'
     : ''
   if (expire > 0) {
@@ -97,20 +97,20 @@ const initPulse = elems => {
   const el = elems && Array.isArray(elems) && elems.length > 0 ? elems[0] : null
   if (el) {
     addClass(el, 'initialized')
-  }
 
-  // Are we mocking a JWT cookie for demonstration purposes?
-  if (el && el.dataset.mockJwt !== undefined && Cookies.get('jwt') === undefined) {
-    const min5 = new Date(new Date().getTime() + (5 * 60 * 1000))
-    const userObj = { name: 'Ish', id: 1949, email: 'ish@thefifthworld.com', exp: Math.floor(min5.getTime() / 1000) }
-    const mock = jsonwebtoken.sign(userObj, 'NOTAVERYGOODKEY')
-    Cookies.set('jwt', mock, { expires: min5 })
-  }
+    // Are we mocking a JWT cookie for demonstration purposes?
+    if (el && el.dataset.mockJwt !== undefined && Cookies.get('jwt') === undefined) {
+      const min5 = new Date(new Date().getTime() + (5 * 60 * 1000))
+      const userObj = { name: 'Ish', id: 1949, email: 'ish@thefifthworld.com', exp: Math.floor(min5.getTime() / 1000) }
+      const mock = jsonwebtoken.sign(userObj, 'NOTAVERYGOODKEY')
+      Cookies.set('jwt', mock, { expires: min5 })
+    }
 
-  // Start loop
-  const jwt = Cookies.get('jwt')
-  const timeout = getExpiration(jwt) - 120000
-  setTimeout(async () => { await reauth(el, jwt) }, timeout)
+    // Start loop
+    const jwt = Cookies.get('jwt')
+    const timeout = getExpiration(jwt) - 120000
+    setTimeout(async () => { await reauth(el, jwt) }, timeout)
+  }
 }
 
 export default initPulse
