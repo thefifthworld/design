@@ -10,8 +10,15 @@ const initTypography = () => {
   ready(() => {
     const root = document.querySelector('.thefifthworld')
     if (root) {
-      const smarty = smartypants(root.innerHTML)
-      root.innerHTML = typogr.typogrify(smarty)
+      const textareasMarked = root.innerHTML.replace(/<textarea((\r|\n|.)*?)<\/textarea>/gm, 'BEGINTEXTAREA<textarea$1</textarea>ENDTEXTAREA')
+      const strings = textareasMarked.split(/BEGINTEXTAREA((\r|\n|.)*?)ENDTEXTAREA/gm)
+      for (let i = 0; i < strings.length; i++) {
+        if (!strings[i].startsWith('<textarea')) {
+          const smarty = smartypants(strings[i])
+          strings[i] = typogr.typogrify(smarty)
+        }
+      }
+      root.innerHTML = strings.filter(str => str !== '>').join('')
     }
   })
 }

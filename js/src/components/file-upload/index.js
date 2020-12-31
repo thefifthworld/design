@@ -102,23 +102,6 @@ const receive = (label, input) => {
 }
 
 /**
- * Turn a canvas into a file.
- * @param canvas {HTMLCanvasElement} - An HTML canvas element.
- * @param filename {string} - The filename to use for the file created.
- * @returns {Promise<File>} - A PNG file created from the canvas.
- */
-
-const getFileFromCanvas = (canvas, filename) => {
-  return new Promise(resolve => {
-    canvas.toBlob(blob => {
-      blob.lastModifiedDate = new Date()
-      blob.name = filename
-      resolve(blob)
-    })
-  })
-}
-
-/**
  * Run form submission with thumbnail handling.
  * @param event {Object} - The event object.
  * @returns {Promise<void>} - A Promise that resolves when the form has been
@@ -132,7 +115,7 @@ const submit = async event => {
   // so users know that something is happening.
   const button = event.target.querySelector('.page-actions button')
   if (button) {
-    addClass(button, [ 'loading' ])
+    addClass(button, ['loading'])
     button.setAttribute('disabled', 'disabled')
   }
 
