@@ -943,15 +943,43 @@
         <details class="markup">
           <summary>Example markup</summary>
           <code class="language-markup">&lt;aside class="collapsible"&gt;
-            &lt;h3&gt;Missing Games&lt;/h3&gt;
-            &lt;!-- Content --&gt;
-            &lt;/aside&gt;</code>
+  &lt;h3&gt;Missing Games&lt;/h3&gt;
+  &lt;!-- Content --&gt;
+&lt;/aside&gt;</code>
         </details>
         <section class="notes">
           <ul>
             <li>You can make the content of any <a href="#aside">aside</a> collapsible by adding the <code>collapsible</code> class. The first element in the <code>&lt;aside&gt;</code> must be a heading tag, which will be used to toggle the collapsible area open and closed. Any other content can follow.</li>
             <li>If JavaScript fails for any reason, collapsible areas render like any other aside.</li>
             <li>Do <em>not</em> place important content inside a collapsible element! Collapsible elements hide items from users, so anything you put into one is something that many users will never see, so you want to make sure that&rsquo;s OK. For example, we use collapsible areas for metadata forms. If a user never realizes these options exist, that&rsquo;s OK, because these should be automatically populated with appropriate values, and other users can always correct any problems that may pop up later.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Icon section -->
+      <section id="icon-section" data-category="Content" class="component">
+        <h2>Icon sections</h2>
+        <div class="preview">
+          <section class="icon">
+            <img src="https://thefifthworld.s3.us-east-2.wasabisys.com/design/icons/clubs.svg" alt="Clubs" class="icon" />
+            <h2>Clubs</h2>
+            <p>Spirituality doesn't mean something supernatural. It refers to the magic that animates everything that lives, that gives us life and personhood, awareness and the ability to affect the world around us. We see spirit in everything that acts like a person: the spells sung by the songbirds who entice the world to bloom, the eloquence of trees creaking in the wind, or the slicing intellect of glass knapped to a perfect point.</p>
+            <p>When we face our own spirituality, we see where things begin. We see the things we value, the things we believe, the things we hold dear, the things that motivate and drive us. When we need things from the east, we face needs for honesty and authenticity, the need to act in a way more true to ourselves.</p>
+          </section>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;section class="icon"&gt;
+  &lt;img src="/path/to/icon.svg" alt="Alt text for your icon" class="icon" /&gt;
+  &lt;h2&gt;Clubs&lt;/h2&gt;
+  &lt;p&gt;Spirituality doesn't mean...&lt;/p&gt;
+  &lt;p&gt;When we face...&lt;/p&gt;
+&lt;/section&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this component when you have a series of subsequent sections that each have <a href="foundations.html#iconography">an icon</a> associated with them.</a></li>
+            <li>As with all icon usage, make sure that you use them consistently and to communicate something. Do not use this component in a merely decorative way. Ask, &ldquo;What information do we convey to the reader by presenting this icon?&rdquo; If you don&rsquo;t have a solid, meaningful answer to that question, don&rsquo;t use an icon, or this component.</li>
           </ul>
         </section>
       </section>

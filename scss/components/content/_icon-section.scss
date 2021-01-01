@@ -1,0 +1,14 @@
+section.icon {
+  img.icon {
+    max-width: 11.089em;
+  }
+
+  @media (min-width: 50em) {
+    padding-left: 12.707em;
+
+    img.icon {
+      float: left;
+      margin-left: -12.707em;
+    }
+  }
+}
