@@ -1,23 +1,27 @@
 aside.message {
-  background: $blue;
-  color: $white;
-  padding: 1em 2.618em;
+  background: $blue13;
+  border: 0.236em solid $blue;
+  padding: 0.382em 1.618em;
 
   & + aside.message {
     margin-top: -1em;
   }
 
-  a {
-    color: $white;
+  &.confirm {
+    background: $green13;
+    border: 0.236em solid $green;
   }
 
-  &.confirm { background: $green; }
-  &.error { background: $red; }
+  &.error {
+    background: $red;
+    border: 0.236em solid $red;
+    color: $white;
+
+    a { color: $white; }
+  }
 
   &.warning {
-    background: $yellow;
-    color: $black;
-
-    a { color: $black; }
+    background: $yellow13;
+    border: 0.236em solid $yellow;
   }
 }
