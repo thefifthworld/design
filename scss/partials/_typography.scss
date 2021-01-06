@@ -32,6 +32,18 @@ h3, .h3like { @extend %h3; }
 h4, .h4like { @extend %h4; }
 h5, .h5like { @extend %h5; }
 
+.header-anchor,
+.header-anchor:visited {
+  color: $brown16;
+  float: left;
+  margin-left: -1em;
+  text-decoration: none;
+
+  &:hover {
+    color: $blue;
+  }
+}
+
 .caps {
   font-family: 'Fontin Sans Small Caps';
   text-transform: lowercase;
