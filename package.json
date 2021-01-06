@@ -24,6 +24,7 @@
   ],
   "main": "index.js",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "npm-run-all tokens dev:css:compile dev:watch",
     "dev:css:compile": "node-sass-chokidar --source-map true ./scss --output ./css",
     "dev:sass:build": "npm-run-all -p dev:css:compile css:postcss",
@@ -44,8 +45,8 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^3.7.0",
-    "core-js-pure": "^3.7.0",
+    "core-js": "^3.8.2",
+    "core-js-pure": "^3.8.2",
     "croppie": "^2.6.5",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
@@ -56,11 +57,11 @@
     "typogr": "^0.6.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "autoprefixer": "^9.8.6",
-    "babel-loader": "^8.2.1",
+    "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.13",
     "chokidar-cli": "^2.1.0",
     "jest": "^25.5.4",
@@ -72,6 +73,9 @@
     "standard": "^14.3.4",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
+  },
+  "resolutions": {
+    "axios": "^0.21.1"
   },
   "babel": {
     "presets": [
