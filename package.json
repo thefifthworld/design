@@ -43,7 +43,7 @@
     "test": "standard 'js/src/*.js' 'js/src/**/*.js' && jest"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.7.0",
     "core-js-pure": "^3.7.0",
     "croppie": "^2.6.5",
