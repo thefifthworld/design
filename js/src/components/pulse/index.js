@@ -68,9 +68,9 @@ const sendErrorMsg = (el, jwt) => {
 
 const reauth = async (el) => {
   try {
-    let jwt = Cookies.get('jwt')
-    jwt = await axios.post('https://api.thefifthworld.com/v1/members/reauth', null, { headers: { Authorization: `Bearer ${jwt}` } })
-    Cookies.set('jwt', jwt)
+    const jwt = Cookies.get('jwt')
+    const res = await axios.post(el.dataset.reauth, null, { headers: { Authorization: `Bearer ${jwt}` } })
+    Cookies.set('jwt', res.data)
     setTimeout(async () => { await reauth(el) }, 10 * 60 * 1000)
   } catch (err) {
     sendErrorMsg(el, jwt)
