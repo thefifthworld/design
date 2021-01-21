@@ -99,14 +99,6 @@ const initPulse = elems => {
   if (el) {
     addClass(el, 'initialized')
 
-    // Are we mocking a JWT cookie for demonstration purposes?
-    if (el && el.dataset.mockJwt !== undefined && Cookies.get('jwt') === undefined) {
-      const min5 = new Date(new Date().getTime() + (5 * 60 * 1000))
-      const userObj = { name: 'Ish', id: 1949, email: 'ish@thefifthworld.com', exp: Math.floor(min5.getTime() / 1000) }
-      const mock = jsonwebtoken.sign(userObj, 'NOTAVERYGOODKEY')
-      Cookies.set('jwt', mock, { expires: min5 })
-    }
-
     // Start loop
     const jwt = Cookies.get('jwt')
     const timeout = getExpiration(jwt) - 120000
