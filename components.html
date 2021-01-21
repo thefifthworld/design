@@ -1916,13 +1916,23 @@ title=Orality&lt;/code&gt;
       <section id="pulse" data-category="Server/API Interaction" class="component">
         <h2>Pulse</h2>
         <div class="preview">
-          <aside class="message warning pulse" data-mock-jwt>
+          <section class="login pulse-demo">
+            <form data-auth="https://api.thefifthworld.com/v1/members/auth">
+              <p>Use this form to log in to try out the pulse component.</p>
+              <label for="pulse-demo-email">Email</label>
+              <input type="email" name="email" id="pulse-demo-email" placeholder="you@example.com" />
+              <label for="pulse-demo-passphrase">Passphrase</label>
+              <input type="text" name="passphrase" id="pulse-demo-passphrase" placeholder="Whisper your secret passphrase" />
+              <p class="buttons"></p>
+            </form>
+          </section>
+          <aside class="message warning pulse" data-reauth="https://api.thefifthworld.com/v1/members/reauth">
             <p>Your session will only last for 15 minutes.</p>
           </aside>
         </div>
         <details class="markup">
           <summary>Example markup</summary>
-          <code class="language-markup">&lt;aside class="message warning pulse"&gt;
+          <code class="language-markup">&lt;aside class="message warning pulse" data-reauth="https://api.thefifthworld.com/v1/members/reauth"&gt;
   &lt;p&gt;Expiration message.&lt;/p&gt;
 &lt;/aside&gt;</code>
         </details>
