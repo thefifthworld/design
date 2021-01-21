@@ -59,7 +59,6 @@ const sendErrorMsg = (el, jwt) => {
 /**
  * Send a reauthentication request to the API.
  * @param el {Element} - The pulse element.
- * @param jwt {string} - The JSON Web Token for the member's current session.
  * @returns {Promise<void>} - A Promise that resolves once the reauthentication
  *   request has been sent, and the API has returned a response. If it was
  *   successful, a new timeout is set to reauthenticate again in 10 minutes.
@@ -67,10 +66,12 @@ const sendErrorMsg = (el, jwt) => {
  *   message.
  */
 
-const reauth = async (el, jwt) => {
+const reauth = async (el) => {
   try {
-    await axios.post('https://api.thefifthworld.com/v1/members/reauth', null, { headers: { Authorization: `Bearer ${jwt}` } })
-    setTimeout(async () => { await reauth(el, jwt) }, 10 * 60 * 1000)
+    let jwt = Cookies.get('jwt')
+    jwt = await axios.post('https://api.thefifthworld.com/v1/members/reauth', null, { headers: { Authorization: `Bearer ${jwt}` } })
+    Cookies.set('jwt', jwt)
+    setTimeout(async () => { await reauth(el) }, 10 * 60 * 1000)
   } catch (err) {
     sendErrorMsg(el, jwt)
   }
@@ -109,7 +110,7 @@ const initPulse = elems => {
     // Start loop
     const jwt = Cookies.get('jwt')
     const timeout = getExpiration(jwt) - 120000
-    setTimeout(async () => { await reauth(el, jwt) }, timeout)
+    setTimeout(async () => { await reauth(el) }, timeout)
   }
 }
 
