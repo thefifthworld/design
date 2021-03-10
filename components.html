@@ -850,6 +850,30 @@
         </section>
       </section>
 
+      <!-- Sequence -->
+      <section id="sequence" data-category="Navigation" class="component">
+        <h2>Sequence</h2>
+        <div class="preview">
+          <nav class="sequence">
+            <a href="#sequence" class="prev">Link to previous step</a>
+            <a href="#sequence" class="next">Link to next step</a>
+          </nav>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;nav class="sequence"&gt;
+  &lt;a href="/link/to/prev" class="prev"&gt;Link to previous step&lt;/a&gt;
+  &lt;a href="/link/to/next" class="next"&gt;Link to next step&lt;/a&gt;
+&lt;/nav&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this pattern when presenting pages that appear in a sequence, as in a book or a series of chapters.</li>
+            <li>Use an empty <code>&lt;span&gt;</code> tag as a placeholder when there is no previous page (as in the case of the first page in a sequence) or no next page (as in the case of the last page in a sequence).</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Like & Unlike -->
       <section id="like-unlike" data-category="Content" class="component">
         <h2>Like &amp; Unlike</h2>
