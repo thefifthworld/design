@@ -40,7 +40,8 @@ nav.sequence {
     margin: 1em -2.618em;
     width: calc(100% + (2.618em * 2));
 
-    & > a {
+    & > a,
+    & > span {
       display: table-cell;
       width: 50%;
     }
