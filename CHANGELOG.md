@@ -4,6 +4,16 @@
 
 ### v1.0
 
+#### v1.0.2
+
+Released 10 March 2021
+
+##### Added
+
+- The **Pulse** component
+- The **Sequence** component
+- The **Preformatted text** component
+
 #### v1.0.1
 
 Released 4 October 2020
