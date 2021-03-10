@@ -4,13 +4,14 @@ nav.sequence {
     color: $brown;
     display: block;
     margin: 0.618em -1.618em;
-    padding: 0.618em 1.618em;
+    padding: 0.618em 1.618em 1.618em 1.618em;
     text-decoration: none;
 
     &:before {
       color: $brown23;
       display: block;
       font-family: 'Fontin Sans Small Caps';
+      font-weight: normal;
     }
 
     &:hover,
@@ -30,6 +31,18 @@ nav.sequence {
   a.next {
     &:before {
       content: 'Next';
+    }
+  }
+
+  @media (min-width: 45em) {
+    border-spacing: 1em;
+    display: table;
+    margin: 1em -2.618em;
+    width: calc(100% + (2.618em * 2));
+
+    & > a {
+      display: table-cell;
+      width: 50%;
     }
   }
 }
