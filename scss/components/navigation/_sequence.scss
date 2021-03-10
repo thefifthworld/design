@@ -1,0 +1,35 @@
+nav.sequence {
+  a {
+    background: $brown16;
+    color: $brown;
+    display: block;
+    margin: 0.618em -1.618em;
+    padding: 0.618em 1.618em;
+    text-decoration: none;
+
+    &:before {
+      color: $brown23;
+      display: block;
+      font-family: 'Fontin Sans Small Caps';
+    }
+
+    &:hover,
+    &:focus {
+      background: lighten($brown16, 25%);
+    }
+  }
+
+  & > a,
+  a.prev {
+    &:before {
+      content: 'Previous';
+    }
+  }
+
+  & > a + a,
+  a.next {
+    &:before {
+      content: 'Next';
+    }
+  }
+}
