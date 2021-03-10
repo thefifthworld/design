@@ -331,6 +331,30 @@
         </section>
       </section>
 
+      <!-- Preformatted text -->
+      <section id="pre" data-category="HTML Tags" class="component">
+        <h2>Preformatted text</h2>
+        <div class="preview">
+          <pre><code>## Section heading (h2)
+### Subsection (h3)
+#### Sub-subsection (h4)
+##### Do you really need to go down this deep? (h5)</code></pre>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;pre&gt;&lt;code&gt;## Section heading (h2)
+### Subsection (h3)
+#### Sub-subsection (h4)
+##### Do you really need to go down this deep? (h5)&lt;/code&gt;&lt;/pre&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>We use preformatted text to display code, as with the examples on our <a href="https://thefifthworld.com/markdown">Markdown page</a>.</li>
+            <li>The browser renders everything inside the &lt;pre&gt; tag exactly as written, so you won&rsquo;t always find it possible to follow the spacing conventions that you follow elsewhere in your document. For example, we normally use two spaces for each indentation, but you&rsquo;ll see that we had to abandon that in this example.</li>
+          </ul>
+        </section>
+      </section>
+
       <!-- Label -->
       <section id="label" data-category="Form elements" class="component">
         <h2>Label</h2>
@@ -822,6 +846,30 @@
         <section class="notes">
           <ul>
             <li>Use this pattern when a page or section focuses primarily on driving a user to a specific link, and that link has both a title and some sort of description to go along with it. This pattern makes the entire block of text interactive.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Sequence -->
+      <section id="sequence" data-category="Navigation" class="component">
+        <h2>Sequence</h2>
+        <div class="preview">
+          <nav class="sequence">
+            <a href="#sequence" class="prev">Link to previous step</a>
+            <a href="#sequence" class="next">Link to next step</a>
+          </nav>
+        </div>
+        <details class="markup">
+          <summary>Example markup</summary>
+          <code class="language-markup">&lt;nav class="sequence"&gt;
+  &lt;a href="/link/to/prev" class="prev"&gt;Link to previous step&lt;/a&gt;
+  &lt;a href="/link/to/next" class="next"&gt;Link to next step&lt;/a&gt;
+&lt;/nav&gt;</code>
+        </details>
+        <section class="notes">
+          <ul>
+            <li>Use this pattern when presenting pages that appear in a sequence, as in a book or a series of chapters.</li>
+            <li>Use an empty <code>&lt;span&gt;</code> tag as a placeholder when there is no previous page (as in the case of the first page in a sequence) or no next page (as in the case of the last page in a sequence).</li>
           </ul>
         </section>
       </section>
@@ -1916,13 +1964,23 @@ title=Orality&lt;/code&gt;
       <section id="pulse" data-category="Server/API Interaction" class="component">
         <h2>Pulse</h2>
         <div class="preview">
-          <aside class="message warning pulse" data-mock-jwt>
+          <section class="login pulse-demo">
+            <form data-auth="https://api.thefifthworld.com/v1/members/auth">
+              <p>Use this form to log in to try out the pulse component.</p>
+              <label for="pulse-demo-email">Email</label>
+              <input type="email" name="email" id="pulse-demo-email" placeholder="you@example.com" />
+              <label for="pulse-demo-passphrase">Passphrase</label>
+              <input type="text" name="passphrase" id="pulse-demo-passphrase" placeholder="Whisper your secret passphrase" />
+              <p class="buttons"></p>
+            </form>
+          </section>
+          <aside class="message warning pulse" data-reauth="https://api.thefifthworld.com/v1/members/reauth">
             <p>Your session will only last for 15 minutes.</p>
           </aside>
         </div>
         <details class="markup">
           <summary>Example markup</summary>
-          <code class="language-markup">&lt;aside class="message warning pulse"&gt;
+          <code class="language-markup">&lt;aside class="message warning pulse" data-reauth="https://api.thefifthworld.com/v1/members/reauth"&gt;
   &lt;p&gt;Expiration message.&lt;/p&gt;
 &lt;/aside&gt;</code>
         </details>

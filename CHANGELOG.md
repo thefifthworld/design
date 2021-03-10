@@ -4,6 +4,38 @@
 
 ### v1.0
 
+#### v1.0.3
+
+Released 10 March 2021
+
+##### Added
+
+- The **Sequence** component
+- The **Preformatted text** component
+
+##### Changed
+
+- Fixed the **Pulse** component
+
+#### v1.0.2
+
+Released 28 December 2020
+
+##### Added
+
+- The **Pulse** component
+- The **Cover** component
+- The **Novel listing** component
+- The **Image preview** component
+
+##### Changed
+
+- Improved hyphenation rules.
+- Fixed grid on the **File upload** component.
+- Fixed uneven columns in the **Page diff** component.
+- Fix `checkPath` function in the **Page form** component so that it doesn't flag editing as trying to use an existing path.
+- Fixed a bug that could generate multiple click events on the **Like/Unlike** component.
+
 #### v1.0.1
 
 Released 4 October 2020

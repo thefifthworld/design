@@ -36,6 +36,7 @@
   @import 'components/html/list';
   @import 'components/html/button';
   @import 'components/html/table';
+  @import 'components/html/pre';
 
   @import 'layouts/main';
   @import 'layouts/header';
@@ -59,6 +60,7 @@
   @import 'components/navigation/breadcrumbs';
   @import 'components/navigation/panel-link';
   @import 'components/navigation/page-actions';
+  @import 'components/navigation/sequence';
 
   @import 'components/content/error';
   @import 'components/content/messages';

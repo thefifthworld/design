@@ -5,3 +5,13 @@
 .pulse.initialized.error {
   display: block;
 }
+
+.pulse-demo {
+  display: none;
+  visibility: hidden;
+
+  &.initialized {
+    display: block;
+    visibility: visible;
+  }
+}
