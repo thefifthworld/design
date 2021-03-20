@@ -1,7 +1,7 @@
 import axios from 'axios'
 import debounce from 'lodash.debounce'
 import slugify from 'slugify'
-import config from '../../../config.json'
+import config from '../../../src/config.json'
 import {
   create,
   closest,
