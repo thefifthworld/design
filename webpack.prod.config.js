@@ -7,7 +7,7 @@ module.exports = {
     filename: 'bundle.js',
     chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'js/path'),
-    publicPath: 'https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/v/1/0/3/'
+    publicPath: 'https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/v/1/0/4/'
   },
   module: {
     rules: [
