@@ -4,10 +4,10 @@ table {
   width: calc(100% + 2em);
 }
 
-tcaption {
-  display: block;
+caption {
   font-family: 'Fontin Sans Small Caps';
-  margin: 2em 0 1em 0;
+  margin: 2em 0 0.618em 0;
+  text-align: left;
 }
 
 th, td {
