@@ -1,3 +1,7 @@
+& {
+  counter-reset: thefifthworld-tables;
+}
+
 table {
   border-collapse: collapse;
   margin: 1em -1em;
@@ -5,9 +9,14 @@ table {
 }
 
 caption {
+  counter-increment: thefifthworld-tables;
   font-family: 'Fontin Sans Small Caps';
   margin: 2em 0 0.618em 0;
   text-align: left;
+
+  &:before {
+    content: "Table " counter(thefifthworld-tables) ". ";
+  }
 }
 
 th, td {
