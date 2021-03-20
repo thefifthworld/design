@@ -51,4 +51,17 @@ td.actions {
 
 tfoot {
   border-top: 0.1em dotted $blue;
+
+  tr:nth-child(even) td {
+    background: transparent;
+  }
+
+  .footnote {
+    font-size: 0.618em;
+    padding: 1em 0;
+
+    &:before {
+      content: '* ';
+    }
+  }
 }
