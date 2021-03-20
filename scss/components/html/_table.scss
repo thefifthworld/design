@@ -1,13 +1,22 @@
+& {
+  counter-reset: thefifthworld-tables;
+}
+
 table {
   border-collapse: collapse;
   margin: 1em -1em;
   width: calc(100% + 2em);
 }
 
-tcaption {
-  display: block;
+caption {
+  counter-increment: thefifthworld-tables;
   font-family: 'Fontin Sans Small Caps';
-  margin: 2em 0 1em 0;
+  margin: 2em 1em 0.618em 1em;
+  text-align: left;
+
+  &:before {
+    content: "Table " counter(thefifthworld-tables) ". ";
+  }
 }
 
 th, td {
@@ -26,7 +35,7 @@ th {
 }
 
 tr:nth-child(even) td {
-  background: rgba($brown, 1/15);;
+  background: rgba($brown, 1/15);
 }
 
 td.actions {
@@ -42,4 +51,17 @@ td.actions {
 
 tfoot {
   border-top: 0.1em dotted $blue;
+
+  tr:nth-child(even) td {
+    background: transparent;
+  }
+
+  .footnote {
+    font-size: 0.618em;
+    padding: 1em 0;
+
+    &:before {
+      content: '* ';
+    }
+  }
 }

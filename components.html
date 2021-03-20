@@ -179,12 +179,12 @@
         </section>
       </section>
 
-      <!-- Basic table -->
+      <!-- Table -->
       <section id="table" data-category="HTML Tags" class="component">
         <h2>Table</h2>
         <div class="preview">
           <table>
-            <tcaption>Table 1. A limerick</tcaption>
+            <caption>A limerick</caption>
             <thead>
               <tr>
                 <th class="num">#</th>
@@ -227,11 +227,54 @@
               </tr>
             </tfoot>
           </table>
+          <table>
+            <caption>A table with a footnote</caption>
+            <thead>
+              <tr>
+                <th class="num">Arabic Numeral</th>
+                <th class="num">Roman Numeral</th>
+                <th>Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="num">1</td>
+                <td class="num">I</td>
+                <td>One</td>
+              </tr>
+              <tr>
+                <td class="num">2</td>
+                <td class="num">II</td>
+                <td>Two</td>
+              </tr>
+              <tr>
+                <td class="num">3</td>
+                <td class="num">III</td>
+                <td>Three</td>
+              </tr>
+              <tr>
+                <td class="num">4</td>
+                <td class="num">IV</td>
+                <td>Four</td>
+              </tr>
+              <tr>
+                <td class="num">5</td>
+                <td class="num">V</td>
+                <td>Five</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3" class="footnote">It&rsquo;s probably more common for the table footer to be used to provide a footnote, as in this example.</td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
         <details class="markup">
           <summary>Example markup</summary>
-          <code class="language-markup">&lt;table&gt;
-  &lt;tcaption&gt;Table 1. A limerick&lt;/tcaption&gt;
+          <code class="language-markup">&lt;!-- First example --&gt;
+&lt;table&gt;
+  &lt;caption&gt;A limerick&lt;/caption&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th class="num"&gt;#&lt;/th&gt;
@@ -271,6 +314,31 @@
       &lt;td class="num"&gt;5&lt;/td&gt;
       &lt;td /&gt;
       &lt;td class="short"&gt;Thirty-four&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+
+&lt;!-- Second example --&gt;
+&lt;table&gt;
+  &lt;caption&gt;A table with a footnote&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th class="num"&gt;Arabic Numeral&lt;/th&gt;
+      &lt;th class="num"&gt;Roman Numeral&lt;/th&gt;
+      &lt;th&gt;Number&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class="num"&gt;1&lt;/td&gt;
+      &lt;td class="num"&gt;I&lt;/td&gt;
+      &lt;td&gt;One&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;!-- And so on... --&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan="3" class="footnote"&gt;Footnote text&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tfoot&gt;
 &lt;/table&gt;</code>
@@ -1509,7 +1577,7 @@
         <h2>Table with actions column</h2>
         <div class="preview">
           <table>
-            <tcaption><strong>Table 1.</strong> Table with actions column with just one action</tcaption>
+            <caption>Table with actions column with just one action</caption>
             <thead>
               <tr>
                 <th>Text</th>
@@ -1533,7 +1601,7 @@
           </table>
 
           <table>
-            <tcaption><strong>Table 2.</strong> Table with actions column with multiple actions</tcaption>
+            <caption>Table with actions column with multiple actions</caption>
             <thead>
             <tr>
               <th>Text</th>
@@ -1995,7 +2063,7 @@ title=Orality&lt;/code&gt;
       </section>
 
     </main>
-    <script src="js/bundle.js"></script>
-    <script src="js/prism.js"></script>
+    <script src="js/lib/bundle.js"></script>
+    <script src="js/lib/prism.js"></script>
   </body>
 </html>

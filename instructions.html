@@ -27,9 +27,9 @@
       <p>First, make sure that you understand the <a href="foundations.html">foundations</a> that we build the design system on, in particular our approach to <a href="foundations.html#progressive">progressive enhancement</a>. Each page should use one of our <a href="templates.html">templates</a> &mdash; usually the <a href="/templates/standard.html">standard template</a>. Load the styles necessary by adding these tags to the <code>&lt;head&gt;</code> of your page:</p>
       <pre><code class="language-markup">&lt;link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.7/cropper.min.css" crossorigin="" /&gt;
 &lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" /&gt;
-&lt;link rel="stylesheet" media="all" href="https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/v/1/0/3/style.css" crossorigin="" /&gt;</code></pre>
+&lt;link rel="stylesheet" media="all" href="https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/v/1/0/4/style.css" crossorigin="" /&gt;</code></pre>
       <p>Then, you&rsquo;ll usually want to load the JavaScript so that you can have the client-side enhancements that each component offers by adding this tag right above the <code>&lt;/body&gt;</code> closing tag (though if you know that you haven&rsquo;t used any components that have client-side enhancements, you could leave this out to improve performance):</p>
-      <pre><code class="language-markup">&lt;script src="https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/v/1/0/3/bundle.js"&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-markup">&lt;script src="https://thefifthworld.s3.us-east-2.stackpathstorage.com/design/v/1/0/4/bundle.js"&gt;&lt;/script&gt;</code></pre>
       <p>Next comes the hard part: actually developing your project! Use <a href="components.html">components</a> to fill that page with the content unique to your project.</p>
       <h2>Contributing to the design system</h2>
       <p>If you develop your own project with this design system &mdash; or if you just want to help improve the Fifth World &mdash; you might want to contribute fixes or whole new features to the design system. We really appreciate such contributions! You can find the source code for this design system <a href="https://github.com/thefifthworld/design">on Github</a>. If you&rsquo;ve never contributed to a Github project before, you might want to take a look at the <a href="https://guides.github.com/activities/hello-world/">Hello World Github Guide</a>, which walks you through a lot of the basics, like what repositories, commits, and branches mean, and how to use them.</p>
@@ -81,7 +81,7 @@ npm start</code></pre>
       <h2>Finding help on Discord</h2>
       <p>If you want to use the design system for your own project or make contributions to the design system itself but you don&rsquo;t have an account as a member of the Fifth World website, you definitely deserve one! <a href="https://thefifthworld.com/about/membership">Let us know</a> and we&rsquo;ll make sure that you get an invitation. Yuor membership will include access to the official Fifth World Discord server. The <code>#design</code> channel there exists for people who have questions or comments about this design system. We&rsquo;ll happily answer all of your questions there and help you through the process.</p>
     </main>
-    <script src="js/bundle.js"></script>
-    <script src="js/prism.js"></script>
+    <script src="js/lib/bundle.js"></script>
+    <script src="js/lib/prism.js"></script>
   </body>
 </html>

@@ -4,6 +4,23 @@
 
 ### v1.0
 
+#### v1.0.4
+
+Released 20 March 2021
+
+##### Fixed
+
+* Bug fix: There is no `<tcaption>` tag. It's just `<caption>`. Documentation and styles corrected.
+
+##### Added
+
+* Table `<caption>` tags are now automatically numbered (e.g., 'Table 1.', 'Table 2.', and so on).
+* New `.footnote` class for `tfoot td` elements styles footnotes for tables.
+
+##### Changed
+
+* JavaScript bundles are now published to `/js/lib` instead of `/js`
+
 #### v1.0.3
 
 Released 10 March 2021
