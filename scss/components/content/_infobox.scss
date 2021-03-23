@@ -1,0 +1,34 @@
+.infobox {
+  font-family: 'Fontin Sans';
+
+  dt, dd {
+    margin: 0 -1.618em;
+    padding: 0.618em 1.618em;
+  }
+
+  dt {
+    background: $brown13;
+    font-weight: bold;
+  }
+
+  dd {
+    background: $brown16;
+    margin-bottom: 0.382em;
+  }
+
+  @media (min-width: 50em) {
+    border-spacing: 0 0.382em;
+    display: table;
+    margin-left: -1.618em;
+    margin-right: -1.618em;
+    width: calc(100% + 3.236em);
+
+    & > div {
+      display: table-row;
+    }
+
+    dt, dd {
+      display: table-cell;
+    }
+  }
+}
