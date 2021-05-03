@@ -22,5 +22,10 @@ module.exports = {
         }
       }
     ]
+  },
+  optimization: {
+    concatenateModules: false,
+    providedExports: false,
+    usedExports: false
   }
 }
