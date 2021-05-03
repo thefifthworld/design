@@ -49,9 +49,9 @@ const updateErrorMsg = (el, jwt, interval) => {
  */
 
 const sendErrorMsg = (el, jwt) => {
-  const expire = getExpiration(jwt)
+  const expire = jwt ? getExpiration(jwt) : -1
   writeErrorMsg(el, expire)
-  const interval = setInterval(() => updateErrorMsg(el, jwt, interval), 1000)
+  const interval = jwt ? setInterval(() => updateErrorMsg(el, jwt, interval), 1000) : null
   removeClass(el, 'warning')
   addClass(el, 'error')
 }
@@ -73,7 +73,7 @@ const reauth = async (el) => {
     Cookies.set('jwt', res.data)
     setTimeout(async () => { await reauth(el) }, 10 * 60 * 1000)
   } catch (err) {
-    sendErrorMsg(el, jwt)
+    sendErrorMsg(el)
   }
 }
 
