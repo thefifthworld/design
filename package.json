@@ -45,8 +45,8 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^3.8.2",
-    "core-js-pure": "^3.8.2",
+    "core-js": "^3.11.2",
+    "core-js-pure": "^3.11.2",
     "croppie": "^2.6.5",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
@@ -57,22 +57,23 @@
     "typogr": "^0.6.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.12.11",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.13",
     "chokidar-cli": "^2.1.0",
     "jest": "^25.5.4",
+    "node-polyfill-webpack-plugin": "^1.1.0",
     "node-sass-chokidar": "^1.5.0",
     "normalize-scss": "^7.0.1",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^7.1.2",
     "smartypants": "^0.1.1",
     "standard": "^14.3.4",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
   },
   "resolutions": {
     "axios": "^0.21.1"
