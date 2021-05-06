@@ -6,6 +6,6 @@ npm-debug.log
 npm-debug.log.*
 css
 scss/modules/_variables.scss
-js/lib/bundle.js
-js/lib/*.bundle.js
+js/lib
+js/lib/*
 .DS_Store
