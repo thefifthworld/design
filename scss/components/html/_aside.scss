@@ -1,3 +1,7 @@
 aside {
   @extend %aside;
 }
+
+aside + aside {
+  margin-top: -1em;
+}
