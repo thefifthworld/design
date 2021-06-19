@@ -10,7 +10,7 @@ input[type="checkbox"] + label {
   position: relative;
 
   &:before {
-    background: $brown16;
+    background: $yellow-light;
     border-radius: $border-radius-tall;
     content: '';
     display: block;
@@ -22,13 +22,13 @@ input[type="checkbox"] + label {
   }
 
   &:hover:before {
-    background: lighten($brown16, 15%);
+    background: lighten($yellow-light, 15%);
   }
 }
 
 input[type="checkbox"]:checked + label {
   &:before {
-    background: $green16;
+    background: $green-light;
   }
 
   &:after {

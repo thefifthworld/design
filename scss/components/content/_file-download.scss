@@ -17,10 +17,10 @@ a.download {
   }
 
   &:hover {
-    background: lighten($brown16, 10%);
+    background: $yellow-light;
   }
 
   &:active {
-    background: $yellow16;
+    background: $yellow-light;
   }
 }

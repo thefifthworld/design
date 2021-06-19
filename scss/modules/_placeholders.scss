@@ -66,7 +66,7 @@
   }
 
   &:hover {
-    color: $white23;
+    color: $white;
   }
 }
 
@@ -130,7 +130,7 @@
 
 %form-field {
   appearance: none;
-  border: 0.1em solid $brown13;
+  border: 0.1em solid $yellow-dark;
   border-radius: $border-radius-tall;
   display: block;
   font-family: 'Fontin';
@@ -140,7 +140,7 @@
   width: calc(100% + 3.236em);
 
   &::placeholder {
-    color: $brown23;
+    color: $yellow-dark;
   }
 
   &:hover,
@@ -170,14 +170,14 @@
   width: auto;
 
   &[disabled]:not(.loading) {
-    background: $black16;
+    background: $gray;
     border: 0.1em solid transparent;
-    color: $black13;
+    color: $black;
     cursor: not-allowed;
 
     &.secondary {
       background: $white;
-      border: 0.1em solid $black16;
+      border: 0.1em solid $black;
     }
   }
 
@@ -198,7 +198,7 @@
 }
 
 %aside {
-  background: $brown16;
+  background: $yellow-light;
   border-radius: $border-radius-long;
   margin: 1.618em -1.618em;
   padding: 1.618em;
@@ -224,14 +224,14 @@
 }
 
 %code-block {
-  background: $brown16;
-  border: 1px solid $brown13;
+  background: $yellow-light;
+  border: 1px solid $yellow-light;
   margin: 1em -1.618em;
 
   summary,
   figcaption {
     border: 0;
-    color: $brown;
+    color: $yellow-dark;
     font-family: 'Fontin Sans Small Caps';
     margin: 0;
     padding: 0.618em 1.618em;
@@ -242,7 +242,7 @@
   }
 
   code {
-    border-top: 1px solid $brown13;
+    border-top: 1px solid $yellow-light;
     display: block;
     max-height: 20em;
     overflow: scroll;

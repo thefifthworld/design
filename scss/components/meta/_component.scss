@@ -9,7 +9,7 @@ section.component {
 
     &:before {
       @extend %h3;
-      color: $black13;
+      color: $gray;
       content: 'Preview';
       display: block;
     }

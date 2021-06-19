@@ -29,15 +29,15 @@ table.diff {
       padding-bottom: 1.618em;
 
       &.current {
-        color: $brown13;
+        color: $yellow-dark;
       }
     }
   }
 
   tbody th {
-    background: $brown16;
+    background: $yellow-light;
     border: 0;
-    color: $brown;
+    color: $yellow-dark;
   }
 
   tbody td {

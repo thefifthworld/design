@@ -6,7 +6,7 @@ input[type="file"].initialized {
 }
 
 .drag-and-drop {
-  background: $brown16;
+  background: $yellow-dark;
   display: block;
   font-family: 'Fontin Sans';
   font-weight: normal;
@@ -19,7 +19,7 @@ input[type="file"].initialized {
   }
 
   &:hover {
-    background: lighten($brown16, 10%);
+    background: lighten($yellow-dark, 10%);
   }
 
   @media (min-width: 50em) {

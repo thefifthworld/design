@@ -31,11 +31,11 @@ th, td {
 
 th {
   border-bottom: 0.2em solid $red;
-  color: $brown;
+  color: $yellow-dark;
 }
 
 tr:nth-child(even) td {
-  background: rgba($brown, 1/15);
+  background: rgba($yellow-dark, 1/15);
 }
 
 td.actions {
