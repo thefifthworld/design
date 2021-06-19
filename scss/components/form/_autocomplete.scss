@@ -1,6 +1,6 @@
 .autocomplete {
   @extend %unformatted-list;
-  border: 0.1em solid $brown13;
+  border: 0.1em solid $yellow-dark;
   border-top: 0;
   font-family: 'Fontin Sans';
   margin-top: -1em;
@@ -12,16 +12,16 @@
   }
 
   li + li {
-    border-top: 0.1em solid $brown13;
+    border-top: 0.1em solid $yellow-dark;
   }
 
   li:hover,
   li:focus {
-    background: $blue16;
+    background: $blue-light;
   }
 
   .url {
-    color: $brown;
+    color: $yellow-dark;
     display: block;
     font-size: 0.618em;
   }

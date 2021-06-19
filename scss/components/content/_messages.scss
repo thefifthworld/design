@@ -1,6 +1,6 @@
 aside.message {
-  background: $blue13;
-  border: 0.236em solid $blue;
+  background: $blue-light;
+  border: 0.236em solid $blue-dark;
   padding: 0.382em 1.618em;
 
   & + aside.message {
@@ -8,8 +8,8 @@ aside.message {
   }
 
   &.confirm {
-    background: $green13;
-    border: 0.236em solid $green;
+    background: $green-light;
+    border: 0.236em solid $green-dark;
   }
 
   &.error {
@@ -21,7 +21,7 @@ aside.message {
   }
 
   &.warning {
-    background: $yellow13;
-    border: 0.236em solid $yellow;
+    background: $yellow-light;
+    border: 0.236em solid $yellow-dark;
   }
 }

@@ -1,14 +1,14 @@
 nav.sequence {
   a {
-    background: $brown16;
-    color: $brown;
+    background: $yellow-light;
+    color: $yellow-dark;
     display: block;
     margin: 0.618em -1.618em;
     padding: 0.618em 1.618em 1.618em 1.618em;
     text-decoration: none;
 
     &:before {
-      color: $brown23;
+      color: $yellow-dark;
       display: block;
       font-family: 'Fontin Sans Small Caps';
       font-weight: normal;
@@ -16,7 +16,7 @@ nav.sequence {
 
     &:hover,
     &:focus {
-      background: lighten($brown16, 25%);
+      background: lighten($yellow-dark, 25%);
     }
   }
 

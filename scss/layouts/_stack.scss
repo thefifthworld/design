@@ -5,7 +5,7 @@
 header.home {
   background: url(#{$img}/bottom.png) repeat-x bottom center, url(#{$img}/hero.jpg) no-repeat top center;
   background-size: auto, cover;
-  color: #fff;
+  color: $white;
   overflow: auto;
 
   h1 {
@@ -29,7 +29,7 @@ header.home {
   }
 
   nav.personal a {
-    color: #fff;
+    color: $white;
   }
 }
 
@@ -55,8 +55,8 @@ section.stack {
   &.highlight {
     background: url(#{$img}/top.png) repeat-x top center,
       url(#{$img}/bottom.png) repeat-x bottom center;
-    background-color: #000;
-    color: #fff;
+    background-color: $black;
+    color: $white;
 
     h1 {
       margin: 0.618em 0;
@@ -80,10 +80,10 @@ section.stack {
     }
 
     a {
-      color: #fff;
+      color: $white;
 
       &:hover {
-        color: $white23;
+        color: $yellow-light;
       }
     }
 

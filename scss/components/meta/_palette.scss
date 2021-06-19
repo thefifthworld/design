@@ -1,14 +1,12 @@
 .palettes {
   & > div {
-    border: 1px solid $black16;
+    border: 1px solid $gray;
     margin: 1em 0;
   }
 
   .red h3 { background: $red; }
   .blue h3 { background: $blue; }
-  .purple h3 { background: $purple; }
   .green h3 { background: $green; }
-  .brown h3 { background: $brown; }
   .yellow h3 { background: $yellow; }
 
   h3 {

@@ -2,7 +2,7 @@ a {
   color: $blue;
   font-weight: bold;
 
-  &:visited { color: $purple; }
+  &:visited { color: $blue-dark; }
   &:hover { color: $yellow; }
   &:active { color: $red; }
 }
