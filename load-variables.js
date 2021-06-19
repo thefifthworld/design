@@ -28,6 +28,10 @@ lines.push(`$border-radius-long-triple: 3em unquote("/") ${cornerRatio * 3}em;`)
 lines.push(`$border-radius-tall-triple: ${cornerRatio * 3}em unquote("/") 3em;`)
 lines.push('')
 
+section('Breakpoints', tokens.breakpoints, key => {
+  lines.push(`$breakpoint-${key}: ${tokens.breakpoints[key]};`)
+})
+
 section('Colors', tokens.colors.palette, key => {
   lines.push(`$${key}: ${tokens.colors.palette[key].hex};`)
 })
