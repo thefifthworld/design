@@ -59,4 +59,25 @@
   .grays .light { background: $white; }
   .grays .base { background: $gray; }
   .grays .dark { background: $black; }
+
+  @supports (display: grid) {
+    @media (min-width: $breakpoint-type) {
+      display: grid;
+      grid-template-columns: 20% 20% 20% 20% 20%;
+      grid-template-rows: 33% 33% 33%;
+
+      .swatch {
+        margin: 0;
+        padding: 4em 1em 1em 1em;
+      }
+
+      .swatch h3 {
+        font-size: 75%;
+      }
+
+      .swatch table {
+        font-size: 50%;
+      }
+    }
+  }
 }
