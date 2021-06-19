@@ -1,0 +1,62 @@
+.swatches {
+  .swatch {
+    margin: 0 -2em;
+    padding: 2em;
+  }
+
+  h3 {
+    margin: 0 0 0.5em 0;
+  }
+
+  table {
+    margin: 0;
+  }
+
+  th {
+    width: 4em;
+  }
+
+  th,
+  td,
+  tr:nth-child(even) td {
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+
+  h3,
+  th,
+  td {
+    color: $white;
+  }
+
+  .light,
+  .yellows .base,
+  .grays .base {
+    h3,
+    th,
+    td {
+      color: $black;
+    }
+  }
+
+  td {
+    font-family: monospace;
+  }
+
+  .greens .light { background: $green-light; }
+  .greens .base { background: $green; }
+  .greens .dark { background: $green-dark; }
+  .yellows .light { background: $yellow-light; }
+  .yellows .base { background: $yellow; }
+  .yellows .dark { background: $yellow-dark; }
+  .reds .light { background: $red-light; }
+  .reds .base { background: $red; }
+  .reds .dark { background: $red-dark; }
+  .blues .light { background: $blue-light; }
+  .blues .base { background: $blue; }
+  .blues .dark { background: $blue-dark; }
+  .grays .light { background: $white; }
+  .grays .base { background: $gray; }
+  .grays .dark { background: $black; }
+}
