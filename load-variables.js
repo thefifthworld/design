@@ -29,11 +29,7 @@ lines.push(`$border-radius-tall-triple: ${cornerRatio * 3}em unquote("/") 3em;`)
 lines.push('')
 
 section('Colors', tokens.colors.palette, key => {
-  lines.push('')
   lines.push(`$${key}: ${tokens.colors.palette[key].hex};`)
-  lines.push(`$${key}16: rgba($${key}, 1/6);`)
-  lines.push(`$${key}13: rgba($${key}, 1/3);`)
-  lines.push(`$${key}23: rgba($${key}, 2/3);`)
 })
 
 section('Non-palette colors', tokens.colors.special, key => {
