@@ -1,3 +1,5 @@
+@use "sass:math";
+
 & {
   counter-reset: thefifthworld-tables;
 }
@@ -35,7 +37,7 @@ th {
 }
 
 tr:nth-child(even) td {
-  background: rgba($brown, 1/15);
+  background: rgba($brown, math.div(1, 15));
 }
 
 td.actions {
