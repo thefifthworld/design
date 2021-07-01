@@ -10,6 +10,9 @@ const section = (title, set, fn) => {
   lines.push('')
 }
 
+lines.push('@use "sass:math";')
+lines.push('')
+
 lines.push('// DO NOT UPDATE THIS FILE DIRECTLY')
 lines.push('// This file is created by a script, using values from tokens.json.')
 lines.push('// tokens.json is the \'source of truth\' for the values of these')
@@ -31,9 +34,9 @@ lines.push('')
 section('Colors', tokens.colors.palette, key => {
   lines.push('')
   lines.push(`$${key}: ${tokens.colors.palette[key].hex};`)
-  lines.push(`$${key}16: rgba($${key}, 1/6);`)
-  lines.push(`$${key}13: rgba($${key}, 1/3);`)
-  lines.push(`$${key}23: rgba($${key}, 2/3);`)
+  lines.push(`$${key}16: rgba($${key}, math.div(1, 6));`)
+  lines.push(`$${key}13: rgba($${key}, math.div(1, 3));`)
+  lines.push(`$${key}23: rgba($${key}, math.div(2, 3));`)
 })
 
 section('Non-palette colors', tokens.colors.special, key => {

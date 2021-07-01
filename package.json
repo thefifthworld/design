@@ -24,19 +24,12 @@
   ],
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "start": "npm-run-all tokens dev:css:compile dev:watch",
-    "dev:css:compile": "node-sass-chokidar --source-map true ./scss --output ./css",
-    "dev:sass:build": "npm-run-all -p dev:css:compile css:postcss",
-    "dev:sass:watch": "chokidar 'scss/*.scss' 'scss/**/*.scss' --command 'npm run dev:sass:build'",
-    "dev:css": "npm-run-all -p dev:sass:* dev:js:bundle",
     "dev:js:bundle": "webpack --config webpack.dev.config.js",
     "dev:tokens": "chokidar 'tokens.json' --command 'npm run tokens'",
     "dev:serve": "browser-sync start --server --files 'css/*.css' 'js/bundle.js' '*.html' '**/*.html'",
     "dev:watch": "npm-run-all -p dev:serve dev:tokens dev:css",
     "tokens": "node load-variables.js",
-    "css:compile": "node-sass-chokidar scss/style.scss --output css/ --output-style compressed --omit-source-map-url",
-    "css:postcss": "postcss css/*.css --use autoprefixer --dir css",
     "js:lint": "standard 'js/src/*.js' 'js/src/**/*.js'",
     "js:bundle": "webpack --config webpack.prod.config.js",
     "js:build": "npm-run-all js:lint js:bundle",
@@ -64,19 +57,17 @@
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.13",
     "chokidar-cli": "^2.1.0",
+    "commander": "^4.1.1",
     "jest": "^25.5.4",
     "node-polyfill-webpack-plugin": "^1.1.0",
-    "node-sass-chokidar": "^1.5.0",
     "normalize-scss": "^7.0.1",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^7.1.2",
+    "sass": "^1.35.1",
     "smartypants": "^0.1.1",
     "standard": "^14.3.4",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0"
-  },
-  "resolutions": {
-    "axios": "^0.21.1"
   },
   "babel": {
     "presets": [
